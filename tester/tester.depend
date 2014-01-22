@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1390383901 source:/home/xanaki/Projects/csmeg/tester/main.cpp
+	<iostream>
+	"csmeg/CGame.h"
+
+1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
+
+1390383867 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
+
+1390384165 source:/home/xanaki/Projects/csmeg/tester/src/CTesterGame.cpp
+	"CTesterGame.h"
+	<iostream>
+
+1390384061 /home/xanaki/Projects/csmeg/tester/include/CTesterGame.h
+	<csmeg/CGame.h>
+
