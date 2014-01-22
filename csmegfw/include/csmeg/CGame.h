@@ -14,10 +14,15 @@ namespace csmeg
             void Run();
             void Stop();
         protected: // New virtual methods
-            virtual void OnRender(const CGameTime& gameTime) const;
-            virtual void OnUpdate(const CGameTime& gameTime);
-            virtual bool OnInitialize();
-            virtual void OnRelease();
+            virtual void OnDraw(const CGameTime& gameTime) const = 0;
+            virtual void OnUpdate(const CGameTime& gameTime) = 0;
+            virtual bool OnInitialize() = 0;
+            virtual void OnRelease() = 0;
+        private: // New methods
+            void Draw(const CGameTime& gameTime) const;
+            void Update(const CGameTime& gameTime);
+            bool Initialize();
+            void Release();
 
         private:
             bool m_IsRunning;

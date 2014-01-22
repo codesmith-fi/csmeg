@@ -2,6 +2,8 @@
 <CodeBlocks_workspace_file>
 	<Workspace title="CSMeg">
 		<Project filename="csmegfw/csmegfw.cbp" />
-		<Project filename="tester/tester.cbp" />
+		<Project filename="tester/tester.cbp">
+			<Depends filename="csmegfw/csmegfw.cbp" />
+		</Project>
 	</Workspace>
 </CodeBlocks_workspace_file>

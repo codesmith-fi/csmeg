@@ -16,24 +16,23 @@ CGame::~CGame()
 {
     if(m_IsInitialized) {
         m_IsRunning = false;
-        OnRelease();
+        Release();
     }
 }
 
 void CGame::Run()
 {
-    if(OnInitialize()) {
-        m_IsInitialized = true;
+    if(Initialize()) {
         m_IsRunning = true;
         m_GameTime.Reset();
 
         while(m_IsRunning) {
             m_GameTime.Update();
-            OnUpdate(m_GameTime);
-            OnRender(m_GameTime);
+            Update(m_GameTime);
+            Draw(m_GameTime);
         }
     }
-    OnRelease();
+    Release();
 }
 
 void CGame::Stop()
@@ -41,24 +40,26 @@ void CGame::Stop()
     m_IsRunning = false;
 }
 
-void CGame::OnRender(const CGameTime& gameTime) const
+void CGame::Draw(const CGameTime& gameTime) const
 {
+    OnDraw(gameTime);
 }
 
-void CGame::OnUpdate(const CGameTime& gameTime)
+void CGame::Update(const CGameTime& gameTime)
 {
+    OnUpdate(gameTime);
 }
 
-bool CGame::OnInitialize()
+bool CGame::Initialize()
 {
-    return true;
+    m_IsInitialized = OnInitialize();
+    return m_IsInitialized;
 }
 
-void CGame::OnRelease()
+void CGame::Release()
 {
-    if(m_IsInitialized) {
-        m_IsInitialized = false;
-    }
+    m_IsInitialized = false;
+    return OnRelease();
 }
 
 } // namespace csmeg
