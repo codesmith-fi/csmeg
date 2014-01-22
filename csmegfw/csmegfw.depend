@@ -4,9 +4,16 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390383240 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1390396770 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	<iostream>
 
-1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+1390394801 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+	<csmeg/CGameTime.h>
+
+1390396707 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
+	"CGameTime.h"
+
+1390396729 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameTime.h
+	<SDL2/SDL.h>
 

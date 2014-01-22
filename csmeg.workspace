@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="CSMeg">
+		<Project filename="csmegfw/csmegfw.cbp" />
+		<Project filename="tester/tester.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

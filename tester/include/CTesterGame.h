@@ -11,7 +11,11 @@ class CTesterGame : public CGame
         CTesterGame();
         ~CTesterGame();
     protected:
-    private:
+    private: // From Base
+        void OnRender(const CGameTime& gameTime) const;
+        void OnUpdate(const CGameTime& gameTime);
+    private: // Data
+        int m_Counter;
 };
 
 #endif // CTESTERGAME_H
