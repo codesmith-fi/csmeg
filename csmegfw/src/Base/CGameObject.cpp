@@ -36,7 +36,7 @@ void CGameObject::SetFPS(int fps)
     m_UpdateIntervalMsec = 0;
     m_UpdateCounterMsec = 0;
     if( m_FPS > FPSUnlimited ) {
-        m_UpdateIntervalMsec = 1.0l / (long)m_FPS;
+        m_UpdateIntervalMsec = (int)(1000.0l * 1.0l / (long)m_FPS);
     }
 }
 

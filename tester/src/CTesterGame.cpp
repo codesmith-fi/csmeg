@@ -17,13 +17,16 @@ CTesterGame::~CTesterGame()
 void CTesterGame::OnDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
-    cout << "Elapsed: " << gameTime.Elapsed() << endl;
-    sleep(1);
+    cout << "Elapsed: " << gameTime.Total() << endl;
+    usleep(12*1000);
 }
 
 void CTesterGame::OnUpdate(const CGameTime& gameTime)
 {
     m_Counter++;
+
+    cout << "OnUpdate: " << m_Counter << endl;
+
     if(m_Counter == 10) {
         Stop();
     }
