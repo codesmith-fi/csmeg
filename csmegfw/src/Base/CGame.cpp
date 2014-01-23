@@ -40,26 +40,10 @@ void CGame::Stop()
     m_IsRunning = false;
 }
 
-void CGame::Draw(const CGameTime& gameTime) const
-{
-    OnDraw(gameTime);
-}
-
-void CGame::Update(const CGameTime& gameTime)
-{
-    OnUpdate(gameTime);
-}
-
 bool CGame::Initialize()
 {
-    m_IsInitialized = OnInitialize();
+    m_IsInitialized = CGameObject::Initialize();
     return m_IsInitialized;
-}
-
-void CGame::Release()
-{
-    m_IsInitialized = false;
-    return OnRelease();
 }
 
 } // namespace csmeg

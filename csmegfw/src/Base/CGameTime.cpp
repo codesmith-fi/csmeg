@@ -1,4 +1,5 @@
 #include "CGameTime.h"
+#include <SDL2/SDL_timer.h>
 
 namespace csmeg
 {
@@ -15,15 +16,35 @@ CGameTime::~CGameTime()
 
 CGameTime::CGameTime(const CGameTime& other)
 {
-    //copy ctor
+    m_CurrentTicks = other.m_CurrentTicks;
+    m_PreviousTicks = other.m_PreviousTicks;
+    m_StartTicks = other.m_StartTicks;
 }
 
 CGameTime& CGameTime::operator=(const CGameTime& rhs)
 {
-    if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
+    // handle self assignment
+    if(this != &rhs) {
+        m_CurrentTicks = rhs.m_CurrentTicks;
+        m_PreviousTicks = rhs.m_PreviousTicks;
+        m_StartTicks = rhs.m_StartTicks;
+    }
+
     return *this;
 }
+
+CGameTime& CGameTime::operator+=(const CGameTime& rhs)
+{
+    m_CurrentTicks+=rhs.m_CurrentTicks;
+    return *this;
+}
+
+CGameTime& CGameTime::operator-=(const CGameTime& rhs)
+{
+    m_CurrentTicks-=rhs.m_CurrentTicks;
+    return *this;
+}
+
 
 void CGameTime::Reset()
 {
@@ -36,12 +57,12 @@ void CGameTime::Update()
     m_CurrentTicks = SDL_GetTicks();
 }
 
-Uint32 CGameTime::Elapsed() const
+uint32_t CGameTime::Elapsed() const
 {
     return m_CurrentTicks - m_PreviousTicks;
 }
 
-Uint32 CGameTime::Total() const
+uint32_t CGameTime::Total() const
 {
     return m_CurrentTicks - m_StartTicks;
 }

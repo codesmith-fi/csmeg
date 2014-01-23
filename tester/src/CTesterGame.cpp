@@ -36,4 +36,5 @@ bool CTesterGame::OnInitialize()
 
 void CTesterGame::OnRelease()
 {
+    cout << "OnRelease" << endl;
 }

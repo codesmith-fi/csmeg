@@ -15,8 +15,9 @@ class CDrawableGameObject : public CGameObject
         virtual ~CDrawableGameObject();
     public:
         void Draw(const CGameTime& gameTime) const;
-    protected:
+    protected: // New virtual methods
         virtual void OnDraw(const CGameTime& gameTime) const = 0;
+
     private:
 };
 
