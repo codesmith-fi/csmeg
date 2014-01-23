@@ -1,6 +1,7 @@
 #include "CGame.h"
 
 #include <iostream>
+#include <SDL2/SDL.h>
 
 namespace csmeg
 {
@@ -42,8 +43,36 @@ void CGame::Stop()
 
 bool CGame::Initialize()
 {
+    if(SDL_Init(0) != 0) {
+        cout << "Error initializing SDL" << endl;
+        return false;
+    }
+
+    cout << "Init SDL Timer" << endl;
+    if(SDL_InitSubSystem(SDL_INIT_TIMER) != 0) {
+        cerr << "SDL Timer, failed" << endl;
+        return false;
+    }
+
+    cout << "Init SDL Audio" << endl;
+    if(SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
+        cerr << "SDL Audio, failed" << endl;
+        return false;
+    }
+
+    cout << "Init SDL Video" << endl;
+    if(SDL_InitSubSystem(SDL_INIT_VIDEO) != 0) {
+        cerr << "SDL Video, failed" << endl;
+        return false;
+    }
+
     m_IsInitialized = CGameObject::Initialize();
     return m_IsInitialized;
+}
+
+void CGame::Release()
+{
+    SDL_Quit();
 }
 
 } // namespace csmeg

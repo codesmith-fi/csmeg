@@ -1,12 +1,14 @@
 #ifndef CGAMEOBJECT_H
 #define CGAMEOBJECT_H
 
+#include <csmeg/CObjectBase.h>
+
 namespace csmeg
 {
 
 class CGameTime;
 
-class CGameObject
+class CGameObject : public CObjectBase
 {
     /**
      * Class constants
@@ -24,8 +26,8 @@ class CGameObject
         int FPS() const;
 
         void Update(const CGameTime& gameTime);
-        bool Initialize();
-        void Release();
+//        bool Initialize();
+//        void Release();
 
     protected: // New virtual methods
         virtual void OnUpdate(const CGameTime& gameTime) { }

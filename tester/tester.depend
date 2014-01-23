@@ -5,7 +5,7 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390466927 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
+1390469892 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 
@@ -24,8 +24,11 @@
 1390417227 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameTime.h
 	<inttypes.h>
 
-1390467726 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
+1390471714 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
+	<csmeg/CObjectBase.h>
 
 1390467705 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CDrawableGameObject.h
 	<csmeg/CGameObject.h>
+
+1390472125 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CObjectBase.h
 

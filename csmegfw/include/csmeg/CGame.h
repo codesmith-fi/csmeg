@@ -16,7 +16,7 @@ namespace csmeg
             void Stop();
         private: // From CGameObject
             bool Initialize();
-
+            void Release();
         private:
             bool m_IsRunning;
             bool m_IsInitialized;

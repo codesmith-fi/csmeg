@@ -4,31 +4,38 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390466984 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1390470535 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	<iostream>
+	<SDL2/SDL.h>
 
-1390466927 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+1390469892 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 
-1390417367 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
+1390471998 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
 	"CGameTime.h"
 	<SDL2/SDL_timer.h>
 
 1390417227 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameTime.h
 	<inttypes.h>
 
-1390468662 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
+1390471605 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
 	"CGameObject.h"
 	<CGameTime.h>
 	<inttypes.h>
 
-1390467726 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
+1390471714 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
+	<csmeg/CObjectBase.h>
 
 1390400638 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CDrawableGameObject.cpp
 	"CDrawableGameObject.h"
 
 1390467705 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CDrawableGameObject.h
 	<csmeg/CGameObject.h>
+
+1390471988 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CObjectBase.cpp
+	"CObjectBase.h"
+
+1390472125 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CObjectBase.h
 

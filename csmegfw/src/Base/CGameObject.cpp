@@ -1,6 +1,5 @@
 #include "CGameObject.h"
 #include <CGameTime.h>
-#include <inttypes.h>
 
 namespace csmeg
 {
@@ -18,16 +17,6 @@ void CGameObject::Update(const CGameTime& gameTime)
     if(NeedsUpdate(gameTime)) {
         OnUpdate(gameTime);
     }
-}
-
-bool CGameObject::Initialize()
-{
-    return OnInitialize();
-}
-
-void CGameObject::Release()
-{
-    return OnRelease();
 }
 
 void CGameObject::SetFPS(int fps)

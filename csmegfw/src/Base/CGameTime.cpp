@@ -11,7 +11,6 @@ CGameTime::CGameTime()
 
 CGameTime::~CGameTime()
 {
-    //dtor
 }
 
 CGameTime::CGameTime(const CGameTime& other)
