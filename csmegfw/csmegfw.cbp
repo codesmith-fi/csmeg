@@ -47,13 +47,18 @@
 		<Unit filename="include/csmeg/CGame.h" />
 		<Unit filename="include/csmeg/CGameObject.h" />
 		<Unit filename="include/csmeg/CGameTime.h" />
+		<Unit filename="include/csmeg/CObjectBase.h" />
+		<Unit filename="include/csmeg/CTiming.h" />
 		<Unit filename="src/Base/CDrawableGameObject.cpp" />
 		<Unit filename="src/Base/CGame.cpp" />
 		<Unit filename="src/Base/CGameObject.cpp" />
 		<Unit filename="src/Base/CGameTime.cpp" />
+		<Unit filename="src/Base/CObjectBase.cpp" />
+		<Unit filename="src/Base/CTiming.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

@@ -1,7 +1,6 @@
 #ifndef CGAMETIME_H
 #define CGAMETIME_H
 
-//#include <SDL2/SDL.h>
 #include <inttypes.h>
 
 namespace csmeg

@@ -1,5 +1,5 @@
 #include "CGameTime.h"
-#include <SDL2/SDL_timer.h>
+#include "CTiming.h"
 
 namespace csmeg
 {
@@ -47,13 +47,13 @@ CGameTime& CGameTime::operator-=(const CGameTime& rhs)
 
 void CGameTime::Reset()
 {
-    m_CurrentTicks = m_PreviousTicks = m_StartTicks = SDL_GetTicks();
+    m_CurrentTicks = m_PreviousTicks = m_StartTicks = CTiming::Instance().TicksMsec();
 }
 
 void CGameTime::Update()
 {
     m_PreviousTicks = m_CurrentTicks;
-    m_CurrentTicks = SDL_GetTicks();
+    m_CurrentTicks = CTiming::Instance().TicksMsec();
 }
 
 uint32_t CGameTime::Elapsed() const

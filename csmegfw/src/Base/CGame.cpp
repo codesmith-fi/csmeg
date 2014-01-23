@@ -1,5 +1,5 @@
 #include "CGame.h"
-
+#include "CTiming.h"
 #include <iostream>
 #include <SDL2/SDL.h>
 
@@ -48,12 +48,15 @@ bool CGame::Initialize()
         return false;
     }
 
+    CTiming::Instance();
+
+/*
     cout << "Init SDL Timer" << endl;
     if(SDL_InitSubSystem(SDL_INIT_TIMER) != 0) {
         cerr << "SDL Timer, failed" << endl;
         return false;
     }
-
+*/
     cout << "Init SDL Audio" << endl;
     if(SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
         cerr << "SDL Audio, failed" << endl;

@@ -28,6 +28,7 @@ class CObjectBase
     protected: // New virtual methods
         virtual bool OnInitialize() = 0;
         virtual void OnRelease() = 0;
+        virtual void SetError(int newError) { m_LastError = newError; }
 
     private: // data
         bool m_IsInitialized;
