@@ -34,6 +34,7 @@ void CTesterGame::OnUpdate(const CGameTime& gameTime)
 
 bool CTesterGame::OnInitialize()
 {
+    SetFPS(20);
     return true;
 }
 

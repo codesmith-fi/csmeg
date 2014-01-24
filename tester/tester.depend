@@ -5,11 +5,11 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390469892 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
+1390575722 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 
-1390468479 source:/home/xanaki/Projects/csmeg/tester/src/CTesterGame.cpp
+1390578556 source:/home/xanaki/Projects/csmeg/tester/src/CTesterGame.cpp
 	"CTesterGame.h"
 	<iostream>
 	<unistd.h>
@@ -17,14 +17,15 @@
 1390401159 /home/xanaki/Projects/csmeg/tester/include/CTesterGame.h
 	<csmeg/CGame.h>
 
-1390468552 source:/home/xanaki/Projects/csmeg/tester/src/main.cpp
-	<iostream>
+1390579234 source:/home/xanaki/Projects/csmeg/tester/src/main.cpp
 	"CTesterGame.h"
+	<iostream>
+	<exception>
 
-1390474173 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameTime.h
+1390570338 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameTime.h
 	<inttypes.h>
 
-1390471714 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
+1390572179 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
 	<csmeg/CObjectBase.h>
 
 1390467705 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CDrawableGameObject.h

@@ -4,28 +4,30 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390473689 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1390576253 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
+	"CGraphicsContext.h"
 	"CTiming.h"
+	"CSmegException.h"
 	<iostream>
 	<SDL2/SDL.h>
 
-1390469892 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+1390575722 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 
-1390474420 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
+1390570775 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
 	"CGameTime.h"
 	"CTiming.h"
 
-1390474173 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameTime.h
+1390570338 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameTime.h
 	<inttypes.h>
 
-1390472035 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
+1390571558 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
 	"CGameObject.h"
 	<CGameTime.h>
 
-1390471714 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
+1390572179 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
 	<csmeg/CObjectBase.h>
 
 1390400638 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CDrawableGameObject.cpp
@@ -47,4 +49,25 @@
 1390474542 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CTiming.h
 	<csmeg/CObjectBase.h>
 	<inttypes.h>
+
+1390571696 source:/home/xanaki/Projects/csmeg/csmegfw/src/Renderer/CContextOpenGL.cpp
+	"CContextOpenGL.h"
+
+1390571696 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CContextOpenGL.h
+
+1390579091 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGraphicsContext.cpp
+	"CGraphicsContext.h"
+	"SDL2/SDL.h"
+	"CSmegException.h"
+
+1390578818 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGraphicsContext.h
+	<csmeg/CObjectBase.h>
+	<SDL2/SDL_render.h>
+
+1390575695 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CSmegException.cpp
+	"CSmegException.h"
+
+1390576211 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CSmegException.h
+	<stdexcept>
+	<string>
 

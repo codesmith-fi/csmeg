@@ -1,6 +1,7 @@
-#include <iostream>
-
 #include "CTesterGame.h"
+
+#include <iostream>
+#include <exception>
 
 
 using namespace std;
@@ -8,9 +9,11 @@ using namespace csmeg;
 
 int main()
 {
-    CTesterGame game;
-    game.SetFPS(20);
-    game.Run();
-
+    try {
+        CTesterGame game;
+        game.Run();
+    } catch( exception& e ) {
+        cerr << "Error: " << e.what() << endl;
+    }
     return 0;
 }
