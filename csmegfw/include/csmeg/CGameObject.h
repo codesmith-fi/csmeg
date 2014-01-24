@@ -26,15 +26,11 @@ class CGameObject : public CObjectBase
         int FPS() const;
 
         void Update(const CGameTime& gameTime);
-//        bool Initialize();
-//        void Release();
 
     protected: // New virtual methods
         virtual void OnUpdate(const CGameTime& gameTime) { }
         virtual bool OnInitialize() { return false; }
         virtual void OnRelease() { }
-//        virtual void OnLoad();
-//        virtual void OnUnload();
 
     protected:
         bool NeedsUpdate(const CGameTime& gameTime);

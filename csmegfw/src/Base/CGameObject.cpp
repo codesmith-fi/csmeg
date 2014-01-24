@@ -25,7 +25,7 @@ void CGameObject::SetFPS(int fps)
     m_UpdateIntervalMsec = 0;
     m_UpdateCounterMsec = 0;
     if( m_FPS > FPSUnlimited ) {
-        m_UpdateIntervalMsec = (int)(1000.0l * 1.0l / (long)m_FPS);
+        m_UpdateIntervalMsec = (int)(1000.0f * 1.0f / (long)m_FPS);
     }
 }
 
@@ -39,7 +39,7 @@ bool CGameObject::NeedsUpdate(const CGameTime& gameTime)
     bool result = true;
     if(m_FPS != FPSUnlimited) {
         result = false;
-        m_UpdateCounterMsec += gameTime.Elapsed();
+        m_UpdateCounterMsec += gameTime.ElapsedMsec();
         if( m_UpdateCounterMsec >= m_UpdateIntervalMsec ) {
             m_UpdateCounterMsec = 0;
             result = true;

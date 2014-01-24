@@ -17,7 +17,7 @@ CTesterGame::~CTesterGame()
 void CTesterGame::OnDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
-    cout << "Elapsed: " << gameTime.Total() << endl;
+    cout << "Elapsed: " << gameTime.TotalMsec() << endl;
     usleep(12*1000);
 }
 

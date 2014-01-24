@@ -8,17 +8,15 @@ namespace csmeg
 
 using namespace std;
 
-CGame::CGame() : m_IsRunning(false), m_IsInitialized(false)
+CGame::CGame() : m_IsRunning(false)
 {
     cout << "CGame created" << endl;
 }
 
 CGame::~CGame()
 {
-    if(m_IsInitialized) {
-        m_IsRunning = false;
-        Release();
-    }
+    m_IsRunning = false;
+    Release();
 }
 
 void CGame::Run()
@@ -69,8 +67,7 @@ bool CGame::Initialize()
         return false;
     }
 
-    m_IsInitialized = CGameObject::Initialize();
-    return m_IsInitialized;
+    return IsInitialized();
 }
 
 void CGame::Release()

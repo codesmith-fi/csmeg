@@ -19,7 +19,6 @@ namespace csmeg
             void Release();
         private:
             bool m_IsRunning;
-            bool m_IsInitialized;
             CGameTime m_GameTime;
     };
 }

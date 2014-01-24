@@ -20,8 +20,9 @@ class CGameTime
         void Reset();
         void Update();
 
-        uint32_t Total() const;
-        uint32_t Elapsed() const;
+        uint32_t TotalMsec() const;
+        uint32_t ElapsedMsec() const;
+        float ElapsedSeconds() const;
 
     protected:
     private: // Data
