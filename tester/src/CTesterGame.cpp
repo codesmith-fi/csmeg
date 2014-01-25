@@ -26,15 +26,27 @@ void CTesterGame::OnUpdate(const CGameTime& gameTime)
     m_Counter++;
 
     cout << "OnUpdate: " << m_Counter << endl;
-
+/*
     if(m_Counter == 10) {
         Stop();
+    }
+*/
+}
+
+void CTesterGame::OnEvent(SDL_KeyboardEvent& event)
+{
+    if(event.state == SDL_PRESSED) {
+        cout << "Keypressed: " << event.keysym.sym << endl;
+        if(event.keysym.sym == SDLK_ESCAPE ) {
+            Stop();
+        }
     }
 }
 
 bool CTesterGame::OnInitialize()
 {
     SetUpdateFPS(20);
+    Events().AddKeyboardListener(this);
     return true;
 }
 

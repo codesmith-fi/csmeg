@@ -1,6 +1,8 @@
 #include "CGame.h"
 #include "CGraphicsContext.h"
 #include "CTiming.h"
+#include "CEvents.h"
+
 #include "CSmegException.h"
 
 #include <iostream>
@@ -16,6 +18,9 @@ CGame::CGame()
       m_MinimumUpdateInterval(10)
 {
     m_GraphicsContext = new CGraphicsContext();
+    m_Events = new CEvents();
+    m_GameTime = new CGameTime();
+
     cout << "CGame created" << endl;
 }
 
@@ -23,22 +28,28 @@ CGame::~CGame()
 {
     m_IsRunning = false;
     Release();
+
+    delete m_GameTime;
+    delete m_Events;
     delete m_GraphicsContext;
+
 }
 
 void CGame::Run()
 {
     if(Initialize()) {
         m_IsRunning = true;
-        m_GameTime.Reset();
+        m_GameTime->Reset();
 
         while(m_IsRunning) {
-            Update(m_GameTime);
-            Draw(m_GameTime);
-            m_GameTime.Update();
+            Update(*m_GameTime);
+            Draw(*m_GameTime);
+
+            m_GameTime->Update();
+            m_Events->Update();
 
             // Do not allow game loop to take 100% CPU, limit update loop speed
-            int diff(m_MinimumUpdateInterval - m_GameTime.ElapsedMsec());
+            int diff(m_MinimumUpdateInterval - m_GameTime->ElapsedMsec());
             if( diff > 0 ) {
                 SDL_Delay(diff);
             }
@@ -71,9 +82,7 @@ bool CGame::Initialize()
 
     m_GraphicsContext->Initialize();
 
-
-
-    return IsInitialized();
+    return CGameObject::Initialize();
 }
 
 void CGame::Release()

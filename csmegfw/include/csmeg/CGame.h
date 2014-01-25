@@ -3,6 +3,7 @@
 
 #include <csmeg/CGameTime.h>
 #include <csmeg/CDrawableGameObject.h>
+#include <csmeg/CEvents.h>
 
 namespace csmeg
 {
@@ -22,7 +23,9 @@ namespace csmeg
             void Run();
             void Stop();
 
-            CGameTime& GameTime() { return m_GameTime; }
+            CGameTime& GameTime() { return *m_GameTime; }
+            CEvents& Events() { return *m_Events; }
+
         public: // Getters
             CGraphicsContext& GraphicsContext() const;
 
@@ -32,7 +35,9 @@ namespace csmeg
 
         private:
             CGraphicsContext* m_GraphicsContext;
-            CGameTime m_GameTime;
+            CEvents* m_Events;
+            CGameTime* m_GameTime;
+
             bool m_IsRunning;
             int m_MinimumUpdateInterval;
     };

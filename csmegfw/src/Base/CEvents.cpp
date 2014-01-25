@@ -13,6 +13,7 @@ CEvents::CEvents()
     m_Mouse = NULL;
     m_Keyboard = NULL;
     m_Joystick = NULL;
+    m_keyboardListener = NULL;
 }
 
 CEvents::~CEvents()
@@ -20,6 +21,11 @@ CEvents::~CEvents()
     delete m_Mouse;
     delete m_Keyboard;
     delete m_Joystick;
+}
+
+void CEvents::AddKeyboardListener(MInputEventListener<SDL_KeyboardEvent>* listener)
+{
+    m_keyboardListener = listener;
 }
 
 CKeyboard& CEvents::Keyboard()
@@ -49,7 +55,7 @@ CJoystick& CEvents::Joystick()
     return *m_Joystick;
 }
 
-void CEvents::OnUpdate(const CGameTime& gameTime)
+void CEvents::Update()
 {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
@@ -93,6 +99,10 @@ bool CEvents::OnInitialize()
     m_Mouse = new CMouse();
     m_Joystick = new CJoystick();
     return true;
+}
+
+void CEvents::OnRelease()
+{
 }
 
 } // namespace csmeg

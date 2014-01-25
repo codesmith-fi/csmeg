@@ -1,7 +1,7 @@
 #ifndef CEVENTS_H
 #define CEVENTS_H
 
-#include <csmeg/CGameObject.h>
+#include <csmeg/CObjectBase.h>
 #include <csmeg/MInputEventListener.h>
 #include <SDL2/SDL_events.h>
 #include <vector>
@@ -13,18 +13,22 @@ class CKeyboard;
 class CMouse;
 class CJoystick;
 
-class CEvents : public CGameObject
+class CEvents : public CObjectBase
 {
     public:
         CEvents();
         virtual ~CEvents();
-    protected:
-        void OnUpdate(const CGameTime& gameTime);
-        bool OnInitialize();
+    public: // New methods
+        void Update();
+        void AddKeyboardListener(MInputEventListener<SDL_KeyboardEvent>* listener);
 
         CKeyboard& Keyboard();
         CMouse& Mouse();
         CJoystick& Joystick();
+
+    protected: // From CObjectBase
+        bool OnInitialize();
+        void OnRelease();
 
     private: // New methods
         void HandleKeyboardEvent(SDL_KeyboardEvent& event);

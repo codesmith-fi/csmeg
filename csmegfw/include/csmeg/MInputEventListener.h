@@ -9,8 +9,6 @@ class MInputEventListener
 {
     public:
         virtual void OnEvent(EventClass& event) = 0;
-    private:
-        ~MInputEventListener() {}
 };
 
 }
