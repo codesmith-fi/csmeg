@@ -22,14 +22,14 @@ class CGameObject : public CObjectBase
         virtual ~CGameObject();
 
     public: // New methods
-        void SetFPS(int fps);
-        int FPS() const;
+        void SetUpdateFPS(int fps);
+        int UpdateFPS() const;
 
         void Update(const CGameTime& gameTime);
 
     protected: // New virtual methods
         virtual void OnUpdate(const CGameTime& gameTime) { }
-        virtual bool OnInitialize() { return false; }
+        virtual bool OnInitialize() { return true; }
         virtual void OnRelease() { }
 
     protected:

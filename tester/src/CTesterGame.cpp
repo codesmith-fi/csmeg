@@ -18,7 +18,7 @@ void CTesterGame::OnDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
     cout << "Elapsed: " << gameTime.TotalMsec() << endl;
-    usleep(12*1000);
+//    usleep(12*1000);
 }
 
 void CTesterGame::OnUpdate(const CGameTime& gameTime)
@@ -34,7 +34,7 @@ void CTesterGame::OnUpdate(const CGameTime& gameTime)
 
 bool CTesterGame::OnInitialize()
 {
-    SetFPS(20);
+    SetUpdateFPS(20);
     return true;
 }
 

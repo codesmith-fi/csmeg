@@ -21,6 +21,8 @@
 				</Compiler>
 				<Linker>
 					<Add library="SDL2" />
+					<Add library="GLEW" />
+					<Add library="GL" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -33,6 +35,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-fPIC" />
+					<Add directory="include/csmeg" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -44,17 +47,30 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/csmeg/CDrawableGameObject.h" />
+		<Unit filename="include/csmeg/CEvents.h" />
 		<Unit filename="include/csmeg/CGame.h" />
 		<Unit filename="include/csmeg/CGameObject.h" />
 		<Unit filename="include/csmeg/CGameTime.h" />
+		<Unit filename="include/csmeg/CGraphicsContext.h" />
+		<Unit filename="include/csmeg/CJoystick.h" />
+		<Unit filename="include/csmeg/CKeyboard.h" />
+		<Unit filename="include/csmeg/CMouse.h" />
 		<Unit filename="include/csmeg/CObjectBase.h" />
+		<Unit filename="include/csmeg/CSmegException.h" />
 		<Unit filename="include/csmeg/CTiming.h" />
+		<Unit filename="include/csmeg/MInputEventListener.h" />
 		<Unit filename="src/Base/CDrawableGameObject.cpp" />
+		<Unit filename="src/Base/CEvents.cpp" />
 		<Unit filename="src/Base/CGame.cpp" />
 		<Unit filename="src/Base/CGameObject.cpp" />
 		<Unit filename="src/Base/CGameTime.cpp" />
 		<Unit filename="src/Base/CObjectBase.cpp" />
+		<Unit filename="src/Base/CSmegException.cpp" />
 		<Unit filename="src/Base/CTiming.cpp" />
+		<Unit filename="src/Input/CJoystick.cpp" />
+		<Unit filename="src/Input/CKeyboard.cpp" />
+		<Unit filename="src/Input/CMouse.cpp" />
+		<Unit filename="src/Renderer/CGraphicsContext.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

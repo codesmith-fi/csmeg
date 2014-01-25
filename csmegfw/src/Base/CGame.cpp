@@ -11,7 +11,9 @@ namespace csmeg
 
 using namespace std;
 
-CGame::CGame() : m_IsRunning(false)
+CGame::CGame()
+    : m_IsRunning(false),
+      m_MinimumUpdateInterval(10)
 {
     m_GraphicsContext = new CGraphicsContext();
     cout << "CGame created" << endl;
@@ -31,9 +33,15 @@ void CGame::Run()
         m_GameTime.Reset();
 
         while(m_IsRunning) {
-            m_GameTime.Update();
             Update(m_GameTime);
             Draw(m_GameTime);
+            m_GameTime.Update();
+
+            // Do not allow game loop to take 100% CPU, limit update loop speed
+            int diff(m_MinimumUpdateInterval - m_GameTime.ElapsedMsec());
+            if( diff > 0 ) {
+                SDL_Delay(diff);
+            }
         }
     }
     Release();
@@ -54,20 +62,8 @@ CGraphicsContext& CGame::GraphicsContext() const
 
 bool CGame::Initialize()
 {
-    if(SDL_Init(0) != 0) {
+    if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         cout << "Error initializing SDL" << endl;
-        return false;
-    }
-
-    cout << "Init SDL Audio" << endl;
-    if(SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
-        cerr << "SDL Audio, failed" << endl;
-        return false;
-    }
-
-    cout << "Init SDL Video" << endl;
-    if(SDL_InitSubSystem(SDL_INIT_VIDEO) != 0) {
-        cerr << "SDL Video, failed" << endl;
         return false;
     }
 

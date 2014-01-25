@@ -2,7 +2,7 @@
 #define CSURFACE_H
 
 #include <csmeg/CObjectBase.h>
-#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_video.h>
 
 namespace csmeg
 {
@@ -29,13 +29,14 @@ class CGraphicsContext : public CObjectBase
         {
             return m_Height;
         }
+
     protected: // from CObjectBase
         bool OnInitialize();
         void OnRelease();
+
     private:
         SDL_Window* m_Window;
-        SDL_Renderer* m_Renderer;
-        SDL_RendererInfo m_RendererInfo;
+        SDL_GLContext m_GLContext;
 
         int m_Width;
         int m_Height;

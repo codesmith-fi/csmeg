@@ -19,7 +19,7 @@ void CGameObject::Update(const CGameTime& gameTime)
     }
 }
 
-void CGameObject::SetFPS(int fps)
+void CGameObject::SetUpdateFPS(int fps)
 {
     m_FPS = fps <= 0 ? FPSUnlimited : fps;
     m_UpdateIntervalMsec = 0;
@@ -29,7 +29,7 @@ void CGameObject::SetFPS(int fps)
     }
 }
 
-int CGameObject::FPS() const
+int CGameObject::UpdateFPS() const
 {
     return m_FPS;
 }

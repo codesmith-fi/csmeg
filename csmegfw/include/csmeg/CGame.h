@@ -21,6 +21,8 @@ namespace csmeg
         public: // New methods
             void Run();
             void Stop();
+
+            CGameTime& GameTime() { return m_GameTime; }
         public: // Getters
             CGraphicsContext& GraphicsContext() const;
 
@@ -30,8 +32,9 @@ namespace csmeg
 
         private:
             CGraphicsContext* m_GraphicsContext;
-            bool m_IsRunning;
             CGameTime m_GameTime;
+            bool m_IsRunning;
+            int m_MinimumUpdateInterval;
     };
 }
 #endif // CGAME_H

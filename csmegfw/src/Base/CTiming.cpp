@@ -24,7 +24,7 @@ uint32_t CTiming::TicksMsec() const
 bool CTiming::OnInitialize()
 {
     std::cout << "CTiming::OnInitialize()" << std::endl;
-    return SDL_InitSubSystem(SDL_INIT_TIMER) == 0;
+    return true;
 }
 
 void CTiming::OnRelease()

@@ -4,7 +4,7 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390576253 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1390663523 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	"CGraphicsContext.h"
 	"CTiming.h"
@@ -12,7 +12,7 @@
 	<iostream>
 	<SDL2/SDL.h>
 
-1390575722 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+1390657313 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 
@@ -23,17 +23,17 @@
 1390570338 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameTime.h
 	<inttypes.h>
 
-1390571558 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
+1390656466 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameObject.cpp
 	"CGameObject.h"
 	<CGameTime.h>
 
-1390572179 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
+1390663693 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGameObject.h
 	<csmeg/CObjectBase.h>
 
-1390400638 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CDrawableGameObject.cpp
+1390656665 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CDrawableGameObject.cpp
 	"CDrawableGameObject.h"
 
-1390467705 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CDrawableGameObject.h
+1390656687 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CDrawableGameObject.h
 	<csmeg/CGameObject.h>
 
 1390471988 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CObjectBase.cpp
@@ -41,7 +41,7 @@
 
 1390473474 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CObjectBase.h
 
-1390474340 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CTiming.cpp
+1390663922 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CTiming.cpp
 	"CTiming.h"
 	<SDL2/SDL.h>
 	<iostream>
@@ -55,14 +55,15 @@
 
 1390571696 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CContextOpenGL.h
 
-1390579091 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGraphicsContext.cpp
+1390658941 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGraphicsContext.cpp
 	"CGraphicsContext.h"
-	"SDL2/SDL.h"
 	"CSmegException.h"
+	"GL/glew.h"
+	"SDL2/SDL.h"
 
-1390578818 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGraphicsContext.h
+1390658379 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGraphicsContext.h
 	<csmeg/CObjectBase.h>
-	<SDL2/SDL_render.h>
+	<SDL2/SDL_video.h>
 
 1390575695 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CSmegException.cpp
 	"CSmegException.h"
@@ -70,4 +71,45 @@
 1390576211 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CSmegException.h
 	<stdexcept>
 	<string>
+
+1390660219 source:/home/xanaki/Projects/csmeg/csmegfw/src/Renderer/CGraphicsContext.cpp
+	"CGraphicsContext.h"
+	"CSmegException.h"
+	"GL/glew.h"
+	"SDL2/SDL.h"
+
+1390668073 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CEvents.cpp
+	"CEvents.h"
+	"CKeyboard.h"
+	"CMouse.h"
+	"CJoystick.h"
+	"CSmegException.h"
+	"SDL2/SDL_events.h"
+
+1390668130 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CEvents.h
+	<csmeg/CGameObject.h>
+	<csmeg/MInputEventListener.h>
+	<SDL2/SDL_events.h>
+	<vector>
+
+1390665937 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CKeyboard.h
+	<SDL2/SDL_events.h>
+
+1390665367 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CMouse.h
+
+1390665346 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CJoystick.h
+
+1390665404 source:/home/xanaki/Projects/csmeg/csmegfw/src/Input/CJoystick.cpp
+	"CJoystick.h"
+	<SDL2/SDL_events.h>
+
+1390665403 source:/home/xanaki/Projects/csmeg/csmegfw/src/Input/CMouse.cpp
+	"CMouse.h"
+	<SDL2/SDL_events.h>
+
+1390665589 source:/home/xanaki/Projects/csmeg/csmegfw/src/Input/CKeyboard.cpp
+	"CKeyboard.h"
+	<SDL2/SDL_events.h>
+
+1390667821 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/MInputEventListener.h
 
