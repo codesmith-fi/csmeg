@@ -31,6 +31,8 @@ class CGameObject : public CObjectBase
         virtual void OnUpdate(const CGameTime& gameTime) { }
         virtual bool OnInitialize() { return true; }
         virtual void OnRelease() { }
+        virtual void OnLoadContent() { }
+        virtual void OnUnloadContent() { }
 
     protected:
         bool NeedsUpdate(const CGameTime& gameTime);

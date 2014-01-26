@@ -40,6 +40,7 @@ void CGame::Run()
 
         // Setup the needed frameworks, e.g. SDL
         SetupGame();
+        OnLoadContent();
 
         m_IsRunning = true;
         m_GameTime->Reset();
@@ -59,6 +60,7 @@ void CGame::Run()
         }
     }
 
+    OnUnloadContent();
     FreeGame();
     Release();
 }

@@ -19,6 +19,8 @@ class CTesterGame : public CGame
         bool OnInitialize();
         void OnRelease();
         void OnEvent(SDL_Event& event);
+        void OnLoadContent();
+        void OnUnloadContent();
 
     private: // Data
         int m_Counter;

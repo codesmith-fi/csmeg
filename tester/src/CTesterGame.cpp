@@ -11,20 +11,25 @@ CTesterGame::CTesterGame() : m_Counter(0)
 
 CTesterGame::~CTesterGame()
 {
-    //dtor
+}
+
+void CTesterGame::OnLoadContent()
+{
+}
+
+void CTesterGame::OnUnloadContent()
+{
 }
 
 void CTesterGame::OnDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
     cout << "Elapsed: " << gameTime.TotalMsec() << endl;
-//    usleep(12*1000);
 }
 
 void CTesterGame::OnUpdate(const CGameTime& gameTime)
 {
     m_Counter++;
-
     cout << "OnUpdate: " << m_Counter << endl;
 }
 
