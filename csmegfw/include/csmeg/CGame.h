@@ -4,6 +4,7 @@
 #include <csmeg/CGameTime.h>
 #include <csmeg/CDrawableGameObject.h>
 #include <csmeg/CEvents.h>
+#include <csmeg/CGraphicsContext.h>
 #include <csmeg/MInputEventListener.h>
 
 namespace csmeg

@@ -16,7 +16,7 @@ class CGraphicsContext : public CObjectBase
 
     public:
         CGraphicsContext();
-        CGraphicsContext(int width, int height);
+        CGraphicsContext(int X, int Y);
 
         virtual ~CGraphicsContext();
 
@@ -29,6 +29,8 @@ class CGraphicsContext : public CObjectBase
         {
             return m_Height;
         }
+
+        void SetSize(int X, int Y);
 
     protected: // from CObjectBase
         bool OnInitialize();

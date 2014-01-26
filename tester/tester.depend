@@ -5,13 +5,14 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390723729 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
+1390724816 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 	<csmeg/CEvents.h>
+	<csmeg/CGraphicsContext.h>
 	<csmeg/MInputEventListener.h>
 
-1390724089 source:/home/xanaki/Projects/csmeg/tester/src/CTesterGame.cpp
+1390725127 source:/home/xanaki/Projects/csmeg/tester/src/CTesterGame.cpp
 	"CTesterGame.h"
 	<iostream>
 	<unistd.h>
@@ -44,4 +45,8 @@
 	<csmeg/MInputEventListener.h>
 	<SDL2/SDL_events.h>
 	<vector>
+
+1390724631 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGraphicsContext.h
+	<csmeg/CObjectBase.h>
+	<SDL2/SDL_video.h>
 

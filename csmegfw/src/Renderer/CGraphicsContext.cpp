@@ -11,14 +11,20 @@ CGraphicsContext::CGraphicsContext() : m_Width(DefaultWindowWidth), m_Height(Def
 {
 }
 
-CGraphicsContext::CGraphicsContext(int width, int height)
-    : m_Width(width), m_Height(height)
+CGraphicsContext::CGraphicsContext(int X, int Y)
+    : m_Width(X), m_Height(Y)
 {
 }
 
 
 CGraphicsContext::~CGraphicsContext()
 {
+}
+
+void CGraphicsContext::SetSize(int X, int Y)
+{
+    m_Width = X;
+    m_Height = Y;
 }
 
 bool CGraphicsContext::OnInitialize()

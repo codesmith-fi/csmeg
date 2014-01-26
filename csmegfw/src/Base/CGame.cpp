@@ -18,9 +18,9 @@ CGame::CGame()
       m_GameIsSetup(false),
       m_MinimumUpdateInterval(10)
 {
-    m_GameTime = NULL;
-    m_Events = NULL;
-    m_GraphicsContext = NULL;
+    m_GraphicsContext = new CGraphicsContext();
+    m_Events = new CEvents();
+    m_GameTime = new CGameTime();
 }
 
 CGame::~CGame()
@@ -34,12 +34,13 @@ CGame::~CGame()
 
 void CGame::Run()
 {
-    // Setup the needed frameworks, e.g. SDL
-    SetupGame();
-
     // Call init for our Gameobject, causes OnInititialize() on derived
     // came objects
     if(Initialize()) {
+
+        // Setup the needed frameworks, e.g. SDL
+        SetupGame();
+
         m_IsRunning = true;
         m_GameTime->Reset();
 
@@ -57,8 +58,9 @@ void CGame::Run()
             }
         }
     }
-    Release();
+
     FreeGame();
+    Release();
 }
 
 void CGame::Stop()
@@ -68,9 +70,6 @@ void CGame::Stop()
 
 CGraphicsContext& CGame::GraphicsContext() const
 {
-    if( !IsInitialized() ) {
-        throw CSmegException("Game is not initialized");
-    }
     return *m_GraphicsContext;
 }
 
@@ -87,13 +86,7 @@ void CGame::SetupGame()
 
     CTiming::Instance();
 
-    m_GraphicsContext = new CGraphicsContext();
-
-    m_Events = new CEvents();
     m_Events->AddEventListener(this);
-
-    m_GameTime = new CGameTime();
-
     m_GraphicsContext->Initialize();
     m_GameIsSetup = true;
 }

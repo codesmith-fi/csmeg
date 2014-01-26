@@ -4,7 +4,7 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1390724144 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1390725088 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	"CGraphicsContext.h"
 	"CTiming.h"
@@ -13,10 +13,11 @@
 	<iostream>
 	<SDL2/SDL.h>
 
-1390723729 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
+1390724816 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGame.h
 	<csmeg/CGameTime.h>
 	<csmeg/CDrawableGameObject.h>
 	<csmeg/CEvents.h>
+	<csmeg/CGraphicsContext.h>
 	<csmeg/MInputEventListener.h>
 
 1390570775 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGameTime.cpp
@@ -64,7 +65,7 @@
 	"GL/glew.h"
 	"SDL2/SDL.h"
 
-1390658379 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGraphicsContext.h
+1390724631 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CGraphicsContext.h
 	<csmeg/CObjectBase.h>
 	<SDL2/SDL_video.h>
 
@@ -75,7 +76,7 @@
 	<stdexcept>
 	<string>
 
-1390660219 source:/home/xanaki/Projects/csmeg/csmegfw/src/Renderer/CGraphicsContext.cpp
+1390724617 source:/home/xanaki/Projects/csmeg/csmegfw/src/Renderer/CGraphicsContext.cpp
 	"CGraphicsContext.h"
 	"CSmegException.h"
 	"GL/glew.h"

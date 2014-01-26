@@ -26,11 +26,6 @@ void CTesterGame::OnUpdate(const CGameTime& gameTime)
     m_Counter++;
 
     cout << "OnUpdate: " << m_Counter << endl;
-/*
-    if(m_Counter == 10) {
-        Stop();
-    }
-*/
 }
 
 void CTesterGame::OnEvent(SDL_Event& event)
@@ -48,7 +43,10 @@ void CTesterGame::OnEvent(SDL_Event& event)
 
 bool CTesterGame::OnInitialize()
 {
+    // Game OnInitialize is called before the graphics context and SDL are initialized
+    // Resolution etc can be set here.
     SetUpdateFPS(20);
+    GraphicsContext().SetSize(1024, 768);
     return true;
 }
 
