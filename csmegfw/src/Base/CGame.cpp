@@ -15,28 +15,30 @@ using namespace std;
 
 CGame::CGame()
     : m_IsRunning(false),
+      m_GameIsSetup(false),
       m_MinimumUpdateInterval(10)
 {
-    m_GraphicsContext = new CGraphicsContext();
-    m_Events = new CEvents();
-    m_GameTime = new CGameTime();
-
-    cout << "CGame created" << endl;
+    m_GameTime = NULL;
+    m_Events = NULL;
+    m_GraphicsContext = NULL;
 }
 
 CGame::~CGame()
 {
-    m_IsRunning = false;
     Release();
 
     delete m_GameTime;
     delete m_Events;
     delete m_GraphicsContext;
-
 }
 
 void CGame::Run()
 {
+    // Setup the needed frameworks, e.g. SDL
+    SetupGame();
+
+    // Call init for our Gameobject, causes OnInititialize() on derived
+    // came objects
     if(Initialize()) {
         m_IsRunning = true;
         m_GameTime->Reset();
@@ -56,6 +58,7 @@ void CGame::Run()
         }
     }
     Release();
+    FreeGame();
 }
 
 void CGame::Stop()
@@ -71,24 +74,32 @@ CGraphicsContext& CGame::GraphicsContext() const
     return *m_GraphicsContext;
 }
 
-bool CGame::Initialize()
+void CGame::SetupGame()
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        cout << "Error initializing SDL" << endl;
-        return false;
+        throw CSmegException(SDL_GetError());
     }
 
     CTiming::Instance();
 
-    m_GraphicsContext->Initialize();
+    m_GraphicsContext = new CGraphicsContext();
+    m_Events = new CEvents();
+    m_GameTime = new CGameTime();
 
-    return CGameObject::Initialize();
+    m_GraphicsContext->Initialize();
+    m_GameIsSetup = true;
 }
 
-void CGame::Release()
+void CGame::FreeGame()
 {
-    m_GraphicsContext->Release();
-    SDL_Quit();
+    if(m_GameIsSetup) {
+        if( m_GraphicsContext != NULL ) {
+            m_GraphicsContext->Release();
+        }
+        SDL_Quit();
+
+        m_GameIsSetup = false;
+    }
 }
 
 } // namespace csmeg

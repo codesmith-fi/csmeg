@@ -29,9 +29,9 @@ namespace csmeg
         public: // Getters
             CGraphicsContext& GraphicsContext() const;
 
-        private: // From CGameObject
-            bool Initialize();
-            void Release();
+        private:
+            void SetupGame();
+            void FreeGame();
 
         private:
             CGraphicsContext* m_GraphicsContext;
@@ -39,6 +39,7 @@ namespace csmeg
             CGameTime* m_GameTime;
 
             bool m_IsRunning;
+            bool m_GameIsSetup;
             int m_MinimumUpdateInterval;
     };
 }
