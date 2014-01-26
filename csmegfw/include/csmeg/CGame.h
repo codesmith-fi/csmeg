@@ -4,6 +4,7 @@
 #include <csmeg/CGameTime.h>
 #include <csmeg/CDrawableGameObject.h>
 #include <csmeg/CEvents.h>
+#include <csmeg/MInputEventListener.h>
 
 namespace csmeg
 {
@@ -13,7 +14,7 @@ namespace csmeg
     /**
      * Game base class
      */
-    class CGame : public CDrawableGameObject
+    class CGame : public CDrawableGameObject, public MInputEventListener
     {
         public: // Constructors and destructor
             CGame();
@@ -28,6 +29,9 @@ namespace csmeg
 
         public: // Getters
             CGraphicsContext& GraphicsContext() const;
+
+        protected: // From MInputEventListener
+            void OnEvent(SDL_Event& event);
 
         private:
             void SetupGame();

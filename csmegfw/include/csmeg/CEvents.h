@@ -9,10 +9,9 @@
 namespace csmeg
 {
 
-class CKeyboard;
-class CMouse;
-class CJoystick;
-
+/**
+ * Simple SDL event dispatcher
+ */
 class CEvents : public CObjectBase
 {
     public:
@@ -20,26 +19,14 @@ class CEvents : public CObjectBase
         virtual ~CEvents();
     public: // New methods
         void Update();
-        void AddKeyboardListener(MInputEventListener<SDL_KeyboardEvent>* listener);
-
-        CKeyboard& Keyboard();
-        CMouse& Mouse();
-        CJoystick& Joystick();
+        void AddEventListener(MInputEventListener* listener);
 
     protected: // From CObjectBase
         bool OnInitialize();
         void OnRelease();
 
-    private: // New methods
-        void HandleKeyboardEvent(SDL_KeyboardEvent& event);
-        void HandleMouseMotionEvent(SDL_MouseMotionEvent& event);
     private: // Data
-        CKeyboard* m_Keyboard;
-        CMouse* m_Mouse;
-        CJoystick* m_Joystick;
-
-        MInputEventListener<SDL_KeyboardEvent>* m_keyboardListener;
-        MInputEventListener<SDL_KeyboardEvent>* m_mouseMotionListener;
+        MInputEventListener* m_eventListener;
 };
 
 } // namespace csmeg

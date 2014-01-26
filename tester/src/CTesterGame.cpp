@@ -33,12 +33,15 @@ void CTesterGame::OnUpdate(const CGameTime& gameTime)
 */
 }
 
-void CTesterGame::OnEvent(SDL_KeyboardEvent& event)
+void CTesterGame::OnEvent(SDL_Event& event)
 {
-    if(event.state == SDL_PRESSED) {
-        cout << "Keypressed: " << event.keysym.sym << endl;
-        if(event.keysym.sym == SDLK_ESCAPE ) {
-            Stop();
+    if(event.type == SDL_KEYDOWN) {
+        const SDL_KeyboardEvent& keyEvent = event.key;
+        if(keyEvent.state == SDL_PRESSED) {
+            cout << "Keypressed: " << keyEvent.keysym.sym << endl;
+            if(keyEvent.keysym.sym == SDLK_ESCAPE ) {
+                Stop();
+            }
         }
     }
 }
@@ -46,7 +49,6 @@ void CTesterGame::OnEvent(SDL_KeyboardEvent& event)
 bool CTesterGame::OnInitialize()
 {
     SetUpdateFPS(20);
-    Events().AddKeyboardListener(this);
     return true;
 }
 

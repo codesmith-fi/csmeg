@@ -1,14 +1,15 @@
 #ifndef MINPUTEVENTLISTENER_H
 #define MINPUTEVENTLISTENER_H
 
+#include <SDL2/SDL_events.h>
+
 namespace csmeg
 {
 
-template<class EventClass>
 class MInputEventListener
 {
     public:
-        virtual void OnEvent(EventClass& event) = 0;
+        virtual void OnEvent(SDL_Event& event) = 0;
 };
 
 }

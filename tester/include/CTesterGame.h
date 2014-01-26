@@ -2,12 +2,11 @@
 #define CTESTERGAME_H
 
 #include <csmeg/CGame.h>
-#include <csmeg/MInputEventListener.h>
 #include <SDL2/SDL_events.h>
 
 using namespace csmeg;
 
-class CTesterGame : public CGame, public MInputEventListener<SDL_KeyboardEvent>
+class CTesterGame : public CGame
 {
     public:
         CTesterGame();
@@ -19,8 +18,7 @@ class CTesterGame : public CGame, public MInputEventListener<SDL_KeyboardEvent>
         void OnUpdate(const CGameTime& gameTime);
         bool OnInitialize();
         void OnRelease();
-    private: // From  MInputEventListener
-        void OnEvent(SDL_KeyboardEvent& event);
+        void OnEvent(SDL_Event& event);
 
     private: // Data
         int m_Counter;

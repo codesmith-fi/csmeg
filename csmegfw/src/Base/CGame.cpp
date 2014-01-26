@@ -47,8 +47,8 @@ void CGame::Run()
             Update(*m_GameTime);
             Draw(*m_GameTime);
 
-            m_GameTime->Update();
             m_Events->Update();
+            m_GameTime->Update();
 
             // Do not allow game loop to take 100% CPU, limit update loop speed
             int diff(m_MinimumUpdateInterval - m_GameTime->ElapsedMsec());
@@ -74,6 +74,11 @@ CGraphicsContext& CGame::GraphicsContext() const
     return *m_GraphicsContext;
 }
 
+void CGame::OnEvent(SDL_Event& event)
+{
+}
+
+
 void CGame::SetupGame()
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -83,7 +88,10 @@ void CGame::SetupGame()
     CTiming::Instance();
 
     m_GraphicsContext = new CGraphicsContext();
+
     m_Events = new CEvents();
+    m_Events->AddEventListener(this);
+
     m_GameTime = new CGameTime();
 
     m_GraphicsContext->Initialize();
