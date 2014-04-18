@@ -4,7 +4,7 @@
 namespace csmeg
 {
 
-CDrawableGameObject::CDrawableGameObject()
+CDrawableGameObject::CDrawableGameObject() : m_DrawUpdater(0)
 {
     m_DrawUpdaterConnection = m_DrawUpdater.connect(boost::bind(&CDrawableGameObject::ProcessUpdate, this, _1));
 }
@@ -16,10 +16,12 @@ CDrawableGameObject::~CDrawableGameObject()
 
 void CDrawableGameObject::Draw(const CGameTime& gameTime) const
 {
-    // TODO optimization, always uses signals to trigger OnDraw.
-    // This could call directly OnDraw() if FPS is set to unlimited (0)
     CDrawableGameObject* obj = const_cast<CDrawableGameObject*>(this);
-    obj->m_DrawUpdater.Update(gameTime);
+    if( m_DrawUpdater.FPS() > 0 ) {
+        obj->m_DrawUpdater.Update(gameTime);
+    } else {
+        obj->ProcessUpdate(gameTime);
+    }
 }
 
 void CDrawableGameObject::SetDrawFPS(int fps)

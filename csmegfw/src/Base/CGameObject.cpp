@@ -5,7 +5,7 @@
 namespace csmeg
 {
 
-CGameObject::CGameObject()
+CGameObject::CGameObject() : m_Updater(0)
 {
     m_UpdaterConnection = m_Updater.connect(boost::bind(&CGameObject::ProcessUpdate, this, _1));
 }
@@ -17,9 +17,11 @@ CGameObject::~CGameObject()
 
 void CGameObject::Update(const CGameTime& gameTime)
 {
-    // TODO optimization, always uses signals to trigger OnUpdate.
-    // This could call directly OnUpdate() if FPS is set to unlimited (0)
-    m_Updater.Update(gameTime);
+    if(m_Updater.FPS() > 0) {
+        m_Updater.Update(gameTime);
+    } else {
+        ProcessUpdate(gameTime);
+    }
 }
 
 void CGameObject::ProcessUpdate(const CGameTime& gameTime)

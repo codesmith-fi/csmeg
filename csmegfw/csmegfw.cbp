@@ -5,6 +5,7 @@
 		<Option title="csmegfw" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="include/csmeg/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/csmegfw" prefix_auto="1" extension_auto="1" />
@@ -18,6 +19,7 @@
 					<Add option="-fPIC" />
 					<Add directory="include" />
 					<Add directory="include/csmeg" />
+					<Add directory="src/Base" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL2" />
@@ -36,6 +38,7 @@
 					<Add option="-O2" />
 					<Add option="-fPIC" />
 					<Add directory="include/csmeg" />
+					<Add directory="src/Base" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -58,6 +61,8 @@
 		<Unit filename="include/csmeg/CObjectBase.h" />
 		<Unit filename="include/csmeg/CSmegException.h" />
 		<Unit filename="include/csmeg/CTiming.h" />
+		<Unit filename="include/csmeg/CUpdateDispatcher.h" />
+		<Unit filename="include/csmeg/IUpdateable.h" />
 		<Unit filename="include/csmeg/MInputEventListener.h" />
 		<Unit filename="src/Base/CDrawableGameObject.cpp" />
 		<Unit filename="src/Base/CEvents.cpp" />
@@ -67,6 +72,13 @@
 		<Unit filename="src/Base/CObjectBase.cpp" />
 		<Unit filename="src/Base/CSmegException.cpp" />
 		<Unit filename="src/Base/CTiming.cpp" />
+		<Unit filename="src/Base/CUpdateDispatcher.cpp" />
+		<Unit filename="src/Base/CUpdateDispatcher.h">
+			<Option virtualFolder="include/csmeg/" />
+		</Unit>
+		<Unit filename="src/Base/IUpdateable.h">
+			<Option virtualFolder="include/csmeg/" />
+		</Unit>
 		<Unit filename="src/Input/CJoystick.cpp" />
 		<Unit filename="src/Input/CKeyboard.cpp" />
 		<Unit filename="src/Input/CMouse.cpp" />
