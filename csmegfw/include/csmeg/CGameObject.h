@@ -2,6 +2,7 @@
 #define CGAMEOBJECT_H
 
 #include <csmeg/CObjectBase.h>
+#include <csmeg/CUpdateDispatcher.h>
 
 namespace csmeg
 {
@@ -10,13 +11,6 @@ class CGameTime;
 
 class CGameObject : public CObjectBase
 {
-    /**
-     * Class constants
-     */
-    enum {
-        FPSUnlimited = 0
-    };
-
     public: // Constructors and destructor
         CGameObject();
         virtual ~CGameObject();
@@ -24,7 +18,6 @@ class CGameObject : public CObjectBase
     public: // New methods
         void SetUpdateFPS(int fps);
         int UpdateFPS() const;
-
         void Update(const CGameTime& gameTime);
 
     protected: // New virtual methods
@@ -34,13 +27,12 @@ class CGameObject : public CObjectBase
         virtual void OnLoadContent() { }
         virtual void OnUnloadContent() { }
 
-    protected:
-        bool NeedsUpdate(const CGameTime& gameTime);
+    private:
+        void ProcessUpdate(const CGameTime& gameTime);
 
     private: // Data
-        int m_FPS;
-        int m_UpdateIntervalMsec;
-        int m_UpdateCounterMsec;
+        boost::signals2::connection m_UpdaterConnection;
+        CUpdateDispatcher m_Updater;
 };
 
 } // namespace csmeg

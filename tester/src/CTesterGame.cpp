@@ -51,6 +51,8 @@ bool CTesterGame::OnInitialize()
     // Game OnInitialize is called before the graphics context and SDL are initialized
     // Resolution etc can be set here.
     SetUpdateFPS(20);
+    SetDrawFPS(1);
+
     GraphicsContext().SetSize(1024, 768);
     return true;
 }

@@ -1,7 +1,6 @@
 #include "CObjectBase.h"
 
-namespace csmeg
-{
+namespace csmeg {
 
 CObjectBase::CObjectBase() : m_LastError(CSMResultAllOk)
 {
@@ -22,5 +21,5 @@ void CObjectBase::Release()
     OnRelease();
 }
 
-}
+} // namespace csmeg
 

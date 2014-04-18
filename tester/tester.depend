@@ -29,8 +29,9 @@
 1390570338 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameTime.h
 	<inttypes.h>
 
-1390725466 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
+1397814911 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGameObject.h
 	<csmeg/CObjectBase.h>
+	<csmeg/CUpdateDispatcher.h>
 
 1390656687 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CDrawableGameObject.h
 	<csmeg/CGameObject.h>
@@ -49,4 +50,10 @@
 1390724631 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CGraphicsContext.h
 	<csmeg/CObjectBase.h>
 	<SDL2/SDL_video.h>
+
+1397814990 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CUpdateDispatcher.h
+	<csmeg/IUpdateable.h>
+	<boost/signals2.hpp>
+
+1397812174 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/IUpdateable.h
 
