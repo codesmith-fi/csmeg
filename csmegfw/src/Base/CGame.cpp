@@ -22,6 +22,16 @@ CGame::CGame()
     m_GraphicsContext = new CGraphicsContext();
     m_Events = new CEvents();
     m_GameTime = new CGameTime();
+
+    Debug::CLogger::setLogLevel(DebugLogLevel::INFO);
+    LOG_INFO() << "Testing testing";
+    LOG_WARN() << "Testing testing";
+    LOG_ERROR() << "Testing testing";
+    cerr << "------------------" << std::endl;
+    Debug::CLogger::setLogLevel(DebugLogLevel::ERROR);
+    LOG_INFO() << "Testing testing";
+    LOG_WARN() << "Testing testing";
+    LOG_ERROR() << "Testing testing";
 }
 
 CGame::~CGame()
