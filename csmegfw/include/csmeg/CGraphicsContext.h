@@ -33,8 +33,8 @@ class CGraphicsContext : public CObjectBase
         void SetSize(int X, int Y);
 
     protected: // from CObjectBase
-        bool OnInitialize();
-        void OnRelease();
+        bool onInitialize();
+        void onRelease();
 
     private:
         SDL_Window* m_Window;

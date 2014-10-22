@@ -1,43 +1,40 @@
 #include "CGameObject.h"
 #include <CGameTime.h>
-#include <boost/bind.hpp>
 
-namespace csmeg
-{
+using namespace csmeg;
 
 CGameObject::CGameObject() : m_Updater(0)
 {
-    m_UpdaterConnection = m_Updater.connect(boost::bind(&CGameObject::ProcessUpdate, this, _1));
 }
 
 CGameObject::~CGameObject()
 {
-    m_UpdaterConnection.disconnect();
 }
 
-void CGameObject::Update(const CGameTime& gameTime)
+void CGameObject::update(const CGameTime& gameTime)
 {
-    if(m_Updater.FPS() > 0) {
-        m_Updater.Update(gameTime);
-    } else {
-        ProcessUpdate(gameTime);
+    if(m_Updater.tick(gameTime)) {
+        onUpdate(gameTime);
     }
 }
 
-void CGameObject::ProcessUpdate(const CGameTime& gameTime)
+void CGameObject::loadContent()
 {
-    OnUpdate(gameTime);
+    return onLoadContent();
 }
 
-void CGameObject::SetUpdateFPS(int fps)
+void CGameObject::unloadContent()
 {
-    m_Updater.SetFPS(fps);
+    return onUnloadContent();
 }
 
-int CGameObject::UpdateFPS() const
+void CGameObject::setUpdateInterval(int intervalMsec)
 {
-    return m_Updater.FPS();
+    m_Updater.setUpdateInterval(intervalMsec);
 }
 
-} // namespace csmeg
+int CGameObject::getUpdateInterval() const
+{
+    return m_Updater.getUpdateInterval();
+}
 

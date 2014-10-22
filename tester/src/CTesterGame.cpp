@@ -13,21 +13,21 @@ CTesterGame::~CTesterGame()
 {
 }
 
-void CTesterGame::OnLoadContent()
+void CTesterGame::onLoadContent()
 {
 }
 
-void CTesterGame::OnUnloadContent()
+void CTesterGame::onUnloadContent()
 {
 }
 
-void CTesterGame::OnDraw(const CGameTime& gameTime) const
+void CTesterGame::onDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
     cout << "Elapsed: " << gameTime.TotalMsec() << endl;
 }
 
-void CTesterGame::OnUpdate(const CGameTime& gameTime)
+void CTesterGame::onUpdate(const CGameTime& gameTime)
 {
     m_Counter++;
     cout << "OnUpdate: " << m_Counter << endl;
@@ -46,18 +46,18 @@ void CTesterGame::OnEvent(SDL_Event& event)
     }
 }
 
-bool CTesterGame::OnInitialize()
+bool CTesterGame::onInitialize()
 {
     // Game OnInitialize is called before the graphics context and SDL are initialized
     // Resolution etc can be set here.
-    SetUpdateFPS(20);
-    SetDrawFPS(1);
+    setUpdateInterval(300); // msec
+    setRenderInterval(1000); // msec
 
     GraphicsContext().SetSize(1024, 768);
     return true;
 }
 
-void CTesterGame::OnRelease()
+void CTesterGame::onRelease()
 {
     cout << "OnRelease" << endl;
 }

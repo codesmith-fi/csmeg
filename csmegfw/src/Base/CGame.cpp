@@ -25,7 +25,7 @@ CGame::CGame()
 
 CGame::~CGame()
 {
-    Release();
+    release();
 
     delete m_GameTime;
     delete m_Events;
@@ -36,18 +36,18 @@ void CGame::Run()
 {
     // Call init for our Gameobject, causes OnInititialize() on derived
     // came objects
-    if(Initialize()) {
+    if(initialize()) {
 
         // Setup the needed frameworks, e.g. SDL
         SetupGame();
-        OnLoadContent();
+        loadContent();
 
         m_IsRunning = true;
         m_GameTime->Reset();
 
         while(m_IsRunning) {
-            Update(*m_GameTime);
-            Draw(*m_GameTime);
+            update(*m_GameTime);
+            draw(*m_GameTime);
 
             m_Events->Update();
             m_GameTime->Update();
@@ -60,9 +60,9 @@ void CGame::Run()
         }
     }
 
-    OnUnloadContent();
+    unloadContent();
+    release();
     FreeGame();
-    Release();
 }
 
 void CGame::Stop()
@@ -79,7 +79,6 @@ void CGame::OnEvent(SDL_Event& event)
 {
 }
 
-
 void CGame::SetupGame()
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -89,7 +88,7 @@ void CGame::SetupGame()
     CTiming::Instance();
 
     m_Events->AddEventListener(this);
-    m_GraphicsContext->Initialize();
+    m_GraphicsContext->initialize();
     m_GameIsSetup = true;
 }
 
@@ -97,7 +96,7 @@ void CGame::FreeGame()
 {
     if(m_GameIsSetup) {
         if( m_GraphicsContext != NULL ) {
-            m_GraphicsContext->Release();
+            m_GraphicsContext->release();
         }
         SDL_Quit();
 

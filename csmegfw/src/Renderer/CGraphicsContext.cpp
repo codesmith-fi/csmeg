@@ -27,7 +27,7 @@ void CGraphicsContext::SetSize(int X, int Y)
     m_Height = Y;
 }
 
-bool CGraphicsContext::OnInitialize()
+bool CGraphicsContext::onInitialize()
 {
 	m_Window = SDL_CreateWindow("My Game Window",
 		SDL_WINDOWPOS_UNDEFINED,
@@ -62,8 +62,10 @@ bool CGraphicsContext::OnInitialize()
     return false;
 }
 
-void CGraphicsContext::OnRelease()
+void CGraphicsContext::onRelease()
 {
+    SDL_GL_DeleteContext(m_GLContext);
+    SDL_DestroyWindow(m_Window);
 }
 
 } // namespace csmeg

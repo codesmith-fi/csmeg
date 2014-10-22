@@ -21,14 +21,15 @@ class CObjectBase
         virtual ~CObjectBase();
 
     public: // New methods
-        bool Initialize();
-        void Release();
-        bool IsInitialized() const { return m_IsInitialized; }
-        int LastError() const { return m_LastError; }
+        bool initialize();
+        void release();
+        bool isInitialized() const { return m_IsInitialized; }
+        int getLastError() const { return m_LastError; }
+
     protected: // New virtual methods
-        virtual bool OnInitialize() = 0;
-        virtual void OnRelease() = 0;
-        virtual void SetError(int newError) { m_LastError = newError; }
+        virtual bool onInitialize() = 0;
+        virtual void onRelease() = 0;
+        virtual void setError(int newError) { m_LastError = newError; }
 
     private: // data
         bool m_IsInitialized;

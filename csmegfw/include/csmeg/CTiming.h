@@ -20,8 +20,8 @@ class CTiming : public CObjectBase
 
         uint32_t TicksMsec() const;
     protected: // From CObjectBase
-        bool OnInitialize();
-        void OnRelease();
+        bool onInitialize();
+        void onRelease();
 
     private:
         CTiming();

@@ -2,7 +2,7 @@
 
 namespace csmeg {
 
-CObjectBase::CObjectBase() : m_LastError(CSMResultAllOk)
+CObjectBase::CObjectBase() : m_IsInitialized(false), m_LastError(CSMResultAllOk)
 {
 }
 
@@ -10,15 +10,15 @@ CObjectBase::~CObjectBase()
 {
 }
 
-bool CObjectBase::Initialize()
+bool CObjectBase::initialize()
 {
-    m_IsInitialized = OnInitialize();
+    m_IsInitialized = onInitialize();
     return m_IsInitialized;
 }
 
-void CObjectBase::Release()
+void CObjectBase::release()
 {
-    OnRelease();
+    onRelease();
 }
 
 } // namespace csmeg

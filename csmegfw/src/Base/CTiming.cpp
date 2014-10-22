@@ -8,12 +8,12 @@ namespace csmeg
 
 CTiming::CTiming()
 {
-    Initialize();
+    initialize();
 }
 
 CTiming::~CTiming()
 {
-    Release();
+    release();
 }
 
 uint32_t CTiming::TicksMsec() const
@@ -21,13 +21,13 @@ uint32_t CTiming::TicksMsec() const
     return (uint32_t)SDL_GetTicks();
 }
 
-bool CTiming::OnInitialize()
+bool CTiming::onInitialize()
 {
     std::cout << "CTiming::OnInitialize()" << std::endl;
     return true;
 }
 
-void CTiming::OnRelease()
+void CTiming::onRelease()
 {
     std::cout << "CTiming::OnRelease()" << std::endl;
 }

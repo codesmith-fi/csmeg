@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+
+<valgrindoutput>
+
+<protocolversion>4</protocolversion>
+<protocoltool>memcheck</protocoltool>
+
+<preamble>
+  <line>Memcheck, a memory error detector</line>
+  <line>Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.</line>
+  <line>Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info</line>
+  <line>Command: /home/xanaki/Projects/csmeg/tester/bin/Debug/tester </line>
+</preamble>
+
+<pid>3682</pid>
+<ppid>2576</ppid>
+<tool>memcheck</tool>
+
+<args>
+  <vargv>
+    <exe>/usr/bin/valgrind.bin</exe>
+    <arg>--suppressions=/usr/lib/valgrind/debian-libc6-dbg.supp</arg>
+    <arg>--leak-check=full</arg>
+    <arg>--track-origins=yes</arg>
+    <arg>--xml=yes</arg>
+    <arg>--xml-file=/home/xanaki/Projects/csmeg/tester/ValgrindOut.xml</arg>
+  </vargv>
+  <argv>
+    <exe>/home/xanaki/Projects/csmeg/tester/bin/Debug/tester</exe>
+    <arg></arg>
+  </argv>
+</args>
+
+<status>
+  <state>RUNNING</state>
+  <time>00:00:00:00.048 </time>
+</status>
+
+
+<status>
+  <state>FINISHED</state>
+  <time>00:00:00:07.926 </time>
+</status>
+
+<error>
+  <unique>0xc</unique>
+  <tid>1</tid>
+  <kind>Leak_DefinitelyLost</kind>
+  <xwhat>
+    <text>14 bytes in 2 blocks are definitely lost in loss record 7 of 114</text>
+    <leakedbytes>14</leakedbytes>
+    <leakedblocks>2</leakedblocks>
+  </xwhat>
+  <stack>
+    <frame>
+      <ip>0x4C2A2DB</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>malloc</fn>
+    </frame>
+    <frame>
+      <ip>0x56488C1</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.17.so</obj>
+      <fn>strdup</fn>
+      <dir>/build/buildd/eglibc-2.17/string</dir>
+      <file>strdup.c</file>
+      <line>42</line>
+    </frame>
+    <frame>
+      <ip>0x6EA3F86</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+    </frame>
+    <frame>
+      <ip>0x6EA4D94</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>_XimSetICValueData</fn>
+    </frame>
+    <frame>
+      <ip>0x6EA0439</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>_XimLocalCreateIC</fn>
+    </frame>
+    <frame>
+      <ip>0x6E869A4</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>XCreateIC</fn>
+    </frame>
+    <frame>
+      <ip>0x5A2852A</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+    </frame>
+    <frame>
+      <ip>0x5A288F8</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+    </frame>
+    <frame>
+      <ip>0x5A1DE34</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_CreateWindow</fn>
+    </frame>
+    <frame>
+      <ip>0x5A1DC3F</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_VideoInit</fn>
+    </frame>
+    <frame>
+      <ip>0x59993AE</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_InitSubSystem</fn>
+    </frame>
+    <frame>
+      <ip>0x4E815B6</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CGame::SetupGame()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Base</dir>
+      <file>CGame.cpp</file>
+      <line>85</line>
+    </frame>
+  </stack>
+</error>
+
+<error>
+  <unique>0xd</unique>
+  <tid>1</tid>
+  <kind>Leak_DefinitelyLost</kind>
+  <xwhat>
+    <text>14 bytes in 2 blocks are definitely lost in loss record 8 of 114</text>
+    <leakedbytes>14</leakedbytes>
+    <leakedblocks>2</leakedblocks>
+  </xwhat>
+  <stack>
+    <frame>
+      <ip>0x4C2A2DB</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>malloc</fn>
+    </frame>
+    <frame>
+      <ip>0x56488C1</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.17.so</obj>
+      <fn>strdup</fn>
+      <dir>/build/buildd/eglibc-2.17/string</dir>
+      <file>strdup.c</file>
+      <line>42</line>
+    </frame>
+    <frame>
+      <ip>0x6EA3F86</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+    </frame>
+    <frame>
+      <ip>0x6EA4D94</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>_XimSetICValueData</fn>
+    </frame>
+    <frame>
+      <ip>0x6EA0439</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>_XimLocalCreateIC</fn>
+    </frame>
+    <frame>
+      <ip>0x6E869A4</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libX11.so.6.3.0</obj>
+      <fn>XCreateIC</fn>
+    </frame>
+    <frame>
+      <ip>0x5A2852A</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+    </frame>
+    <frame>
+      <ip>0x5A288F8</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+    </frame>
+    <frame>
+      <ip>0x5A1DE34</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_CreateWindow</fn>
+    </frame>
+    <frame>
+      <ip>0x4E8F7EF</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CGraphicsContext::OnInitialize()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Renderer</dir>
+      <file>CGraphicsContext.cpp</file>
+      <line>36</line>
+    </frame>
+    <frame>
+      <ip>0x4E82E3C</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CObjectBase::Initialize()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Base</dir>
+      <file>CObjectBase.cpp</file>
+      <line>15</line>
+    </frame>
+    <frame>
+      <ip>0x4E8166F</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CGame::SetupGame()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Base</dir>
+      <file>CGame.cpp</file>
+      <line>92</line>
+    </frame>
+  </stack>
+</error>
+
+<error>
+  <unique>0x6e</unique>
+  <tid>1</tid>
+  <kind>Leak_DefinitelyLost</kind>
+  <xwhat>
+    <text>2,418 bytes in 11 blocks are definitely lost in loss record 105 of 114</text>
+    <leakedbytes>2418</leakedbytes>
+    <leakedblocks>11</leakedblocks>
+  </xwhat>
+  <stack>
+    <frame>
+      <ip>0x4C2A2DB</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>malloc</fn>
+    </frame>
+    <frame>
+      <ip>0x56488C1</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.17.so</obj>
+      <fn>strdup</fn>
+      <dir>/build/buildd/eglibc-2.17/string</dir>
+      <file>strdup.c</file>
+      <line>42</line>
+    </frame>
+    <frame>
+      <ip>0x59C383B</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_GameControllerAddMapping</fn>
+    </frame>
+    <frame>
+      <ip>0x59C3A28</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+    </frame>
+    <frame>
+      <ip>0x59993FC</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.0.0</obj>
+      <fn>SDL_InitSubSystem</fn>
+    </frame>
+    <frame>
+      <ip>0x4E815B6</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CGame::SetupGame()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Base</dir>
+      <file>CGame.cpp</file>
+      <line>85</line>
+    </frame>
+    <frame>
+      <ip>0x4E81446</ip>
+      <obj>/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so</obj>
+      <fn>csmeg::CGame::Run()</fn>
+      <dir>/home/xanaki/Projects/csmeg/csmegfw/src/Base</dir>
+      <file>CGame.cpp</file>
+      <line>42</line>
+    </frame>
+    <frame>
+      <ip>0x401903</ip>
+      <obj>/home/xanaki/Projects/csmeg/tester/bin/Debug/tester</obj>
+      <fn>main</fn>
+      <dir>/home/xanaki/Projects/csmeg/tester/src</dir>
+      <file>main.cpp</file>
+      <line>14</line>
+    </frame>
+  </stack>
+</error>
+
+<errorcounts>
+</errorcounts>
+
+<suppcounts>
+  <pair>
+    <count>4</count>
+    <name>X on SUSE11 writev uninit padding</name>
+  </pair>
+  <pair>
+    <count>2</count>
+    <name>dl-hack3-cond-1</name>
+  </pair>
+</suppcounts>
+
+</valgrindoutput>
+

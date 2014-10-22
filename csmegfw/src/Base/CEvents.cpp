@@ -32,12 +32,12 @@ void CEvents::Update()
     }
 }
 
-bool CEvents::OnInitialize()
+bool CEvents::onInitialize()
 {
     return true;
 }
 
-void CEvents::OnRelease()
+void CEvents::onRelease()
 {
 }
 

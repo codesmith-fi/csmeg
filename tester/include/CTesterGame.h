@@ -14,13 +14,13 @@ class CTesterGame : public CGame
     protected:
 
     private: // From Base
-        void OnDraw(const CGameTime& gameTime) const;
-        void OnUpdate(const CGameTime& gameTime);
-        bool OnInitialize();
-        void OnRelease();
+        void onDraw(const CGameTime& gameTime) const;
+        void onUpdate(const CGameTime& gameTime);
+        bool onInitialize();
+        void onRelease();
         void OnEvent(SDL_Event& event);
-        void OnLoadContent();
-        void OnUnloadContent();
+        void onLoadContent();
+        void onUnloadContent();
 
     private: // Data
         int m_Counter;

@@ -22,8 +22,8 @@ class CEvents : public CObjectBase
         void AddEventListener(MInputEventListener* listener);
 
     protected: // From CObjectBase
-        bool OnInitialize();
-        void OnRelease();
+        bool onInitialize();
+        void onRelease();
 
     private: // Data
         MInputEventListener* m_eventListener;

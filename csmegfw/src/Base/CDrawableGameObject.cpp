@@ -1,43 +1,29 @@
 #include "CDrawableGameObject.h"
-#include <boost/bind.hpp>
 
-namespace csmeg
-{
+using namespace csmeg;
 
 CDrawableGameObject::CDrawableGameObject() : m_DrawUpdater(0)
 {
-    m_DrawUpdaterConnection = m_DrawUpdater.connect(boost::bind(&CDrawableGameObject::ProcessUpdate, this, _1));
 }
 
 CDrawableGameObject::~CDrawableGameObject()
 {
-    m_DrawUpdaterConnection.disconnect();
 }
 
-void CDrawableGameObject::Draw(const CGameTime& gameTime) const
+void CDrawableGameObject::draw(const CGameTime& gameTime) const
 {
     CDrawableGameObject* obj = const_cast<CDrawableGameObject*>(this);
-    if( m_DrawUpdater.FPS() > 0 ) {
-        obj->m_DrawUpdater.Update(gameTime);
-    } else {
-        obj->ProcessUpdate(gameTime);
+    if( obj->m_DrawUpdater.tick(gameTime)) {
+        onDraw(gameTime);
     }
 }
 
-void CDrawableGameObject::SetDrawFPS(int fps)
+void CDrawableGameObject::setRenderInterval(int intervalMsec)
 {
-    m_DrawUpdater.SetFPS(fps);
+    m_DrawUpdater.setUpdateInterval(intervalMsec);
 }
 
-int CDrawableGameObject::DrawFPS() const
+int CDrawableGameObject::getRenderInterval() const
 {
-    return m_DrawUpdater.FPS();
+    return m_DrawUpdater.getUpdateInterval();
 }
-
-void CDrawableGameObject::ProcessUpdate(const CGameTime& gameTime)
-{
-    OnDraw(gameTime);
-}
-
-
-} // namespace csmeg
