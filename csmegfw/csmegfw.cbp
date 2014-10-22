@@ -5,7 +5,6 @@
 		<Option title="csmegfw" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="src/Base/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/csmegfw" prefix_auto="1" extension_auto="1" />
@@ -90,9 +89,6 @@
 		<Unit filename="src/Base/CSmegException.cpp" />
 		<Unit filename="src/Base/CTiming.cpp" />
 		<Unit filename="src/Base/CUpdateTicker.cpp" />
-		<Unit filename="src/CDebug.cpp">
-			<Option virtualFolder="src/Base/" />
-		</Unit>
 		<Unit filename="src/Input/CJoystick.cpp" />
 		<Unit filename="src/Input/CKeyboard.cpp" />
 		<Unit filename="src/Input/CMouse.cpp" />

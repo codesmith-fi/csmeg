@@ -17,7 +17,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="/home/xanaki/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so" />
+					<Add library="/home/erno/Projects/csmeg/csmegfw/bin/Debug/libcsmegfw.so" />
 				</Linker>
 			</Target>
 			<Target title="Release">
