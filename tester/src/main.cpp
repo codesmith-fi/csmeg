@@ -11,7 +11,7 @@ int main()
 {
     try {
         CTesterGame game;
-        game.Run();
+        game.run();
     } catch( exception& e ) {
         cerr << "Error: " << e.what() << endl;
     }

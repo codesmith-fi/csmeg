@@ -18,8 +18,8 @@ class CEvents : public CObjectBase
         CEvents();
         virtual ~CEvents();
     public: // New methods
-        void Update();
-        void AddEventListener(MInputEventListener* listener);
+        void update();
+        void addEventListener(MInputEventListener* listener);
 
     protected: // From CObjectBase
         bool onInitialize();

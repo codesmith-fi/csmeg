@@ -32,28 +32,28 @@ CGame::~CGame()
     delete m_GraphicsContext;
 }
 
-void CGame::Run()
+void CGame::run()
 {
     // Call init for our Gameobject, causes OnInititialize() on derived
     // came objects
     if(initialize()) {
 
         // Setup the needed frameworks, e.g. SDL
-        SetupGame();
+        setupGame();
         loadContent();
 
         m_IsRunning = true;
-        m_GameTime->Reset();
+        m_GameTime->reset();
 
         while(m_IsRunning) {
             update(*m_GameTime);
             draw(*m_GameTime);
 
-            m_Events->Update();
-            m_GameTime->Update();
+            m_Events->update();
+            m_GameTime->update();
 
             // Do not allow game loop to take 100% CPU, limit update loop speed
-            int diff(m_MinimumUpdateInterval - m_GameTime->ElapsedMsec());
+            int diff(m_MinimumUpdateInterval - m_GameTime->getElapsedMsec());
             if( diff > 0 ) {
                 SDL_Delay(diff);
             }
@@ -62,24 +62,24 @@ void CGame::Run()
 
     unloadContent();
     release();
-    FreeGame();
+    freeGame();
 }
 
-void CGame::Stop()
+void CGame::stop()
 {
     m_IsRunning = false;
 }
 
-CGraphicsContext& CGame::GraphicsContext() const
+CGraphicsContext& CGame::getGraphicsContext() const
 {
     return *m_GraphicsContext;
 }
 
-void CGame::OnEvent(SDL_Event& event)
+void CGame::onEvent(SDL_Event& event)
 {
 }
 
-void CGame::SetupGame()
+void CGame::setupGame()
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         throw CSmegException(SDL_GetError());
@@ -87,12 +87,12 @@ void CGame::SetupGame()
 
     CTiming::Instance();
 
-    m_Events->AddEventListener(this);
+    m_Events->addEventListener(this);
     m_GraphicsContext->initialize();
     m_GameIsSetup = true;
 }
 
-void CGame::FreeGame()
+void CGame::freeGame()
 {
     if(m_GameIsSetup) {
         if( m_GraphicsContext != NULL ) {

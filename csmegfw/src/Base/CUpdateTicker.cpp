@@ -30,7 +30,7 @@ int CUpdateTicker::getUpdateInterval() const
 bool CUpdateTicker::tick(const CGameTime& gameTime)
 {
     bool result = false;
-    m_UpdateCounter += gameTime.ElapsedMsec();
+    m_UpdateCounter += gameTime.getElapsedMsec();
     if( m_UpdateCounter >= m_UpdateInterval ) {
         m_UpdateCounter = 0;
         result = true;

@@ -23,9 +23,11 @@ class CGameObject : public CObjectBase
         void unloadContent();
 
     protected: // New virtual methods
-        virtual void onUpdate(const CGameTime& /* gameTime */) { }
-        virtual void onLoadContent() { }
-        virtual void onUnloadContent() { }
+        virtual void onLoadContent() = 0;
+        virtual void onUnloadContent() = 0;
+        virtual void onUpdate(const CGameTime& /* gameTime */) = 0;
+
+    protected: // From CObjectBase
         virtual bool onInitialize() { return true; };
         virtual void onRelease() { };
 

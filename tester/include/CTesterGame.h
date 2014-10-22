@@ -18,7 +18,7 @@ class CTesterGame : public CGame
         void onUpdate(const CGameTime& gameTime);
         bool onInitialize();
         void onRelease();
-        void OnEvent(SDL_Event& event);
+        void onEvent(SDL_Event& event);
         void onLoadContent();
         void onUnloadContent();
 

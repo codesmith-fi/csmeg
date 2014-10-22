@@ -4,20 +4,20 @@
 namespace csmeg
 {
 
-CGameTime::CGameTime()
+CGameTime::CGameTime() : m_StartTicks(0), m_CurrentTicks(0), m_PreviousTicks(0)
 {
-    Reset();
+    reset();
 }
 
 CGameTime::~CGameTime()
 {
 }
 
-CGameTime::CGameTime(const CGameTime& other)
+CGameTime::CGameTime(const CGameTime& other) :
+    m_StartTicks(other.m_StartTicks),
+    m_CurrentTicks(other.m_CurrentTicks),
+    m_PreviousTicks(other.m_PreviousTicks)
 {
-    m_CurrentTicks = other.m_CurrentTicks;
-    m_PreviousTicks = other.m_PreviousTicks;
-    m_StartTicks = other.m_StartTicks;
 }
 
 CGameTime& CGameTime::operator=(const CGameTime& rhs)
@@ -45,31 +45,31 @@ CGameTime& CGameTime::operator-=(const CGameTime& rhs)
 }
 
 
-void CGameTime::Reset()
+void CGameTime::reset()
 {
     m_CurrentTicks = m_PreviousTicks = m_StartTicks = CTiming::Instance().TicksMsec();
 }
 
-void CGameTime::Update()
+void CGameTime::update()
 {
     m_PreviousTicks = m_CurrentTicks;
     m_CurrentTicks = CTiming::Instance().TicksMsec();
 }
 
-uint32_t CGameTime::ElapsedMsec() const
+uint32_t CGameTime::getElapsedMsec() const
 {
     return m_CurrentTicks - m_PreviousTicks;
 }
 
-uint32_t CGameTime::TotalMsec() const
+uint32_t CGameTime::getTotalMsec() const
 {
     return m_CurrentTicks - m_StartTicks;
 }
 
-float CGameTime::ElapsedSeconds() const
+float CGameTime::getElapsedSeconds() const
 {
-    float msec((float)ElapsedMsec());
-    float result(0);
+    float msec(static_cast<float>(getElapsedMsec()));
+    float result(0.0f);
 
     if(msec > 0.0f) {
         result = 1.0f / msec;

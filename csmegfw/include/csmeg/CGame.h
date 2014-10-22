@@ -22,21 +22,21 @@ namespace csmeg
             virtual ~CGame();
 
         public: // New methods
-            void Run();
-            void Stop();
+            void run();
+            void stop();
 
-            CGameTime& GameTime() { return *m_GameTime; }
-            CEvents& Events() { return *m_Events; }
+            CGameTime& getGameTime() { return *m_GameTime; }
+            CEvents& getEvents() { return *m_Events; }
 
         public: // Getters
-            CGraphicsContext& GraphicsContext() const;
+            CGraphicsContext& getGraphicsContext() const;
 
         protected: // From MInputEventListener
-            void OnEvent(SDL_Event& event);
+            void onEvent(SDL_Event& event);
 
         private:
-            void SetupGame();
-            void FreeGame();
+            void setupGame();
+            void freeGame();
 
         private:
             CGraphicsContext* m_GraphicsContext;

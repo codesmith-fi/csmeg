@@ -27,3 +27,16 @@ int CDrawableGameObject::getRenderInterval() const
 {
     return m_DrawUpdater.getUpdateInterval();
 }
+
+void CDrawableGameObject::onLoadContent()
+{
+}
+
+void CDrawableGameObject::onUnloadContent()
+{
+}
+
+void CDrawableGameObject::onUpdate(const CGameTime& /* gameTime */)
+{
+}
+

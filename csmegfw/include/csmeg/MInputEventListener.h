@@ -9,7 +9,7 @@ namespace csmeg
 class MInputEventListener
 {
     public:
-        virtual void OnEvent(SDL_Event& event) = 0;
+        virtual void onEvent(SDL_Event& event) = 0;
 };
 
 }

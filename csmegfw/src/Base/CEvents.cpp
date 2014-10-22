@@ -17,17 +17,17 @@ CEvents::~CEvents()
 {
 }
 
-void CEvents::AddEventListener(MInputEventListener* listener)
+void CEvents::addEventListener(MInputEventListener* listener)
 {
     m_eventListener = listener;
 }
 
-void CEvents::Update()
+void CEvents::update()
 {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
         if(m_eventListener != NULL) {
-            m_eventListener->OnEvent(event);
+            m_eventListener->onEvent(event);
         }
     }
 }

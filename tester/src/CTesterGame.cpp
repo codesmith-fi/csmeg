@@ -24,7 +24,7 @@ void CTesterGame::onUnloadContent()
 void CTesterGame::onDraw(const CGameTime& gameTime) const
 {
     cout << "OnRender: " << m_Counter << endl;
-    cout << "Elapsed: " << gameTime.TotalMsec() << endl;
+    cout << "Elapsed: " << gameTime.getTotalMsec() << endl;
 }
 
 void CTesterGame::onUpdate(const CGameTime& gameTime)
@@ -33,14 +33,14 @@ void CTesterGame::onUpdate(const CGameTime& gameTime)
     cout << "OnUpdate: " << m_Counter << endl;
 }
 
-void CTesterGame::OnEvent(SDL_Event& event)
+void CTesterGame::onEvent(SDL_Event& event)
 {
     if(event.type == SDL_KEYDOWN) {
         const SDL_KeyboardEvent& keyEvent = event.key;
         if(keyEvent.state == SDL_PRESSED) {
             cout << "Keypressed: " << keyEvent.keysym.sym << endl;
             if(keyEvent.keysym.sym == SDLK_ESCAPE ) {
-                Stop();
+                stop();
             }
         }
     }
@@ -53,7 +53,7 @@ bool CTesterGame::onInitialize()
     setUpdateInterval(300); // msec
     setRenderInterval(1000); // msec
 
-    GraphicsContext().SetSize(1024, 768);
+    getGraphicsContext().SetSize(1024, 768);
     return true;
 }
 

@@ -17,12 +17,12 @@ class CGameTime
         CGameTime& operator+=(const CGameTime& rhs);
         CGameTime& operator-=(const CGameTime& rhs);
     public: // New methods
-        void Reset();
-        void Update();
+        void reset();
+        void update();
 
-        uint32_t TotalMsec() const;
-        uint32_t ElapsedMsec() const;
-        float ElapsedSeconds() const;
+        uint32_t getTotalMsec() const;
+        uint32_t getElapsedMsec() const;
+        float getElapsedSeconds() const;
 
     protected:
     private: // Data

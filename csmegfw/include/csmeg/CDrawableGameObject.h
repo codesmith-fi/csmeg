@@ -19,6 +19,11 @@ class CDrawableGameObject : public CGameObject
         void setRenderInterval(int intervalMsec);
         int getRenderInterval() const;
 
+    protected: // From CGameObject
+        void onLoadContent();
+        void onUnloadContent();
+        void onUpdate(const CGameTime& /* gameTime */);
+
     protected: // New virtual methods
         virtual void onDraw(const CGameTime& gameTime) const = 0;
 
