@@ -4,12 +4,13 @@
 
 1390381504 /home/xanaki/Projects/csmeg/csmegfw/include/CGame.h
 
-1413966707 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1413974681 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	"CGraphicsContext.h"
 	"CTiming.h"
 	"CEvents.h"
 	"CSmegException.h"
+	"CDebug.h"
 	<iostream>
 	<SDL2/SDL.h>
 
@@ -138,4 +139,16 @@
 1413966742 source:/home/xanaki/Projects/csmeg/csmegfw/src/Base/CUpdateTicker.cpp
 	"CUpdateTicker.h"
 	"CGameTime.h"
+
+1413975695 /home/xanaki/Projects/csmeg/csmegfw/include/csmeg/CDebug.h
+	<ostream>
+	<boost/noncopyable.hpp>
+	<boost/log/core.hpp>
+	<boost/log/trivial.hpp>
+	<boost/log/expressions.hpp>
+	<boost/log/sinks/text_file_backend.hpp>
+	<boost/log/utility/setup/file.hpp>
+	<boost/log/utility/setup/common_attributes.hpp>
+	<boost/log/sources/severity_logger.hpp>
+	<boost/log/sources/record_ostream.hpp>
 

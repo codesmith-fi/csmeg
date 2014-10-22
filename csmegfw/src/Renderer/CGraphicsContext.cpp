@@ -1,11 +1,18 @@
 #include "CGraphicsContext.h"
 #include "CSmegException.h"
 
-#include "GL/glew.h"
-#include "SDL2/SDL.h"
+#include <GL/glew.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
-namespace csmeg
-{
+using namespace csmeg;
+
+namespace {
+    void initOpenGL()
+    {
+
+    }
+}
 
 CGraphicsContext::CGraphicsContext() : m_Width(DefaultWindowWidth), m_Height(DefaultWindowHeight)
 {
@@ -49,7 +56,8 @@ bool CGraphicsContext::onInitialize()
 
 	SDL_GL_MakeCurrent(m_Window, m_GLContext);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	glewExperimental = GL_TRUE;
 	GLenum glew_status = glewInit();
@@ -58,6 +66,11 @@ bool CGraphicsContext::onInitialize()
         std::string errstr( (const char*)glewGetErrorString(glew_status) );
 		throw CSmegException(errstr);
     }
+
+    // Vsync - 0 = disabled
+//    SDL_GL_SetSwapInterval(1);
+
+    initOpenGL();
 
     return false;
 }
@@ -68,5 +81,5 @@ void CGraphicsContext::onRelease()
     SDL_DestroyWindow(m_Window);
 }
 
-} // namespace csmeg
+
 

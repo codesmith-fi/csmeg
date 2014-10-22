@@ -4,6 +4,7 @@
 #include "CEvents.h"
 
 #include "CSmegException.h"
+#include "CDebug.h"
 
 #include <iostream>
 #include <SDL2/SDL.h>
