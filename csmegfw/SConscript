@@ -1,0 +1,50 @@
+# csmeg framework build file for Scons
+lib_target	= "csmegfw"
+
+lib_srcdir_base = "src/Base/"
+lib_srcdir_input = "src/Input/"
+lib_srcdir_renderer = "src/Renderer/"
+
+lib_sources_base = Split("""
+	CDrawableGameObject.cpp
+	CGameObject.cpp
+	CSmegException.cpp
+	CEvents.cpp
+	CGameTime.cpp
+	CTiming.cpp
+	CGame.cpp
+	CObjectBase.cpp
+	CUpdateTicker.cpp	
+	""")
+
+lib_sources_renderer = Split("""
+	CGraphicsContext.cpp
+	CShader.cpp
+	""")
+
+lib_sources_input = Split("""
+	CJoystick.cpp
+	CKeyboard.cpp
+	CMouse.cpp
+	""")
+
+for i in xrange(len(lib_sources_base)):
+	lib_sources_base[i] = lib_srcdir_base + lib_sources_base[i]
+for i in xrange(len(lib_sources_renderer)):
+	lib_sources_renderer[i] = lib_srcdir_renderer + lib_sources_renderer[i]
+for i in xrange(len(lib_sources_input)):
+	lib_sources_input[i] = lib_srcdir_input + lib_sources_input[i]
+
+
+lib_sources = lib_sources_base + lib_sources_renderer + lib_sources_input
+
+cpp_flags = "-std=c++11 -Wall -Wextra"
+
+env=Environment()
+
+env.Append(CPPPATH=['include'])
+env.Append(CPPPATH=['include/csmeg'])
+env.Append(CPPFLAGS=cpp_flags)
+env.Append(LIBS=['SDL2', 'GL', 'GLEW'])
+
+env.SharedLibrary(target = lib_target, source = lib_sources)
