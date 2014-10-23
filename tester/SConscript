@@ -1,0 +1,27 @@
+# csmeg tester build file for Scons
+sourcedir = "src"
+includedir = "include"
+
+project_sources = Glob(sourcedir + '/*.cpp')
+
+Import('env', 'project', 'mymode', 'debug_flags', 'release_flags')
+localenv = env.Copy()
+
+buildroot = '../' + mymode
+builddir = buildroot + '/' + project
+targetpath = builddir + '/' + project
+
+if mymode == 'debug':
+	localenv.Append(CPPFLAGS=debug_flags)
+else:
+	localenv.Append(CPPFLAGS=release_flags)
+
+localenv.Append(CPPPATH=['include', buildroot + '/csmegfw/include'])
+tlib = File(buildroot + '/csmegfw/libcsmegfw.a');
+localenv.Append(LIBS=[tlib, 'SDL2', 'GL', 'GLEW'])
+
+
+
+localenv.VariantDir(builddir, ".", duplicate=0)
+
+localenv.Program(target = targetpath, source = project_sources)

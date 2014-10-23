@@ -1,50 +1,36 @@
 # csmeg framework build file for Scons
-lib_target	= "csmegfw"
+lib_srcdir_base = "src/Base"
+lib_srcdir_input = "src/Input"
+lib_srcdir_renderer = "src/Renderer"
+lib_includedir = "include/csmeg"
 
-lib_srcdir_base = "src/Base/"
-lib_srcdir_input = "src/Input/"
-lib_srcdir_renderer = "src/Renderer/"
-
-lib_sources_base = Split("""
-	CDrawableGameObject.cpp
-	CGameObject.cpp
-	CSmegException.cpp
-	CEvents.cpp
-	CGameTime.cpp
-	CTiming.cpp
-	CGame.cpp
-	CObjectBase.cpp
-	CUpdateTicker.cpp	
-	""")
-
-lib_sources_renderer = Split("""
-	CGraphicsContext.cpp
-	CShader.cpp
-	""")
-
-lib_sources_input = Split("""
-	CJoystick.cpp
-	CKeyboard.cpp
-	CMouse.cpp
-	""")
-
-for i in xrange(len(lib_sources_base)):
-	lib_sources_base[i] = lib_srcdir_base + lib_sources_base[i]
-for i in xrange(len(lib_sources_renderer)):
-	lib_sources_renderer[i] = lib_srcdir_renderer + lib_sources_renderer[i]
-for i in xrange(len(lib_sources_input)):
-	lib_sources_input[i] = lib_srcdir_input + lib_sources_input[i]
-
+lib_sources_base = Glob(lib_srcdir_base + '/*.cpp')
+lib_sources_renderer = Glob(lib_srcdir_renderer + '/*.cpp')
+lib_sources_input = Glob(lib_srcdir_input + '/*.cpp')
+lib_headers_export = Glob(lib_includedir + '/*.h')
 
 lib_sources = lib_sources_base + lib_sources_renderer + lib_sources_input
 
-cpp_flags = "-std=c++11 -Wall -Wextra"
+#env=Environment()
+Import('env', 'project', 'mymode', 'debug_flags', 'release_flags')
+localenv = env.Copy()
 
-env=Environment()
+buildroot = '../' + mymode
+builddir = buildroot + '/' + project
+targetpath = builddir + '/' + project
 
-env.Append(CPPPATH=['include'])
-env.Append(CPPPATH=['include/csmeg'])
-env.Append(CPPFLAGS=cpp_flags)
-env.Append(LIBS=['SDL2', 'GL', 'GLEW'])
+if mymode == 'debug':
+	localenv.Append(CPPFLAGS=debug_flags)
+else:
+	localenv.Append(CPPFLAGS=release_flags)
 
-env.SharedLibrary(target = lib_target, source = lib_sources)
+localenv.Append(CPPPATH=['include'])
+localenv.Append(CPPPATH=['include/csmeg'])
+localenv.Append(LIBS=['SDL2', 'GL', 'GLEW'])
+
+localenv.VariantDir(builddir, ".", duplicate=0)
+
+localenv.SharedLibrary(target = targetpath, source = lib_sources)
+localenv.StaticLibrary(target = targetpath, source = lib_sources)
+
+localenv.Install(builddir + '/include/csmeg', lib_headers_export)
