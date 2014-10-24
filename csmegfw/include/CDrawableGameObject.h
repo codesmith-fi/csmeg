@@ -1,7 +1,7 @@
 #ifndef CDRAWABLEGAMEOBJECT_H
 #define CDRAWABLEGAMEOBJECT_H
 
-#include <csmeg/CGameObject.h>
+#include <CGameObject.h>
 
 namespace csmeg
 {

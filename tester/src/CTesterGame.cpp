@@ -1,7 +1,7 @@
 #include "CTesterGame.h"
 #include <iostream>
 #include <unistd.h>
-#include <csmeg/CDebug.h>
+#include <CDebug.h>
 
 using namespace std;
 

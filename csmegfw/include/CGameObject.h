@@ -1,8 +1,8 @@
 #ifndef CGAMEOBJECT_H
 #define CGAMEOBJECT_H
 
-#include <csmeg/CObjectBase.h>
-#include <csmeg/CUpdateTicker.h>
+#include <CObjectBase.h>
+#include <CUpdateTicker.h>
 
 namespace csmeg
 {

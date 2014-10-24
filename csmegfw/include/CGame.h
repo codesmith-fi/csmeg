@@ -1,11 +1,11 @@
 #ifndef CGAME_H
 #define CGAME_H
 
-#include <csmeg/CGameTime.h>
-#include <csmeg/CDrawableGameObject.h>
-#include <csmeg/CEvents.h>
-#include <csmeg/CGraphicsContext.h>
-#include <csmeg/MInputEventListener.h>
+#include <CGameTime.h>
+#include <CDrawableGameObject.h>
+#include <CEvents.h>
+#include <CGraphicsContext.h>
+#include <MInputEventListener.h>
 
 namespace csmeg
 {

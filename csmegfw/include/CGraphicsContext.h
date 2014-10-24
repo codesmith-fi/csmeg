@@ -1,7 +1,7 @@
 #ifndef CSURFACE_H
 #define CSURFACE_H
 
-#include <csmeg/CObjectBase.h>
+#include <CObjectBase.h>
 #include <SDL2/SDL_video.h>
 
 namespace csmeg

@@ -1,7 +1,7 @@
 #ifndef CTIMING_H
 #define CTIMING_H
 
-#include <csmeg/CObjectBase.h>
+#include <CObjectBase.h>
 #include <inttypes.h>
 
 namespace csmeg

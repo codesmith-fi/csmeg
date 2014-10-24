@@ -1,7 +1,7 @@
 #ifndef CTESTERGAME_H
 #define CTESTERGAME_H
 
-#include <csmeg/CGame.h>
+#include <CGame.h>
 #include <SDL2/SDL_events.h>
 
 using namespace csmeg;

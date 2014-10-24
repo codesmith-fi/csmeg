@@ -25,7 +25,6 @@ else:
 	localenv.Append(CPPFLAGS=release_flags)
 
 localenv.Append(CPPPATH=['include'])
-localenv.Append(CPPPATH=['include/csmeg'])
 localenv.Append(LIBS=['SDL2', 'GL', 'GLEW'])
 
 localenv.VariantDir(builddir, ".", duplicate=0)
@@ -33,4 +32,4 @@ localenv.VariantDir(builddir, ".", duplicate=0)
 localenv.SharedLibrary(target = targetpath, source = lib_sources)
 localenv.StaticLibrary(target = targetpath, source = lib_sources)
 
-localenv.Install(builddir + '/include/csmeg', lib_headers_export)
+localenv.Install(builddir + '/include', lib_headers_export)

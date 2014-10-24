@@ -3,7 +3,7 @@
 #include <iostream>
 #include <exception>
 
-#include <csmeg/CDebug.h>
+#include <CDebug.h>
 
 using namespace std;
 using namespace csmeg;

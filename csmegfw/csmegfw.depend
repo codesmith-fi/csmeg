@@ -202,7 +202,7 @@
 
 1413989779 /home/erno/Projects/csmeg/csmegfw/include/csmeg/CJoystick.h
 
-1413995690 source:/home/erno/Projects/csmeg/csmegfw/src/Base/CGame.cpp
+1414083875 source:/home/erno/Projects/csmeg/csmegfw/src/Base/CGame.cpp
 	"CGame.h"
 	"CGraphicsContext.h"
 	"CTiming.h"
@@ -276,4 +276,62 @@
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
+
+1414146689 /home/erno/Projects/csmeg/csmegfw/include/CDrawableGameObject.h
+	<CGameObject.h>
+
+1414146709 /home/erno/Projects/csmeg/csmegfw/include/CGameObject.h
+	<CObjectBase.h>
+	<CUpdateTicker.h>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CObjectBase.h
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CUpdateTicker.h
+
+1414146697 /home/erno/Projects/csmeg/csmegfw/include/CEvents.h
+	<CObjectBase.h>
+	<MInputEventListener.h>
+	<SDL2/SDL_events.h>
+	<vector>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/MInputEventListener.h
+	<SDL2/SDL_events.h>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CKeyboard.h
+	<SDL2/SDL_events.h>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CMouse.h
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CJoystick.h
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CSmegException.h
+	<stdexcept>
+	<string>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CGameTime.h
+	<inttypes.h>
+
+1414146729 /home/erno/Projects/csmeg/csmegfw/include/CTiming.h
+	<CObjectBase.h>
+	<inttypes.h>
+
+1414146715 /home/erno/Projects/csmeg/csmegfw/include/CGraphicsContext.h
+	<CObjectBase.h>
+	<SDL2/SDL_video.h>
+
+1413989779 /home/erno/Projects/csmeg/csmegfw/include/CShader.h
+	<GL/glew.h>
+	<string>
+
+1414146705 /home/erno/Projects/csmeg/csmegfw/include/CGame.h
+	<CGameTime.h>
+	<CDrawableGameObject.h>
+	<CEvents.h>
+	<CGraphicsContext.h>
+	<MInputEventListener.h>
+
+1413995885 /home/erno/Projects/csmeg/csmegfw/include/CDebug.h
+	<iostream>
+	<sstream>
+	<boost/noncopyable.hpp>
 

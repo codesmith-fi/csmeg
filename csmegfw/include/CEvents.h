@@ -1,8 +1,8 @@
 #ifndef CEVENTS_H
 #define CEVENTS_H
 
-#include <csmeg/CObjectBase.h>
-#include <csmeg/MInputEventListener.h>
+#include <CObjectBase.h>
+#include <MInputEventListener.h>
 #include <SDL2/SDL_events.h>
 #include <vector>
 
