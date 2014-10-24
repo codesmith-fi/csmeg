@@ -14,18 +14,19 @@ namespace {
     }
 }
 
-CGraphicsContext::CGraphicsContext() : m_Width(DefaultWindowWidth), m_Height(DefaultWindowHeight)
+CGraphicsContext::CGraphicsContext() : CGraphicsContext(0, 0)
 {
 }
 
 CGraphicsContext::CGraphicsContext(int X, int Y)
-    : m_Width(X), m_Height(Y)
+    : m_Window(nullptr), m_GLContext(nullptr), m_Width(X), m_Height(Y)
 {
 }
 
 
 CGraphicsContext::~CGraphicsContext()
 {
+    FreeContext();
 }
 
 void CGraphicsContext::SetSize(int X, int Y)
@@ -56,7 +57,7 @@ bool CGraphicsContext::onInitialize()
 
 	SDL_GL_MakeCurrent(m_Window, m_GLContext);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	glewExperimental = GL_TRUE;
@@ -77,9 +78,20 @@ bool CGraphicsContext::onInitialize()
 
 void CGraphicsContext::onRelease()
 {
-    SDL_GL_DeleteContext(m_GLContext);
-    SDL_DestroyWindow(m_Window);
+    FreeContext();
 }
 
+void CGraphicsContext::FreeContext()
+{
+    if(m_GLContext) {
+        SDL_GL_DeleteContext(m_GLContext);
+        m_GLContext = nullptr;
+    }
+
+    if(m_Window) {
+        SDL_DestroyWindow(m_Window);
+        m_Window = nullptr;
+    }
+}
 
 

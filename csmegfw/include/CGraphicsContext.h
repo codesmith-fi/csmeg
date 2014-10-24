@@ -35,6 +35,11 @@ class CGraphicsContext : public CObjectBase
     protected: // from CObjectBase
         bool onInitialize();
         void onRelease();
+        void FreeContext();
+
+    private: // unimplemented
+        CGraphicsContext& operator=(const CGraphicsContext& other);
+        CGraphicsContext(const CGraphicsContext& other);
 
     private:
         SDL_Window* m_Window;
