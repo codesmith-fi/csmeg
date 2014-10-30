@@ -31,8 +31,6 @@
 					<Add option="-g" />
 					<Add option="-fPIC" />
 					<Add directory="include" />
-					<Add directory="include/csmeg" />
-					<Add directory="src/Base" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL2" />
@@ -63,23 +61,23 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/csmeg/CDebug.h" />
-		<Unit filename="include/csmeg/CDrawableGameObject.h" />
-		<Unit filename="include/csmeg/CEvents.h" />
-		<Unit filename="include/csmeg/CGame.h" />
-		<Unit filename="include/csmeg/CGameObject.h" />
-		<Unit filename="include/csmeg/CGameTime.h" />
-		<Unit filename="include/csmeg/CGraphicsContext.h" />
-		<Unit filename="include/csmeg/CJoystick.h" />
-		<Unit filename="include/csmeg/CKeyboard.h" />
-		<Unit filename="include/csmeg/CMouse.h" />
-		<Unit filename="include/csmeg/CObjectBase.h" />
-		<Unit filename="include/csmeg/CShader.h" />
-		<Unit filename="include/csmeg/CSmegException.h" />
-		<Unit filename="include/csmeg/CTiming.h" />
-		<Unit filename="include/csmeg/CUpdateTicker.h" />
-		<Unit filename="include/csmeg/IUpdateable.h" />
-		<Unit filename="include/csmeg/MInputEventListener.h" />
+		<Unit filename="include/CDebug.h" />
+		<Unit filename="include/CDrawableGameObject.h" />
+		<Unit filename="include/CEvents.h" />
+		<Unit filename="include/CGame.h" />
+		<Unit filename="include/CGameObject.h" />
+		<Unit filename="include/CGameTime.h" />
+		<Unit filename="include/CGraphicsContext.h" />
+		<Unit filename="include/CJoystick.h" />
+		<Unit filename="include/CKeyboard.h" />
+		<Unit filename="include/CMouse.h" />
+		<Unit filename="include/CObjectBase.h" />
+		<Unit filename="include/CShader.h" />
+		<Unit filename="include/CSmegException.h" />
+		<Unit filename="include/CTiming.h" />
+		<Unit filename="include/CUpdateTicker.h" />
+		<Unit filename="include/IUpdateable.h" />
+		<Unit filename="include/MInputEventListener.h" />
 		<Unit filename="src/Base/CDrawableGameObject.cpp" />
 		<Unit filename="src/Base/CEvents.cpp" />
 		<Unit filename="src/Base/CGame.cpp" />

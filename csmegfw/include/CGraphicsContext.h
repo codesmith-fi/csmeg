@@ -20,22 +20,29 @@ class CGraphicsContext : public CObjectBase
 
         virtual ~CGraphicsContext();
 
-        int Width() const
+        int getWidth() const
         {
             return m_Width;
         }
 
-        int Height() const
+        int getHeight() const
         {
             return m_Height;
         }
 
-        void SetSize(int X, int Y);
+        void setSize(int X, int Y);
+
+        void setFullScreen(bool enabled);
+        void setVsync(bool enabled);
+        void clearScreen();
+        void updateScreen();
 
     protected: // from CObjectBase
         bool onInitialize();
         void onRelease();
-        void FreeContext();
+
+    private: // new methods
+        void freeContext();
 
     private: // unimplemented
         CGraphicsContext& operator=(const CGraphicsContext& other);

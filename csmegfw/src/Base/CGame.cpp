@@ -76,12 +76,13 @@ CGraphicsContext& CGame::getGraphicsContext() const
     return *m_GraphicsContext;
 }
 
-void CGame::onEvent(SDL_Event& event)
+void CGame::onEvent(SDL_Event& /* event */)
 {
 }
 
 void CGame::setupGame()
 {
+    LOG_INFO() << "CGame::setupGame()";
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         throw CSmegException(SDL_GetError());
     }
@@ -95,6 +96,7 @@ void CGame::setupGame()
 
 void CGame::freeGame()
 {
+    LOG_INFO() << "CGame::freeGame()";
     if(m_GameIsSetup) {
         if( m_GraphicsContext != NULL ) {
             m_GraphicsContext->release();

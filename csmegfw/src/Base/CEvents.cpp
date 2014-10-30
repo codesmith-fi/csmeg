@@ -8,9 +8,8 @@
 namespace csmeg
 {
 
-CEvents::CEvents()
+CEvents::CEvents() : m_eventListener(nullptr)
 {
-    m_eventListener = NULL;
 }
 
 CEvents::~CEvents()

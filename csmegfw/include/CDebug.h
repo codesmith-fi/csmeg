@@ -43,7 +43,6 @@ namespace csmeg
         {
         public:
             CLogger(DebugLogLevel severity = DebugLogLevel::ERROR) {
-                m_buffer.clear();
                 std::string sevStr;
                 if(severity == DebugLogLevel::ERROR) {
                     sevStr = "ERROR";
@@ -55,7 +54,7 @@ namespace csmeg
                 m_buffer << sevStr << ": ";
             }
 
-            ~CLogger() {
+            virtual ~CLogger() {
                 m_buffer << std::endl;
                 std::cerr << m_buffer.str();
             }

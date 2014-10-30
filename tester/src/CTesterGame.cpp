@@ -27,14 +27,12 @@ void CTesterGame::onUnloadContent()
 
 void CTesterGame::onDraw(const CGameTime& gameTime) const
 {
-    LOG_INFO() << "OnRender: " << m_Counter;
-    LOG_INFO() << "Elapsed: " << gameTime.getTotalMsec();
+    getGraphicsContext().clearScreen();
+    getGraphicsContext().updateScreen();
 }
 
 void CTesterGame::onUpdate(const CGameTime& gameTime)
 {
-    m_Counter++;
-    LOG_INFO() << "OnUpdate: " << m_Counter;
 }
 
 void CTesterGame::onEvent(SDL_Event& event)
@@ -55,10 +53,13 @@ bool CTesterGame::onInitialize()
     LOG_INFO() << "Performing Initialize()";
     // Game OnInitialize is called before the graphics context and SDL are initialized
     // Resolution etc can be set here.
-    setUpdateInterval(300); // msec
-    setRenderInterval(1000); // msec
+    setUpdateInterval(17); // msec
+    setRenderInterval(17); // msec
 
-    getGraphicsContext().SetSize(1024, 768);
+    getGraphicsContext().setSize(1024, 768);
+    getGraphicsContext().setFullScreen(true);
+    getGraphicsContext().setVsync(true);
+
     return true;
 }
 
