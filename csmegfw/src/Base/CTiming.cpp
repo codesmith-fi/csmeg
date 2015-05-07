@@ -8,28 +8,20 @@ namespace csmeg
 
 CTiming::CTiming()
 {
-    initialize();
 }
 
 CTiming::~CTiming()
 {
-    release();
 }
 
-uint32_t CTiming::TicksMsec() const
+uint32_t CTiming::TicksMsec()
 {
-    return (uint32_t)SDL_GetTicks();
+    return SDL_GetTicks();
 }
 
-bool CTiming::onInitialize()
+void CTiming::DelayMsec(uint32_t waitMsec)
 {
-    std::cout << "CTiming::OnInitialize()" << std::endl;
-    return true;
-}
-
-void CTiming::onRelease()
-{
-    std::cout << "CTiming::OnRelease()" << std::endl;
+    SDL_Delay(waitMsec);
 }
 
 } // namespace csmeg

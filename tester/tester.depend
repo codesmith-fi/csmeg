@@ -57,13 +57,13 @@
 
 1413963607 /home/xanaki/Projects/csmeg/csmegfw/include//csmeg/CUpdateTicker.h
 
-1414664768 source:/home/erno/Projects/csmeg/tester/src/CTesterGame.cpp
+1431000508 source:/home/erno/Projects/csmeg/tester/src/CTesterGame.cpp
 	"CTesterGame.h"
 	<iostream>
 	<unistd.h>
 	<CDebug.h>
 
-1414146811 /home/erno/Projects/csmeg/tester/include/CTesterGame.h
+1431000501 /home/erno/Projects/csmeg/tester/include/CTesterGame.h
 	<CGame.h>
 	<SDL2/SDL_events.h>
 
@@ -107,26 +107,27 @@
 	<exception>
 	<CDebug.h>
 
-1414146705 /home/erno/Projects/csmeg/csmegfw/include//CGame.h
+1431000268 /home/erno/Projects/csmeg/csmegfw/include//CGame.h
 	<CGameTime.h>
 	<CDrawableGameObject.h>
 	<CEvents.h>
 	<CGraphicsContext.h>
 	<MInputEventListener.h>
+	<thread>
 
-1413989779 /home/erno/Projects/csmeg/csmegfw/include//CGameTime.h
+1430992273 /home/erno/Projects/csmeg/csmegfw/include//CGameTime.h
 	<inttypes.h>
 
-1414146689 /home/erno/Projects/csmeg/csmegfw/include//CDrawableGameObject.h
+1430999729 /home/erno/Projects/csmeg/csmegfw/include//CDrawableGameObject.h
 	<CGameObject.h>
 
-1414146709 /home/erno/Projects/csmeg/csmegfw/include//CGameObject.h
+1430998218 /home/erno/Projects/csmeg/csmegfw/include//CGameObject.h
 	<CObjectBase.h>
 	<CUpdateTicker.h>
 
 1413989779 /home/erno/Projects/csmeg/csmegfw/include//CObjectBase.h
 
-1413989779 /home/erno/Projects/csmeg/csmegfw/include//CUpdateTicker.h
+1430992273 /home/erno/Projects/csmeg/csmegfw/include//CUpdateTicker.h
 
 1414150598 /home/erno/Projects/csmeg/csmegfw/include//CEvents.h
 	<CObjectBase.h>
@@ -137,11 +138,11 @@
 1413989779 /home/erno/Projects/csmeg/csmegfw/include//MInputEventListener.h
 	<SDL2/SDL_events.h>
 
-1414664485 /home/erno/Projects/csmeg/csmegfw/include//CGraphicsContext.h
+1414666085 /home/erno/Projects/csmeg/csmegfw/include//CGraphicsContext.h
 	<CObjectBase.h>
 	<SDL2/SDL_video.h>
 
-1414663555 /home/erno/Projects/csmeg/csmegfw/include//CDebug.h
+1414665455 /home/erno/Projects/csmeg/csmegfw/include//CDebug.h
 	<iostream>
 	<sstream>
 	<boost/noncopyable.hpp>

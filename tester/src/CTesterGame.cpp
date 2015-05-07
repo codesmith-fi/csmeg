@@ -25,7 +25,7 @@ void CTesterGame::onUnloadContent()
     LOG_INFO() << "Performing UnloadContent";
 }
 
-void CTesterGame::onDraw(const CGameTime& gameTime) const
+void CTesterGame::onDraw() const
 {
     getGraphicsContext().clearScreen();
     getGraphicsContext().updateScreen();
@@ -51,10 +51,6 @@ void CTesterGame::onEvent(SDL_Event& event)
 bool CTesterGame::onInitialize()
 {
     LOG_INFO() << "Performing Initialize()";
-    // Game OnInitialize is called before the graphics context and SDL are initialized
-    // Resolution etc can be set here.
-    setUpdateInterval(17); // msec
-    setRenderInterval(17); // msec
 
     getGraphicsContext().setSize(1024, 768);
     getGraphicsContext().setFullScreen(true);

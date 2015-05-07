@@ -16,8 +16,6 @@ class CGameObject : public CObjectBase
         virtual ~CGameObject();
 
     public: // New methods
-        void setUpdateInterval(int intervalMsec);
-        int getUpdateInterval() const;
         void update(const CGameTime& gameTime);
         void loadContent();
         void unloadContent();
@@ -32,7 +30,6 @@ class CGameObject : public CObjectBase
         virtual void onRelease() { };
 
     private: // Data
-        CUpdateTicker m_Updater;
 };
 
 } // namespace csmeg

@@ -47,13 +47,13 @@ CGameTime& CGameTime::operator-=(const CGameTime& rhs)
 
 void CGameTime::reset()
 {
-    m_CurrentTicks = m_PreviousTicks = m_StartTicks = CTiming::Instance().TicksMsec();
+    m_CurrentTicks = m_PreviousTicks = m_StartTicks = CTiming::TicksMsec();
 }
 
 void CGameTime::update()
 {
     m_PreviousTicks = m_CurrentTicks;
-    m_CurrentTicks = CTiming::Instance().TicksMsec();
+    m_CurrentTicks = CTiming::TicksMsec();
 }
 
 uint32_t CGameTime::getElapsedMsec() const

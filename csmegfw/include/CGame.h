@@ -6,6 +6,7 @@
 #include <CEvents.h>
 #include <CGraphicsContext.h>
 #include <MInputEventListener.h>
+#include <thread>
 
 namespace csmeg
 {
@@ -38,7 +39,10 @@ namespace csmeg
             void setupGame();
             void freeGame();
 
+            void renderThreadMain() const;
+
         private:
+            std::thread m_renderThread;
             CGraphicsContext* m_GraphicsContext;
             CEvents* m_Events;
             CGameTime* m_GameTime;

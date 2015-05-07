@@ -13,9 +13,9 @@ CFpsCounter::~CFpsCounter()
 {
 }
 
-void CFpsCounter::update(const CGameTime& gameTime)
+void CFpsCounter::update(uint32_t elapsedMsec)
 {
-    m_Current+=gameTime.getElapsedMsec();
+    m_Current+=elapsedMsec;
     m_Count++;
     if(m_Current >= 1000) {
         m_Samples.emplace_back(m_Count);

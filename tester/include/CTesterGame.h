@@ -14,7 +14,7 @@ class CTesterGame : public CGame
     protected:
 
     private: // From Base
-        void onDraw(const CGameTime& gameTime) const;
+        void onDraw() const;
         void onUpdate(const CGameTime& gameTime);
         bool onInitialize();
         void onRelease();

@@ -8,13 +8,6 @@
 
 using namespace csmeg;
 
-namespace {
-    void initOpenGL()
-    {
-
-    }
-}
-
 CGraphicsContext::CGraphicsContext() : CGraphicsContext(0, 0)
 {
 }
@@ -43,13 +36,11 @@ void CGraphicsContext::setFullScreen(bool enabled)
 void CGraphicsContext::setVsync(bool enabled)
 {
     // Vsync - 0 = disabled
-    SDL_GL_SetSwapInterval( enabled ? 1 : 0 );
+//    SDL_GL_SetSwapInterval( enabled ? 1 : 0 );
 }
 
 void CGraphicsContext::clearScreen()
 {
-    LOG_INFO() << "CGraphicsContext::clearScreen()";
-
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
@@ -62,7 +53,13 @@ void CGraphicsContext::updateScreen()
 bool CGraphicsContext::onInitialize()
 {
     LOG_INFO() << "CGraphicsContext::onInitialize()";
-	m_Window = SDL_CreateWindow("My Game Window",
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetSwapInterval(1);
+
+	m_Window = SDL_CreateWindow("CSMEG Tester",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		m_Width, m_Height,
@@ -71,6 +68,8 @@ bool CGraphicsContext::onInitialize()
     if( m_Window == nullptr ) {
         throw CSmegException("Could not initialize SDL2 Window");
     }
+
+//    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	m_GLContext = SDL_GL_CreateContext(m_Window);
 	if (m_GLContext == nullptr)	{
@@ -85,9 +84,6 @@ bool CGraphicsContext::onInitialize()
 	LOG_INFO() << "OpenGL Version: " << version;
 
 	SDL_GL_MakeCurrent(m_Window, m_GLContext);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-//    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	glewExperimental = GL_TRUE;
 	GLenum glew_status = glewInit();
@@ -95,8 +91,6 @@ bool CGraphicsContext::onInitialize()
         std::string errstr( (const char*)glewGetErrorString(glew_status) );
 		throw CSmegException(errstr);
     }
-
-    initOpenGL();
 
     return false;
 }

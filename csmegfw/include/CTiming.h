@@ -1,32 +1,20 @@
 #ifndef CTIMING_H
 #define CTIMING_H
 
-#include <CObjectBase.h>
 #include <inttypes.h>
 
 namespace csmeg
 {
 
-class CTiming : public CObjectBase
+class CTiming
 {
-    public:
-        virtual ~CTiming();
-    public:
-        static CTiming& Instance()
-        {
-            static CTiming instance;
-            return instance;
-        }
 
-        uint32_t TicksMsec() const;
-    protected: // From CObjectBase
-        bool onInitialize();
-        void onRelease();
-
-    private:
+    public:
         CTiming();
-        CTiming(const CTiming&);
-        CTiming& operator=(const CTiming&);
+        virtual ~CTiming();
+
+        static uint32_t TicksMsec();
+        static void DelayMsec(uint32_t waitMsec);
 };
 
 }

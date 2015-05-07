@@ -14,10 +14,7 @@ class CDrawableGameObject : public CGameObject
         CDrawableGameObject();
         virtual ~CDrawableGameObject();
     public:
-        void draw(const CGameTime& gameTime) const;
-
-        void setRenderInterval(int intervalMsec);
-        int getRenderInterval() const;
+        void draw() const;
 
     protected: // From CGameObject
         void onLoadContent();
@@ -25,10 +22,9 @@ class CDrawableGameObject : public CGameObject
         void onUpdate(const CGameTime& /* gameTime */);
 
     protected: // New virtual methods
-        virtual void onDraw(const CGameTime& gameTime) const = 0;
+        virtual void onDraw() const = 0;
 
     private:
-        CUpdateTicker m_DrawUpdater;
 };
 
 } // namespace csmeg

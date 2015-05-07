@@ -2,11 +2,12 @@
 #include "CGraphicsContext.h"
 #include "CTiming.h"
 #include "CEvents.h"
-
+#include "CFpsCounter.h"
 #include "CSmegException.h"
 #include "CDebug.h"
 
 #include <iostream>
+#include <thread>
 #include <SDL2/SDL.h>
 
 namespace csmeg
@@ -15,7 +16,7 @@ namespace csmeg
 using namespace std;
 
 CGame::CGame()
-    : m_IsRunning(false),
+    : m_renderThread(), m_IsRunning(false),
       m_GameIsSetup(false),
       m_MinimumUpdateInterval(10)
 {
@@ -46,19 +47,31 @@ void CGame::run()
         m_IsRunning = true;
         m_GameTime->reset();
 
+        m_renderThread = std::thread(&CGame::renderThreadMain, this);
+
+        CFpsCounter fpsCounter;
         while(m_IsRunning) {
+            uint32_t bticks = CTiming::TicksMsec();
             update(*m_GameTime);
-            draw(*m_GameTime);
+//            draw(*m_GameTime);
 
             m_Events->update();
             m_GameTime->update();
 
+            uint32_t ticks = CTiming::TicksMsec() - bticks;
+            fpsCounter.update(ticks);
+/*
             // Do not allow game loop to take 100% CPU, limit update loop speed
             int diff(m_MinimumUpdateInterval - m_GameTime->getElapsedMsec());
             if( diff > 0 ) {
                 SDL_Delay(diff);
             }
+*/
+//            fpsCounter.update(*m_GameTime);
         }
+    }
+    if(m_renderThread.joinable()) {
+        m_renderThread.join();
     }
 
     unloadContent();
@@ -87,10 +100,8 @@ void CGame::setupGame()
         throw CSmegException(SDL_GetError());
     }
 
-    CTiming::Instance();
-
     m_Events->addEventListener(this);
-    m_GraphicsContext->initialize();
+//    m_GraphicsContext->initialize();
     m_GameIsSetup = true;
 }
 
@@ -104,6 +115,18 @@ void CGame::freeGame()
         SDL_Quit();
 
         m_GameIsSetup = false;
+    }
+}
+
+void CGame::renderThreadMain() const
+{
+    m_GraphicsContext->initialize();
+    CFpsCounter fpsCounter;
+    while(m_IsRunning) {
+        uint32_t bticks = CTiming::TicksMsec();
+        draw();
+        uint32_t ticks = CTiming::TicksMsec() - bticks;
+        fpsCounter.update(ticks);
     }
 }
 
