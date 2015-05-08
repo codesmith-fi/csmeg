@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "csmegfw", "csmegfw\csmegfw.vcxproj", "{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tester", "tester\tester.vcxproj", "{644AB0C0-0E82-40D2-A41B-6FDA96994A2E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94} = {D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}.Debug|Win32.Build.0 = Debug|Win32
+		{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}.Release|Win32.ActiveCfg = Release|Win32
+		{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}.Release|Win32.Build.0 = Release|Win32
+		{644AB0C0-0E82-40D2-A41B-6FDA96994A2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{644AB0C0-0E82-40D2-A41B-6FDA96994A2E}.Debug|Win32.Build.0 = Debug|Win32
+		{644AB0C0-0E82-40D2-A41B-6FDA96994A2E}.Release|Win32.ActiveCfg = Release|Win32
+		{644AB0C0-0E82-40D2-A41B-6FDA96994A2E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

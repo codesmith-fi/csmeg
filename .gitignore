@@ -1,4 +1,9 @@
 bin/
 obj/
 build/
+Debug/
+Release/
 *.dblite
+*.sdf
+*.opensdf
+*.v12.suo

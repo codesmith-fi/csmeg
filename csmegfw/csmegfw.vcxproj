@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D7455AED-71D3-49AD-93C6-7FEFF0D9CF94}</ProjectGuid>
+    <RootNamespace>csmegfw</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\ext\include;$(ProjectDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\ext\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CContextOpenGL.h" />
+    <ClInclude Include="include\CDebug.h" />
+    <ClInclude Include="include\CDrawableGameObject.h" />
+    <ClInclude Include="include\CEvents.h" />
+    <ClInclude Include="include\CFpsCounter.h" />
+    <ClInclude Include="include\CGame.h" />
+    <ClInclude Include="include\CGameObject.h" />
+    <ClInclude Include="include\CGameTime.h" />
+    <ClInclude Include="include\CGraphicsContext.h" />
+    <ClInclude Include="include\CJoystick.h" />
+    <ClInclude Include="include\CKeyboard.h" />
+    <ClInclude Include="include\CMouse.h" />
+    <ClInclude Include="include\CObjectBase.h" />
+    <ClInclude Include="include\CShader.h" />
+    <ClInclude Include="include\CSmegException.h" />
+    <ClInclude Include="include\CTiming.h" />
+    <ClInclude Include="include\CUpdateTicker.h" />
+    <ClInclude Include="include\IUpdateable.h" />
+    <ClInclude Include="include\MInputEventListener.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Base\CDrawableGameObject.cpp" />
+    <ClCompile Include="src\Base\CEvents.cpp" />
+    <ClCompile Include="src\Base\CFpsCounter.cpp" />
+    <ClCompile Include="src\Base\CGame.cpp" />
+    <ClCompile Include="src\Base\CGameObject.cpp" />
+    <ClCompile Include="src\Base\CGameTime.cpp" />
+    <ClCompile Include="src\Base\CObjectBase.cpp" />
+    <ClCompile Include="src\Base\CSmegException.cpp" />
+    <ClCompile Include="src\Base\CTiming.cpp" />
+    <ClCompile Include="src\Base\CUpdateTicker.cpp" />
+    <ClCompile Include="src\Input\CJoystick.cpp" />
+    <ClCompile Include="src\Input\CKeyboard.cpp" />
+    <ClCompile Include="src\Input\CMouse.cpp" />
+    <ClCompile Include="src\Renderer\CGraphicsContext.cpp" />
+    <ClCompile Include="src\Renderer\CShader.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

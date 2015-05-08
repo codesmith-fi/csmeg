@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <sstream>
-#include <boost/noncopyable.hpp>
+//#include <boost/noncopyable.hpp>
 
 namespace csmeg
 {
@@ -16,7 +16,7 @@ namespace csmeg
             ERROR = 2
         };
 
-        class CLoggerSettings : public boost::noncopyable
+        class CLoggerSettings //: public boost::noncopyable
         {
         public:
             static CLoggerSettings& instance() {
@@ -39,7 +39,7 @@ namespace csmeg
             DebugLogLevel m_logLevel;
         };
 
-        class CLogger : public boost::noncopyable
+        class CLogger //: public boost::noncopyable
         {
         public:
             CLogger(DebugLogLevel severity = DebugLogLevel::ERROR) {
