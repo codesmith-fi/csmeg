@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+//#include <glm/gtc/matrix_transform.hpp>
 
 using namespace csmeg;
 
@@ -29,8 +30,14 @@ void CGraphicsContext::setSize(int X, int Y)
     m_Height = Y;
 }
 
+void CGraphicsContext::setBackgroundColor(const Color& color)
+{
+	m_backgroundColor = color;
+}
+
 void CGraphicsContext::setFullScreen(bool enabled)
 {
+	LOG_WARN() << "setFullScreen() not implemented yet";
 }
 
 void CGraphicsContext::setVsync(bool enabled)
@@ -41,7 +48,6 @@ void CGraphicsContext::setVsync(bool enabled)
 
 void CGraphicsContext::clearScreen()
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -91,6 +97,10 @@ bool CGraphicsContext::onInitialize()
         std::string errstr( (const char*)glewGetErrorString(glew_status) );
 		throw CSmegException(errstr);
     }
+
+	glClearColor(m_backgroundColor.red, m_backgroundColor.green, m_backgroundColor.blue, m_backgroundColor.alpha);
+
+//	glm::ortho<GLfloat>(0.0, m_Width, m_Height, 0.0, 0, -1.0);
 
     return false;
 }

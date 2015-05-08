@@ -2,6 +2,8 @@
 #define CSURFACE_H
 
 #include <CObjectBase.h>
+#include <Color.h>
+
 #include <SDL2/SDL_video.h>
 
 namespace csmeg
@@ -36,7 +38,7 @@ class CGraphicsContext : public CObjectBase
         void setVsync(bool enabled);
         void clearScreen();
         void updateScreen();
-
+		void setBackgroundColor(const Color& color);
     protected: // from CObjectBase
         bool onInitialize();
         void onRelease();
@@ -51,7 +53,7 @@ class CGraphicsContext : public CObjectBase
     private:
         SDL_Window* m_Window;
         SDL_GLContext m_GLContext;
-
+		Color m_backgroundColor;
         int m_Width;
         int m_Height;
 		bool m_VSyncEnabled;
