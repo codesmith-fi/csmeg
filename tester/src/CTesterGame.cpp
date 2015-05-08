@@ -51,6 +51,7 @@ bool CTesterGame::onInitialize()
 {
     LOG_INFO() << "Performing Initialize()";
 
+	setFpsLimit(100);
     getGraphicsContext().setSize(1024, 768);
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);

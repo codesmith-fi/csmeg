@@ -13,7 +13,7 @@ CGraphicsContext::CGraphicsContext() : CGraphicsContext(0, 0)
 }
 
 CGraphicsContext::CGraphicsContext(int X, int Y)
-    : m_Window(nullptr), m_GLContext(nullptr), m_Width(X), m_Height(Y)
+	: m_Window(nullptr), m_GLContext(nullptr), m_Width(X), m_Height(Y), m_VSyncEnabled(true)
 {
 }
 
@@ -36,7 +36,7 @@ void CGraphicsContext::setFullScreen(bool enabled)
 void CGraphicsContext::setVsync(bool enabled)
 {
     // Vsync - 0 = disabled
-//    SDL_GL_SetSwapInterval( enabled ? 1 : 0 );
+	m_VSyncEnabled = enabled;
 }
 
 void CGraphicsContext::clearScreen()
@@ -56,8 +56,8 @@ bool CGraphicsContext::onInitialize()
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetSwapInterval(1);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, m_VSyncEnabled ? 1 : 0);
+	SDL_GL_SetSwapInterval(m_VSyncEnabled ? 1 : 0);
 
 	m_Window = SDL_CreateWindow("CSMEG Tester",
 		SDL_WINDOWPOS_UNDEFINED,

@@ -6,7 +6,6 @@
 #include <CEvents.h>
 #include <CGraphicsContext.h>
 #include <MInputEventListener.h>
-#include <thread>
 
 namespace csmeg
 {
@@ -26,6 +25,8 @@ namespace csmeg
             void run();
             void stop();
 
+			void setFpsLimit(uint32_t fpsLimit);
+
             CGameTime& getGameTime() { return *m_GameTime; }
             CEvents& getEvents() { return *m_Events; }
 
@@ -42,14 +43,13 @@ namespace csmeg
             void renderThreadMain() const;
 
         private:
-            std::thread m_renderThread;
             CGraphicsContext* m_GraphicsContext;
             CEvents* m_Events;
             CGameTime* m_GameTime;
 
             bool m_IsRunning;
             bool m_GameIsSetup;
-            int m_MinimumUpdateInterval;
+            uint32_t m_MinimumUpdateInterval;
     };
 }
 #endif // CGAME_H

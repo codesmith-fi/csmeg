@@ -7,7 +7,6 @@
 #include "CDebug.h"
 
 #include <iostream>
-#include <thread>
 #include <SDL2/SDL.h>
 
 namespace csmeg
@@ -16,9 +15,9 @@ namespace csmeg
 using namespace std;
 
 CGame::CGame()
-    : m_renderThread(), m_IsRunning(false),
+    : m_IsRunning(false),
       m_GameIsSetup(false),
-      m_MinimumUpdateInterval(10)
+      m_MinimumUpdateInterval(0)
 {
     m_GraphicsContext = new CGraphicsContext();
     m_Events = new CEvents();
@@ -47,31 +46,22 @@ void CGame::run()
         m_IsRunning = true;
         m_GameTime->reset();
 
-        m_renderThread = std::thread(&CGame::renderThreadMain, this);
-
         CFpsCounter fpsCounter;
         while(m_IsRunning) {
             uint32_t bticks = CTiming::TicksMsec();
             update(*m_GameTime);
-//            draw(*m_GameTime);
-
             m_Events->update();
-            m_GameTime->update();
+			draw();
 
-            uint32_t ticks = CTiming::TicksMsec() - bticks;
-            fpsCounter.update(ticks);
-/*
-            // Do not allow game loop to take 100% CPU, limit update loop speed
-            int diff(m_MinimumUpdateInterval - m_GameTime->getElapsedMsec());
-            if( diff > 0 ) {
-                SDL_Delay(diff);
-            }
-*/
-//            fpsCounter.update(*m_GameTime);
+			uint32_t ticks = CTiming::TicksMsec() - bticks;
+
+			// Wait if fps limit is required
+			if (m_MinimumUpdateInterval > 0 && (ticks < m_MinimumUpdateInterval)) {
+				SDL_Delay(m_MinimumUpdateInterval - ticks);
+			}
+			m_GameTime->update();
+			fpsCounter.update(CTiming::TicksMsec() - bticks);
         }
-    }
-    if(m_renderThread.joinable()) {
-        m_renderThread.join();
     }
 
     unloadContent();
@@ -82,6 +72,11 @@ void CGame::run()
 void CGame::stop()
 {
     m_IsRunning = false;
+}
+
+void CGame::setFpsLimit(uint32_t fpsLimit)
+{
+	m_MinimumUpdateInterval = fpsLimit > 0 ? 1000u / fpsLimit : 0;
 }
 
 CGraphicsContext& CGame::getGraphicsContext() const
@@ -101,7 +96,7 @@ void CGame::setupGame()
     }
 
     m_Events->addEventListener(this);
-//    m_GraphicsContext->initialize();
+    m_GraphicsContext->initialize();
     m_GameIsSetup = true;
 }
 
@@ -115,18 +110,6 @@ void CGame::freeGame()
         SDL_Quit();
 
         m_GameIsSetup = false;
-    }
-}
-
-void CGame::renderThreadMain() const
-{
-    m_GraphicsContext->initialize();
-    CFpsCounter fpsCounter;
-    while(m_IsRunning) {
-        uint32_t bticks = CTiming::TicksMsec();
-        draw();
-        uint32_t ticks = CTiming::TicksMsec() - bticks;
-        fpsCounter.update(ticks);
     }
 }
 

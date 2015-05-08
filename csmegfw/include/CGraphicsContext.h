@@ -54,6 +54,7 @@ class CGraphicsContext : public CObjectBase
 
         int m_Width;
         int m_Height;
+		bool m_VSyncEnabled;
 };
 
 }
