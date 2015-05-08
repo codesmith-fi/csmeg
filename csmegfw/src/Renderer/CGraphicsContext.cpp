@@ -2,12 +2,16 @@
 #include "CSmegException.h"
 #include "CDebug.h"
 
+#include "CShaderProgram.h"
+#include "CShader.h"
+
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 //#include <glm/gtc/matrix_transform.hpp>
 
 using namespace csmeg;
+using namespace csmeg::renderer;
 
 CGraphicsContext::CGraphicsContext() : CGraphicsContext(0, 0)
 {
@@ -100,7 +104,11 @@ bool CGraphicsContext::onInitialize()
 
 	glClearColor(m_backgroundColor.red, m_backgroundColor.green, m_backgroundColor.blue, m_backgroundColor.alpha);
 
-//	glm::ortho<GLfloat>(0.0, m_Width, m_Height, 0.0, 0, -1.0);
+//	CShaderProgram shProgram;
+//	shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex));
+//	shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment));
+//	shProgram.link();
+	//glm::ortho<GLfloat>(0.0, m_Width, m_Height, 0.0, 0, -1.0);
 
     return false;
 }

@@ -82,6 +82,7 @@
     <ClInclude Include="include\CObjectBase.h" />
     <ClInclude Include="include\Color.h" />
     <ClInclude Include="include\CShader.h" />
+    <ClInclude Include="include\CShaderProgram.h" />
     <ClInclude Include="include\CSmegException.h" />
     <ClInclude Include="include\CTiming.h" />
     <ClInclude Include="include\CUpdateTicker.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="src\Input\CMouse.cpp" />
     <ClCompile Include="src\Renderer\CGraphicsContext.cpp" />
     <ClCompile Include="src\Renderer\CShader.cpp" />
+    <ClCompile Include="src\Renderer\CShaderProgram.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

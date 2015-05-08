@@ -84,6 +84,9 @@
     <ClInclude Include="include\Color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CShaderProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\CDrawableGameObject.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="src\Base\Color.cpp">
       <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\CShaderProgram.cpp">
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
