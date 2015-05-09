@@ -18,7 +18,7 @@ CGraphicsContext::CGraphicsContext() : CGraphicsContext(0, 0)
 }
 
 CGraphicsContext::CGraphicsContext(int X, int Y)
-	: m_Window(nullptr), m_GLContext(nullptr), m_Width(X), m_Height(Y), m_VSyncEnabled(true)
+    : m_Window(nullptr), m_GLContext(nullptr), m_Width(X), m_Height(Y), m_VSyncEnabled(true)
 {
 }
 
@@ -36,18 +36,18 @@ void CGraphicsContext::setSize(int X, int Y)
 
 void CGraphicsContext::setBackgroundColor(const Color& color)
 {
-	m_backgroundColor = color;
+    m_backgroundColor = color;
 }
 
 void CGraphicsContext::setFullScreen(bool enabled)
 {
-	LOG_WARN() << "setFullScreen() not implemented yet";
+    LOG_WARN() << "setFullScreen() not implemented yet";
 }
 
 void CGraphicsContext::setVsync(bool enabled)
 {
     // Vsync - 0 = disabled
-	m_VSyncEnabled = enabled;
+    m_VSyncEnabled = enabled;
 }
 
 void CGraphicsContext::clearScreen()
@@ -64,51 +64,51 @@ bool CGraphicsContext::onInitialize()
 {
     LOG_INFO() << "CGraphicsContext::onInitialize()";
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, m_VSyncEnabled ? 1 : 0);
-	SDL_GL_SetSwapInterval(m_VSyncEnabled ? 1 : 0);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, m_VSyncEnabled ? 1 : 0);
+    SDL_GL_SetSwapInterval(m_VSyncEnabled ? 1 : 0);
 
-	m_Window = SDL_CreateWindow("CSMEG Tester",
-		SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
-		m_Width, m_Height,
-		SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+    m_Window = SDL_CreateWindow("CSMEG Tester",
+        SDL_WINDOWPOS_UNDEFINED,
+        SDL_WINDOWPOS_UNDEFINED,
+        m_Width, m_Height,
+        SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
-    if( m_Window == nullptr ) {
+    if(m_Window == nullptr) {
         throw CSmegException("Could not initialize SDL2 Window");
     }
 
-//    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    //    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-	m_GLContext = SDL_GL_CreateContext(m_Window);
-	if (m_GLContext == nullptr)	{
-		throw CSmegException("There was an error creating the OpenGL context!\n");
-	}
-
-	const unsigned char *version = glGetString(GL_VERSION);
-	if (version == nullptr)	{
-		throw CSmegException("There was an error creating the OpenGL context!\n");
-	}
-
-	LOG_INFO() << "OpenGL Version: " << version;
-
-	SDL_GL_MakeCurrent(m_Window, m_GLContext);
-
-	glewExperimental = GL_TRUE;
-	GLenum glew_status = glewInit();
-	if (glew_status != GLEW_OK) {
-        std::string errstr( (const char*)glewGetErrorString(glew_status) );
-		throw CSmegException(errstr);
+    m_GLContext = SDL_GL_CreateContext(m_Window);
+    if(m_GLContext == nullptr) {
+        throw CSmegException("There was an error creating the OpenGL context!\n");
     }
 
-	glClearColor(m_backgroundColor.red, m_backgroundColor.green, m_backgroundColor.blue, m_backgroundColor.alpha);
+    const unsigned char *version = glGetString(GL_VERSION);
+    if(version == nullptr) {
+        throw CSmegException("There was an error creating the OpenGL context!\n");
+    }
 
-//	CShaderProgram shProgram;
-//	shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex));
-//	shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment));
-//	shProgram.link();
-	//glm::ortho<GLfloat>(0.0, m_Width, m_Height, 0.0, 0, -1.0);
+    LOG_INFO() << "OpenGL Version: " << version;
+
+    SDL_GL_MakeCurrent(m_Window, m_GLContext);
+
+    glewExperimental = GL_TRUE;
+    GLenum glew_status = glewInit();
+    if(glew_status != GLEW_OK) {
+        std::string errstr((const char*)glewGetErrorString(glew_status));
+        throw CSmegException(errstr);
+    }
+
+    glClearColor(m_backgroundColor.red, m_backgroundColor.green, m_backgroundColor.blue, m_backgroundColor.alpha);
+
+    //CShaderProgram shProgram;
+    //shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("shader1.vertex")));
+    //shProgram.add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("shader2")));
+    //shProgram.link();
+    //glm::ortho<GLfloat>(0.0, m_Width, m_Height, 0.0, 0, -1.0);
 
     return false;
 }

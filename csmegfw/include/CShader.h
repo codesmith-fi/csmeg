@@ -10,31 +10,33 @@ namespace csmeg
     {
         class CShader
         {
-			public: // enums
-				enum class SHADER_TYPE {
-					Vertex,
-					Fragment,
-					Geometry,
-					TesselationControl,
-					TesselationEvaluation
-				};
-		
-			public:
-                CShader(SHADER_TYPE type);
-                virtual ~CShader();
+        public: // enums
+            enum class SHADER_TYPE
+            {
+                Vertex,
+                Fragment,
+                Geometry,
+                TesselationControl,
+                TesselationEvaluation
+            };
 
-            public: // New methods
-                void setSource(const std::string& sourceCode);
-                void setFromFile(const std::string& fileName);
-                void compile();
-				bool isCompiled() { return m_compiled; }
+        public:
+            CShader(SHADER_TYPE type, const std::string& shaderFile);
+            virtual ~CShader();
 
-            protected:
-				CShader() {};
-            private:
-                SHADER_TYPE m_type;
-                GLuint m_shader;
-				bool m_compiled;
+        public: // New methods
+            void setSource(const std::string& sourceCode);
+            void setFromFile(const std::string& shaderFile);
+            void compile();
+            bool isCompiled() { return m_compiled; }
+
+        protected:
+            CShader() {};
+        private:
+            SHADER_TYPE m_type;
+            GLuint m_shader;
+            bool m_compiled;
+            std::string m_shaderFile;
         };
     } // namespace renderer
 } // namespace csmeg

@@ -9,22 +9,22 @@ namespace csmeg
 {
     namespace renderer
     {
-		class CShader;
+        class CShader;
 
         class CShaderProgram
         {
-            public:
-				CShaderProgram();
-				virtual ~CShaderProgram();
+        public:
+            CShaderProgram();
+            virtual ~CShaderProgram();
 
-				bool add(std::unique_ptr<CShader> shader);
-				void link();
-				bool isReady() const { return m_isLinked; }
-            protected:
-            private:
-				GLuint m_programId;
-				std::vector<std::unique_ptr<CShader>> m_shaders;
-				bool m_isLinked;
+            bool add(std::unique_ptr<CShader> shader);
+            void link();
+            bool isReady() const { return m_isLinked; }
+        protected:
+        private:
+            GLuint m_programId;
+            std::vector<std::unique_ptr<CShader>> m_shaders;
+            bool m_isLinked;
         };
     } // namespace renderer
 } // namespace csmeg

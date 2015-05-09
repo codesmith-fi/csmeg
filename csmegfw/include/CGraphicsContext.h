@@ -8,13 +8,13 @@
 
 namespace csmeg
 {
-
-class CGraphicsContext : public CObjectBase
-{
-    enum {
-        DefaultWindowWidth = 640,
-        DefaultWindowHeight = 400,
-    };
+    class CGraphicsContext : public CObjectBase
+    {
+        enum
+        {
+            DefaultWindowWidth = 640,
+            DefaultWindowHeight = 400,
+        };
 
     public:
         CGraphicsContext();
@@ -22,15 +22,8 @@ class CGraphicsContext : public CObjectBase
 
         virtual ~CGraphicsContext();
 
-        int getWidth() const
-        {
-            return m_Width;
-        }
-
-        int getHeight() const
-        {
-            return m_Height;
-        }
+        int getWidth() const { return m_Width; }
+        int getHeight() const { return m_Height; }
 
         void setSize(int X, int Y);
 
@@ -38,7 +31,8 @@ class CGraphicsContext : public CObjectBase
         void setVsync(bool enabled);
         void clearScreen();
         void updateScreen();
-		void setBackgroundColor(const Color& color);
+        void setBackgroundColor(const Color& color);
+
     protected: // from CObjectBase
         bool onInitialize();
         void onRelease();
@@ -53,11 +47,11 @@ class CGraphicsContext : public CObjectBase
     private:
         SDL_Window* m_Window;
         SDL_GLContext m_GLContext;
-		Color m_backgroundColor;
+        Color m_backgroundColor;
         int m_Width;
         int m_Height;
-		bool m_VSyncEnabled;
-};
+        bool m_VSyncEnabled;
+    };
 
 }
 
