@@ -16,11 +16,14 @@ namespace
     std::string getShaderInfoLog(GLuint shaderID)
     {
         if(shaderID) {
-            const int buffersize = 256;
-            GLchar buf[buffersize];
-            GLsizei size;
-            glGetShaderInfoLog(shaderID, buffersize - 1, &size, buf);
-            return std::string(buf);
+            GLsizei logMaxLength;
+            GLsizei logLen;
+            glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &logMaxLength);
+            std::unique_ptr<GLchar> bufPtr(new GLchar[logMaxLength]);
+            glGetShaderInfoLog(shaderID, logMaxLength, &logLen, bufPtr.get());
+            std::string log(bufPtr.get());
+            return log;
+
         }
         else {
             return std::string("getShaderInfoLog: Defined shader id == 0");
@@ -100,7 +103,7 @@ void CShader::setFromFile(const std::string& shaderFile)
     fn /= "shaders";
     fn /= shaderFile;
     LOG_INFO() << "CShader::setFromFile : " << fn;
-    
+
     fs::ifstream s(fn, std::ifstream::in);
     std::string line;
     if(s.is_open()) {
@@ -125,9 +128,9 @@ void CShader::compile()
         glGetShaderiv(m_shader, GL_COMPILE_STATUS, &vShaderCompiled);
         if(vShaderCompiled != GL_TRUE) {
             std::string log(getShaderInfoLog(m_shader));
-            LOG_ERROR() << "While compiling shader: " << m_shaderFile;
-            LOG_ERROR() << log;
-            throw CSmegException("Unable to compile a shader (" + m_shaderFile + ")" );
+            std::stringstream buf;
+            buf << "Unable to compile shader: " << m_shaderFile << std::endl << log;
+            throw CSmegException(buf.str());
         }
         m_compiled = true;
     }

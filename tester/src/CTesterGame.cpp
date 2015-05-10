@@ -55,7 +55,7 @@ bool CTesterGame::onInitialize()
     getGraphicsContext().setSize(1024, 768);
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);
-	getGraphicsContext().setBackgroundColor(Color(1.0f, 0.0f, 0.0f));
+	getGraphicsContext().setBackgroundColor(Color(0.2f, 0.2f, 0.2f));
     return true;
 }
 

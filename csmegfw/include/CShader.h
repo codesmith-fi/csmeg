@@ -29,7 +29,7 @@ namespace csmeg
             void setFromFile(const std::string& shaderFile);
             void compile();
             bool isCompiled() { return m_compiled; }
-
+            GLuint getID() const { return m_shader; }
         protected:
             CShader() {};
         private:

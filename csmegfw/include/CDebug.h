@@ -42,7 +42,8 @@ namespace csmeg
         class CLogger //: public boost::noncopyable
         {
         public:
-            CLogger(DebugLogLevel severity = DebugLogLevel::ERROR) {
+            CLogger(DebugLogLevel severity = DebugLogLevel::ERROR)
+            {
                 std::string sevStr;
                 if(severity == DebugLogLevel::ERROR) {
                     sevStr = "ERROR";
@@ -77,6 +78,11 @@ namespace csmeg
  }
 
 using namespace csmeg::Debug;
+
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
+#define MAKE_ERROR_LINE_MSG(msg) __FUNCTION__ "::" TOSTRING(__LINE__) ":" msg
+#define MAKE_ERROR_LINE __FUNCTION__ "::" TOSTRING(__LINE__)
 
 #define LOG_INFO() \
     if(CLoggerSettings::instance().getLogLevel() <= DebugLogLevel::INFO) CLogger(DebugLogLevel::INFO)

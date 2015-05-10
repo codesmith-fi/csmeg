@@ -19,7 +19,12 @@ namespace csmeg
 
             bool add(std::unique_ptr<CShader> shader);
             void link();
+            void use();
             bool isReady() const { return m_isLinked; }
+
+            // Set uniform values in the shader program
+            void setUniform(const std::string& variable, float value);
+
         protected:
         private:
             GLuint m_programId;

@@ -3,8 +3,10 @@
 
 #include <CObjectBase.h>
 #include <Color.h>
+#include <CShaderProgram.h>
 
 #include <SDL2/SDL_video.h>
+#include <memory>
 
 namespace csmeg
 {
@@ -51,6 +53,8 @@ namespace csmeg
         int m_Width;
         int m_Height;
         bool m_VSyncEnabled;
+        std::unique_ptr<renderer::CShaderProgram> m_shaderProgram;
+        GLuint m_vertexBuffer;
     };
 
 }
