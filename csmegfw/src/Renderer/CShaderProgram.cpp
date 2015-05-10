@@ -1,6 +1,7 @@
 #include "CShaderProgram.h"
 #include "CShader.h"
 #include "CSmegException.h"
+
 #include <memory>
 
 using namespace csmeg::renderer;
@@ -76,10 +77,21 @@ void CShaderProgram::use()
 void CShaderProgram::setUniform(const std::string& variable, float value)
 {
     GLint loc = glGetUniformLocation(m_programId, variable.c_str());
-    if(loc >= 0) {
+    if(loc != -1) {
         glUniform1fv(loc, 1, &value);
     }
     else {
         throw CSmegException(__FILE__ ": Uniform float variable (" + variable + ") does not exist");
+    }
+}
+
+void CShaderProgram::setUniform(const std::string& variable, const glm::vec4& vector4)
+{
+    GLint loc = glGetUniformLocation(m_programId, variable.c_str());
+    if(loc != -1) {
+        glUniform4fv(loc, 1, (GLfloat*)&vector4);
+    }
+    else {
+        throw CSmegException(__FILE__ ": Uniform vec4 variable (" + variable + ") does not exist");
     }
 }

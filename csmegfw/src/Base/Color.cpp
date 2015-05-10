@@ -14,11 +14,14 @@ Color::Color(float r, float g, float b)
 
 }
 
-Color::Color(float r, float g, float b, float a) : red(r), green(g), blue(b), alpha(a)
+Color::Color(float r, float g, float b, float a) 
 {
+    m_parts[ComponentRed] = r;
+    m_parts[ComponentGreen] = g;
+    m_parts[ComponentBlue] = b;
+    m_parts[ComponentAlpha] = a;
 }
 
 Color::~Color()
 {
 }
-

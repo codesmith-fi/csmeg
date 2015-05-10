@@ -2,6 +2,7 @@
 #define CSHADERPROGRAM_H
 
 #include <GL/glew.h>
+#include <glm/gtc/type_ptr.hpp>
 #include <vector>
 #include <memory>
 
@@ -23,7 +24,8 @@ namespace csmeg
             bool isReady() const { return m_isLinked; }
 
             // Set uniform values in the shader program
-            void setUniform(const std::string& variable, float value);
+            void setUniform(const std::string& variable, float value); // single float
+            void setUniform(const std::string& variable, const glm::vec4& vVector); // single vec4
 
         protected:
         private:

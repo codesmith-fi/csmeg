@@ -58,6 +58,8 @@ void CGraphicsContext::clearScreen()
     // Use our shader
     m_shaderProgram->use();
     
+    m_shaderProgram->setUniform("uColor", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+
     // 1rst attribute buffer : vertices
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
@@ -125,7 +127,7 @@ bool CGraphicsContext::onInitialize()
         throw CSmegException(errstr);
     }
 
-    glClearColor(m_backgroundColor.red, m_backgroundColor.green, m_backgroundColor.blue, m_backgroundColor.alpha);
+    glClearColor(m_backgroundColor.red(), m_backgroundColor.green(), m_backgroundColor.blue(), m_backgroundColor.alpha());
 
     m_shaderProgram.reset(new CShaderProgram());
     m_shaderProgram->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
