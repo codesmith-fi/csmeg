@@ -1,4 +1,5 @@
 #include "CGraphicsContext.h"
+#include "TRectangle.h"
 #include "CSmegException.h"
 #include "CDebug.h"
 
@@ -83,6 +84,10 @@ void CGraphicsContext::clearScreen()
 void CGraphicsContext::updateScreen()
 {
     SDL_GL_SwapWindow(m_Window);
+}
+
+void CGraphicsContext::drawRectangle(const TRectangle& rect, const Color& color)
+{
 }
 
 bool CGraphicsContext::onInitialize()

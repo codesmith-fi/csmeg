@@ -10,6 +10,8 @@
 
 namespace csmeg
 {
+    class TRectangle;
+
     class CGraphicsContext : public CObjectBase
     {
         enum
@@ -34,6 +36,9 @@ namespace csmeg
         void clearScreen();
         void updateScreen();
         void setBackgroundColor(const Color& color);
+
+        // drawing
+        void drawRectangle(const TRectangle& rect, const Color& color);
 
     protected: // from CObjectBase
         bool onInitialize();
