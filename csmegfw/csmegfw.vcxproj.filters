@@ -96,6 +96,9 @@
     <ClInclude Include="include\TVector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CQuadRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\CDrawableGameObject.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="src\Primitives\TVector2.cpp">
       <Filter>Source Files\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\CQuadRenderer.cpp">
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

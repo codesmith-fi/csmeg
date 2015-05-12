@@ -1,9 +1,12 @@
-#version 330
+#version 330 core
 
-uniform vec4 uColor;
+in vec2 texCoords;
 out vec4 color;
+
+uniform vec4 quadColor;
+uniform sampler2D image;
 
 void main()
 {
-	color = uColor;
+	color = quadColor; // * texture(image, texCoords);
 }

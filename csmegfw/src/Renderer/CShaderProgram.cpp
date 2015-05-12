@@ -24,6 +24,14 @@ namespace
         }
     }
 
+    GLuint getUniformVariableLocation(GLuint program, const std::string variable)
+    {
+        GLint loc = glGetUniformLocation(program, variable.c_str());
+        if(loc < 0) {
+            throw csmeg::CSmegException("Uniform variable (" + variable + ") does not exist");
+        }
+        return loc;
+    }
 }
 
 CShaderProgram::CShaderProgram() : m_programId(0), m_isLinked(false)
@@ -74,24 +82,22 @@ void CShaderProgram::use()
     }
 }
 
-void CShaderProgram::setUniform(const std::string& variable, float value)
+void CShaderProgram::set(const std::string& variable, float val)
 {
-    GLint loc = glGetUniformLocation(m_programId, variable.c_str());
-    if(loc != -1) {
-        glUniform1fv(loc, 1, &value);
-    }
-    else {
-        throw CSmegException(__FILE__ ": Uniform float variable (" + variable + ") does not exist");
-    }
+    glUniform1fv(getUniformVariableLocation(m_programId, variable), 1, &val);
 }
 
-void CShaderProgram::setUniform(const std::string& variable, const glm::vec4& vector4)
+void CShaderProgram::set(const std::string& variable, const glm::vec3& vec)
 {
-    GLint loc = glGetUniformLocation(m_programId, variable.c_str());
-    if(loc != -1) {
-        glUniform4fv(loc, 1, (GLfloat*)&vector4);
-    }
-    else {
-        throw CSmegException(__FILE__ ": Uniform vec4 variable (" + variable + ") does not exist");
-    }
+    glUniform3fv(getUniformVariableLocation(m_programId, variable), 1, (GLfloat*)&vec);
+}
+
+void CShaderProgram::set(const std::string& variable, const glm::vec4& vec)
+{
+    glUniform4fv(getUniformVariableLocation(m_programId, variable), 1, (GLfloat*)&vec);
+}
+
+void CShaderProgram::set(const std::string& variable, const glm::mat4& mat)
+{
+    glUniformMatrix4fv(getUniformVariableLocation(m_programId, variable), 1, false, (GLfloat*)&mat);
 }

@@ -24,8 +24,10 @@ namespace csmeg
             bool isReady() const { return m_isLinked; }
 
             // Set uniform values in the shader program
-            void setUniform(const std::string& variable, float value); // single float
-            void setUniform(const std::string& variable, const glm::vec4& vVector); // single vec4
+            void set(const std::string& variable, float val); // single float
+            void set(const std::string& variable, const glm::vec3& vec); // single vec3
+            void set(const std::string& variable, const glm::vec4& vec); // single vec4
+            void set(const std::string& variable, const glm::mat4& mat); // single mat4
 
         protected:
         private:
