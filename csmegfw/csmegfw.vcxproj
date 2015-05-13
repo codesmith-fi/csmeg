@@ -81,6 +81,7 @@
     <ClInclude Include="include\CMouse.h" />
     <ClInclude Include="include\CObjectBase.h" />
     <ClInclude Include="include\Color.h" />
+    <ClInclude Include="include\ContentManager.h" />
     <ClInclude Include="include\CShader.h" />
     <ClInclude Include="include\CShaderProgram.h" />
     <ClInclude Include="include\CSmegException.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="src\Base\CGameObject.cpp" />
     <ClCompile Include="src\Base\CGameTime.cpp" />
     <ClCompile Include="src\Base\CObjectBase.cpp" />
+    <ClCompile Include="src\Base\ContentManager.cpp" />
     <ClCompile Include="src\Base\CSmegException.cpp" />
     <ClCompile Include="src\Base\CTiming.cpp" />
     <ClCompile Include="src\Base\CUpdateTicker.cpp" />

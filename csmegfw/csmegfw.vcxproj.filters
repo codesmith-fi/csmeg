@@ -102,6 +102,9 @@
     <ClInclude Include="include\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ContentManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\CDrawableGameObject.cpp">
@@ -164,8 +167,11 @@
     <ClCompile Include="src\Renderer\CQuadRenderer.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Base\ContentManager.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
     <ClCompile Include="src\Renderer\Texture2D.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
