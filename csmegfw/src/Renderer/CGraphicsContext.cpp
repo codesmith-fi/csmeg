@@ -57,8 +57,12 @@ void CGraphicsContext::clearScreen()
     glClear(GL_COLOR_BUFFER_BIT);
 
     // temporary code
-
-    m_quadRenderer->render(glm::vec2(200.0f, 100.0f), glm::vec2(50.0f, 50.0f), 0.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::vec2 pos(200.0f, 100.f);
+    for(int i = 0; i < 5; i++) {
+        m_quadRenderer->render(m_texture, pos, glm::vec2(50.0f, 50.0f), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        pos.x += 50.0f;
+        pos.y += 50.0f;
+    }
 }
 
 void CGraphicsContext::updateScreen()
@@ -131,6 +135,8 @@ bool CGraphicsContext::onInitialize()
     m_shaderProgram->set("projection", projection);
 
     m_quadRenderer = new CQuadRenderer(*m_shaderProgram);
+
+    m_texture.load("jupiter.png");
 
     return false;
 }

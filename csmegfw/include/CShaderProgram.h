@@ -25,6 +25,7 @@ namespace csmeg
 
             // Set uniform values in the shader program
             void set(const std::string& variable, float val); // single float
+            void set(const std::string& variable, GLint val); // single unsigned int
             void set(const std::string& variable, const glm::vec3& vec); // single vec3
             void set(const std::string& variable, const glm::vec4& vec); // single vec4
             void set(const std::string& variable, const glm::mat4& mat); // single mat4

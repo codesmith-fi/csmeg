@@ -1,5 +1,6 @@
 #include "CQuadRenderer.h"
 #include "CShaderProgram.h"
+#include "Texture2D.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -49,14 +50,14 @@ void CQuadRenderer::init()
     glVertexAttribPointer(QR_VBO_VERTEXPOS, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[QR_VBO_TEXCOORD]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(tex), tex, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*2*6, tex, GL_STATIC_DRAW);
     glEnableVertexAttribArray(QR_VBO_TEXCOORD);
     glVertexAttribPointer(QR_VBO_TEXCOORD, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     glBindVertexArray(0);
 }
 
-void CQuadRenderer::render(const glm::vec2& pos, const glm::vec2& size,
+void CQuadRenderer::render(Texture2D& texture, const glm::vec2& pos, const glm::vec2& size,
     float rot, const glm::vec3& color)
 {
     m_shader.use();
@@ -67,8 +68,11 @@ void CQuadRenderer::render(const glm::vec2& pos, const glm::vec2& size,
     model = glm::translate(model, glm::vec3(-0.5f*size.x, -0.5f*size.y, 0.0f));
     model = glm::scale(model, glm::vec3(size, 1.0f));
 
+    glActiveTexture(GL_TEXTURE0);
+    m_shader.set("image", 0);
     m_shader.set("quadColor", glm::vec4(color, 0.0f));
     m_shader.set("model", model);
+    texture.bind();
 
     // glActiveTexture(GL_TEXTURE0);
     // bind texture

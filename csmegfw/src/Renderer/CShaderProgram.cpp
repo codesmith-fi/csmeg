@@ -82,9 +82,14 @@ void CShaderProgram::use()
     }
 }
 
+void CShaderProgram::set(const std::string& variable, GLint val)
+{
+    glUniform1i(getUniformVariableLocation(m_programId, variable), val);
+}
+
 void CShaderProgram::set(const std::string& variable, float val)
 {
-    glUniform1fv(getUniformVariableLocation(m_programId, variable), 1, &val);
+    glUniform1f(getUniformVariableLocation(m_programId, variable), val);
 }
 
 void CShaderProgram::set(const std::string& variable, const glm::vec3& vec)

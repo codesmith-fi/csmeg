@@ -89,6 +89,7 @@
     <ClInclude Include="include\IUpdateable.h" />
     <ClInclude Include="include\MInputEventListener.h" />
     <ClInclude Include="include\CQuadRenderer.h" />
+    <ClInclude Include="include\Texture2D.h" />
     <ClInclude Include="include\TRectangle.h" />
     <ClInclude Include="include\TVector2.h" />
   </ItemGroup>
@@ -113,6 +114,7 @@
     <ClCompile Include="src\Renderer\CShader.cpp" />
     <ClCompile Include="src\Renderer\CShaderProgram.cpp" />
     <ClCompile Include="src\Renderer\CQuadRenderer.cpp" />
+    <ClCompile Include="src\Renderer\Texture2D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

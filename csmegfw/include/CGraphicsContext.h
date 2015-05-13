@@ -5,6 +5,7 @@
 #include <Color.h>
 #include <CShaderProgram.h>
 #include <CQuadRenderer.h>
+#include <Texture2D.h>
 
 #include <glm/vec4.hpp>
 #include <SDL2/SDL_video.h>
@@ -62,6 +63,7 @@ namespace csmeg
         bool m_VSyncEnabled;
         std::unique_ptr<renderer::CShaderProgram> m_shaderProgram; // move out
         renderer::CQuadRenderer* m_quadRenderer;
+        renderer::Texture2D m_texture;
     };
 }
 
