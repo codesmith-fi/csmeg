@@ -136,7 +136,15 @@ bool CGraphicsContext::onInitialize()
 
     m_quadRenderer = new CQuadRenderer(*m_shaderProgram);
 
-    m_texture.load("jupiter.png");
+//    m_texture.load("jupiter.png");
+
+    // Black/white checkerboard
+    float pixels[] = {
+        1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f
+    };
+    
+    m_texture.generate(2, 2, pixels);
 
     return false;
 }

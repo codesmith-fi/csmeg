@@ -8,5 +8,5 @@ uniform sampler2D image;
 
 void main()
 {
-	color = quadColor * texture(image, UV).rgba;
+	color = quadColor * texture(image, UV);
 }
