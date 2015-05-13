@@ -70,7 +70,7 @@ void CQuadRenderer::render(Texture2D& texture, const glm::vec2& pos, const glm::
 
     glActiveTexture(GL_TEXTURE0);
     m_shader.set("image", 0);
-    m_shader.set("quadColor", glm::vec4(color, 0.0f));
+    m_shader.set("quadColor", glm::vec4(color, 1.0f));
     m_shader.set("model", model);
     texture.bind();
 
