@@ -5,6 +5,7 @@
 
 #include "CShaderProgram.h"
 #include "CShader.h"
+#include "ContentManager.h"
 
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
@@ -59,7 +60,7 @@ void CGraphicsContext::clearScreen()
     // temporary code
     glm::vec2 pos(200.0f, 100.f);
     for(int i = 0; i < 5; i++) {
-        m_quadRenderer->render(m_texture, pos, glm::vec2(50.0f, 50.0f), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        m_quadRenderer->render(*m_texture, pos, glm::vec2(50.0f, 50.0f), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
         pos.x += 50.0f;
         pos.y += 50.0f;
     }
@@ -117,6 +118,9 @@ bool CGraphicsContext::onInitialize()
     }
 
     glClearColor(m_backgroundColor.red(), m_backgroundColor.green(), m_backgroundColor.blue(), m_backgroundColor.alpha());
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     m_shaderProgram.reset(new CShaderProgram());
     m_shaderProgram->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
@@ -136,16 +140,18 @@ bool CGraphicsContext::onInitialize()
 
     m_quadRenderer = new CQuadRenderer(*m_shaderProgram);
 
-//    m_texture.load("jupiter.png");
-
     // Black/white checkerboard
+    /*
     float pixels[] = {
         1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
         1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f
     };
     
     m_texture.generate(2, 2, pixels);
-
+    */
+    ContentManager::instance().textureFolder("textures");
+    ContentManager::instance().loadTexture("jupiter.png", true);
+    m_texture = ContentManager::instance().getTexture("jupiter.png");
     return false;
 }
 
