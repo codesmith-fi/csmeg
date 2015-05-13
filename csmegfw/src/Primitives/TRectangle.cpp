@@ -1,78 +1,21 @@
 #include "TRectangle.h"
 
 using namespace csmeg;
-
-TRectangle::TRectangle() 
-    : TRectangle(0.0f, 0.0f, 0.0f, 0.0f)
+#include <glm/vec4.hpp>
+TRectangle::TRectangle() : TRectangle(0.0f, 0.0f, 0.0f, 0.0f)
 {
 }
 
-TRectangle::TRectangle(const TRectangle& other) 
+TRectangle::TRectangle(const TRectangle& other) : m_pos(other.m_pos), m_size(other.m_size)
 {
-    *this = other;
-}
-
-TRectangle::TRectangle(const TVector2& position, const TVector2& size)
-{
-    m_Position = position;
-    m_Size = size;
 }
 
 TRectangle::TRectangle(float x, float y, float w, float h)
-    : m_Position(x, y), m_Size(w, h)
-{    
-}
-
-TRectangle::~TRectangle()
+    : m_pos(glm::vec2(x, y)), m_size(glm::vec2(w, h))
 {
 }
 
-// Operators
-
-TRectangle& TRectangle::operator=(const TRectangle& other)
+TRectangle::TRectangle(const glm::vec2& position, const glm::vec2& size)
+    : m_pos(position), m_size(size)
 {
-    m_Position = other.m_Position;
-    m_Size = other.m_Size;
-    return *this;
-}
-
-// Modifiers
-void TRectangle::move(const TVector2& diff)
-{
-    m_Position += diff;
-}
-
-void TRectangle::shrink(float amount)
-{
-    m_Size -= amount;
-}
-
-void TRectangle::enlarge(float amount)
-{
-    m_Size += amount;
-}
-
-void TRectangle::setPosition(const TVector2& position)
-{
-    m_Position = position;
-}
-
-void TRectangle::setSize(const TVector2& size)
-{
-    m_Size = size;
-}
-
-void TRectangle::setSize(float w, float h)
-{
-    m_Size = TVector2(w, h);
-}
-
-TVector2 TRectangle::bottomRight() const
-{
-    return(m_Position + m_Size);
-}
-
-bool TRectangle::isWithin(const TRectangle& boundaries) const
-{
-    return (m_Position >= boundaries.m_Position) && (m_Size <= boundaries.m_Size);
 }

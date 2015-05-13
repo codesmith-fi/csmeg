@@ -1,7 +1,7 @@
 #ifndef __TRectangle_H_DEFINED__
 #define __TRectangle_H_DEFINED__
 
-#include <TVector2.h>
+#include <glm/vec2.hpp>
 
 namespace csmeg
 {
@@ -11,34 +11,27 @@ namespace csmeg
         TRectangle();
         TRectangle(const TRectangle& other);
         TRectangle(float x, float y, float w, float h);
-        TRectangle(const TVector2& position, const TVector2& size);
-        ~TRectangle();
+        TRectangle(const glm::vec2& position, const glm::vec2& size);
+        ~TRectangle() {};
 
         // Operators
-        TRectangle& operator=(const TRectangle& other);
 
         // Getters
-        float x() const { return m_Position.x(); }
-        float y() const { return m_Position.y(); };
-        float w() const { return m_Size.x(); };
-        float h() const { return m_Size.y(); };
-        TVector2 position() const { return m_Position; }
-        TVector2 size() const { return m_Size; }
-        TVector2 bottomRight() const;
-        TVector2 topLeft() const { return m_Position; }
-        bool isWithin(const TRectangle& boundaries) const;
+        glm::vec2 position() const { return m_pos; }
+        glm::vec2 size() const { return m_size; }
+        void grow(const glm::vec2& size) { m_size += size; }
+        void shrink(const glm::vec2& size) { m_size -= size; }
+        void move(const glm::vec2& delta) { m_pos += delta; }
+        void setPos(const glm::vec2& newPos) { m_pos = newPos; }
+        void setSize(const glm::vec2& newSize) { m_size = newSize; }
 
-        // Modifiers
-        void move(const TVector2& diff);
-        void shrink(float amount);
-        void enlarge(float amount);
-        void setPosition(const TVector2& position);
-        void setSize(const TVector2& size);
-        void setSize(float w, float h);
-
+        glm::vec2 tl() const { return m_pos; }
+        glm::vec2 br() const { return m_pos + m_size; }
+        glm::vec2 tr() const { return glm::vec2(m_pos.x + m_size.x, m_pos.y); }
+        glm::vec2 bl() const { return glm::vec2(m_pos.x, m_pos.y + m_size.y); }
     private: // data
-        TVector2 m_Position;
-        TVector2 m_Size;
+        glm::vec2 m_pos;
+        glm::vec2 m_size;
     };
 }
 

@@ -1,9 +1,11 @@
 #include "CQuadRenderer.h"
 #include "CShaderProgram.h"
 #include "Texture2D.h"
+#include "TRectangle.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
+using csmeg::TRectangle;
 using namespace csmeg::renderer;
 
 CQuadRenderer::CQuadRenderer(CShaderProgram& shader) : m_shader(shader)
@@ -57,16 +59,15 @@ void CQuadRenderer::init()
     glBindVertexArray(0);
 }
 
-void CQuadRenderer::render(Texture2D& texture, const glm::vec2& pos, const glm::vec2& size,
-    float rot, const glm::vec3& color)
+void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color)
 {
     m_shader.use();
     glm::mat4 model;
-    model = glm::translate(model, glm::vec3(pos, 0.0f));
-    model = glm::translate(model, glm::vec3(0.5f*size.x, 0.5f*size.y, 0.0f));
+    model = glm::translate(model, glm::vec3(rect.position(), 0.0f));
+    model = glm::translate(model, glm::vec3(0.5f*rect.size().x, 0.5f*rect.size().y, 0.0f));
     model = glm::rotate(model, rot, glm::vec3(0.0f, 0.0f, 1.0f));
-    model = glm::translate(model, glm::vec3(-0.5f*size.x, -0.5f*size.y, 0.0f));
-    model = glm::scale(model, glm::vec3(size, 1.0f));
+    model = glm::translate(model, glm::vec3(-0.5f*rect.size().x, -0.5f*rect.size().y, 0.0f));
+    model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
 
     glActiveTexture(GL_TEXTURE0);
     m_shader.set("image", 0);

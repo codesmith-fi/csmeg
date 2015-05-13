@@ -6,6 +6,8 @@
 
 namespace csmeg
 {
+    class TRectangle;
+
     namespace renderer
     {
         class CShaderProgram;
@@ -26,7 +28,7 @@ namespace csmeg
             virtual ~CQuadRenderer();
 
             void init();
-            void render(Texture2D& texture, const glm::vec2& pos, const glm::vec2& size, float rot, const glm::vec3& color);
+            void render(Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color);
         private:
             CShaderProgram& m_shader;
             GLuint m_vao;

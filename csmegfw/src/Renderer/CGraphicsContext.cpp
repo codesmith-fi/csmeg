@@ -59,10 +59,10 @@ void CGraphicsContext::clearScreen()
 
     // temporary code
     glm::vec2 pos(200.0f, 100.f);
+    TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
     for(int i = 0; i < 5; i++) {
-        m_quadRenderer->render(*m_texture, pos, glm::vec2(50.0f, 50.0f), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-        pos.x += 50.0f;
-        pos.y += 50.0f;
+        m_quadRenderer->render(*m_texture, rect, 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        rect.move(glm::vec2(50.0f, 50.0f));
     }
 }
 
