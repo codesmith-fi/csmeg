@@ -20,9 +20,9 @@ class CGameTime
         void reset();
         void update();
 
-        uint32_t getTotalMsec() const;
-        uint32_t getElapsedMsec() const;
-        float getElapsedSeconds() const;
+        uint32_t getTotalMsec() const { return m_CurrentTicks - m_StartTicks; }
+        uint32_t getElapsedMsec() const { return m_CurrentTicks - m_PreviousTicks; }
+        float getElapsedSeconds() const { return static_cast<float>(getElapsedMsec()) / 1000.0f; }
 
     protected:
     private: // Data

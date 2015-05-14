@@ -56,25 +56,4 @@ void CGameTime::update()
     m_CurrentTicks = CTiming::TicksMsec();
 }
 
-uint32_t CGameTime::getElapsedMsec() const
-{
-    return m_CurrentTicks - m_PreviousTicks;
-}
-
-uint32_t CGameTime::getTotalMsec() const
-{
-    return m_CurrentTicks - m_StartTicks;
-}
-
-float CGameTime::getElapsedSeconds() const
-{
-    float msec(static_cast<float>(getElapsedMsec()));
-    float result(0.0f);
-
-    if(msec > 0.0f) {
-        result = 1.0f / msec;
-    }
-    return result;
-}
-
 } // namespace csmeg
