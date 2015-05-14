@@ -36,9 +36,6 @@
     <ClInclude Include="include\CDrawableGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CEvents.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CFpsCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -108,9 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\CDrawableGameObject.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\CEvents.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\Base\CFpsCounter.cpp">

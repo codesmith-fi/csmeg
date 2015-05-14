@@ -3,7 +3,6 @@
 
 #include <CGameTime.h>
 #include <CDrawableGameObject.h>
-#include <CEvents.h>
 #include <CGraphicsContext.h>
 #include <MInputEventListener.h>
 
@@ -15,7 +14,7 @@ namespace csmeg
     /**
      * Game base class
      */
-    class CGame : public CDrawableGameObject, public MInputEventListener
+    class CGame : public CDrawableGameObject
     {
         public: // Constructors and destructor
             CGame();
@@ -28,23 +27,21 @@ namespace csmeg
 			void setFpsLimit(uint32_t fpsLimit);
 
             CGameTime& getGameTime() { return *m_GameTime; }
-            CEvents& getEvents() { return *m_Events; }
 
         public: // Getters
             CGraphicsContext& getGraphicsContext() const;
 
-        protected: // From MInputEventListener
-            void onEvent(SDL_Event& event);
+        protected: // events
+            virtual void onEvent(SDL_Event& event);
 
         private:
             void setupGame();
             void freeGame();
-
+            void processEvents();
             void renderThreadMain() const;
 
         private:
             CGraphicsContext* m_GraphicsContext;
-            CEvents* m_Events;
             CGameTime* m_GameTime;
 
             bool m_IsRunning;

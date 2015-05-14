@@ -70,7 +70,6 @@
     <ClInclude Include="include\CContextOpenGL.h" />
     <ClInclude Include="include\CDebug.h" />
     <ClInclude Include="include\CDrawableGameObject.h" />
-    <ClInclude Include="include\CEvents.h" />
     <ClInclude Include="include\CFpsCounter.h" />
     <ClInclude Include="include\CGame.h" />
     <ClInclude Include="include\CGameObject.h" />
@@ -96,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\CDrawableGameObject.cpp" />
-    <ClCompile Include="src\Base\CEvents.cpp" />
     <ClCompile Include="src\Base\CFpsCounter.cpp" />
     <ClCompile Include="src\Base\CGame.cpp" />
     <ClCompile Include="src\Base\CGameObject.cpp" />

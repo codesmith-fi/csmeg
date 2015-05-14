@@ -1,7 +1,6 @@
 #include "CGame.h"
 #include "CGraphicsContext.h"
 #include "CTiming.h"
-#include "CEvents.h"
 #include "CFpsCounter.h"
 #include "CSmegException.h"
 #include "CDebug.h"
@@ -20,7 +19,6 @@ CGame::CGame()
       m_MinimumUpdateInterval(0)
 {
     m_GraphicsContext = new CGraphicsContext();
-    m_Events = new CEvents();
     m_GameTime = new CGameTime();
 }
 
@@ -29,7 +27,6 @@ CGame::~CGame()
     release();
 
     delete m_GameTime;
-    delete m_Events;
     delete m_GraphicsContext;
 }
 
@@ -50,7 +47,7 @@ void CGame::run()
         while(m_IsRunning) {
             uint32_t bticks = CTiming::TicksMsec();
             update(*m_GameTime);
-            m_Events->update();
+            processEvents();
 			draw();
 
 			uint32_t ticks = CTiming::TicksMsec() - bticks;
@@ -84,8 +81,29 @@ CGraphicsContext& CGame::getGraphicsContext() const
     return *m_GraphicsContext;
 }
 
-void CGame::onEvent(SDL_Event& /* event */)
+void CGame::onEvent(SDL_Event& event)
 {
+    // Default empty implementation
+}
+
+void CGame::processEvents()
+{
+    SDL_Event event;
+    while(SDL_PollEvent(&event)) {
+        switch(event.type) {
+            case SDL_QUIT:
+            {
+                LOG_INFO() << "Handling SDL_QUIT";
+                m_IsRunning = false;
+                break;
+            }
+            default: // Derived game classes get all other events
+            {
+                onEvent(event);
+                break;
+            }
+        }
+    }
 }
 
 void CGame::setupGame()
@@ -95,7 +113,6 @@ void CGame::setupGame()
         throw CSmegException(SDL_GetError());
     }
 
-    m_Events->addEventListener(this);
     m_GraphicsContext->initialize();
     m_GameIsSetup = true;
 }
