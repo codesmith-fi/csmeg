@@ -65,7 +65,6 @@ void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot
         throw CSmegException("QuandRenderer trying to render with current method == NOT_SET");
     }
 
-    m_currentMethodShader->use();
     glm::mat4 model;
     model = glm::translate(model, glm::vec3(rect.position(), 0.0f));
     model = glm::translate(model, glm::vec3(0.5f*rect.size().x, 0.5f*rect.size().y, 0.0f));
@@ -73,14 +72,15 @@ void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot
     model = glm::translate(model, glm::vec3(-0.5f*rect.size().x, -0.5f*rect.size().y, 0.0f));
     model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
 
-    glActiveTexture(GL_TEXTURE0);
-    m_currentMethodShader->set("image", 0);
+    m_currentMethodShader->use();
     m_currentMethodShader->set("quadColor", glm::vec4(color, 1.0f));
     m_currentMethodShader->set("model", model);
-    texture.bind();
+    if(m_currentMethod == RenderMethod::TEXTURED) {
+        glActiveTexture(GL_TEXTURE0);
+        m_currentMethodShader->set("image", 0);
+        texture.bind();
+    }
 
-    // glActiveTexture(GL_TEXTURE0);
-    // bind texture
     glBindVertexArray(m_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);

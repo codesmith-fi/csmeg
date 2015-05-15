@@ -129,6 +129,11 @@ bool CGraphicsContext::onInitialize()
     shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
     shader->link();
 
+    ShaderProgramPtr shaderTextured(new CShaderProgram());
+    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("texturedwithcolor.v")));
+    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("texturedwithcolor.f")));
+    shaderTextured->link();
+
     glm::mat4 projection = glm::ortho(
         0.0f,
         static_cast<GLfloat>(m_Width),
@@ -139,9 +144,12 @@ bool CGraphicsContext::onInitialize()
 
     shader->use();
     shader->set("projection", projection);
+    shaderTextured->use();
+    shaderTextured->set("projection", projection);
 
     m_quadRenderer = new CQuadRenderer();
-    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shader);
+    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::FLATCOLOR, shader);
+    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shaderTextured);
 
     // Black/white checkerboard
     /*
