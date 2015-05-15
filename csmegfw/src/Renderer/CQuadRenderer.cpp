@@ -2,13 +2,13 @@
 #include "CShaderProgram.h"
 #include "Texture2D.h"
 #include "TRectangle.h"
-
+#include "CSmegException.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 using csmeg::TRectangle;
 using namespace csmeg::renderer;
 
-CQuadRenderer::CQuadRenderer(CShaderProgram& shader) : m_shader(shader)
+CQuadRenderer::CQuadRenderer() : m_currentMethod(RenderMethod::NOT_SET)
 {
     init();
 }
@@ -61,7 +61,11 @@ void CQuadRenderer::init()
 
 void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color)
 {
-    m_shader.use();
+    if(m_currentMethod == RenderMethod::NOT_SET) {
+        throw CSmegException("QuandRenderer trying to render with current method == NOT_SET");
+    }
+
+    m_currentMethodShader->use();
     glm::mat4 model;
     model = glm::translate(model, glm::vec3(rect.position(), 0.0f));
     model = glm::translate(model, glm::vec3(0.5f*rect.size().x, 0.5f*rect.size().y, 0.0f));
@@ -70,9 +74,9 @@ void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot
     model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
 
     glActiveTexture(GL_TEXTURE0);
-    m_shader.set("image", 0);
-    m_shader.set("quadColor", glm::vec4(color, 1.0f));
-    m_shader.set("model", model);
+    m_currentMethodShader->set("image", 0);
+    m_currentMethodShader->set("quadColor", glm::vec4(color, 1.0f));
+    m_currentMethodShader->set("model", model);
     texture.bind();
 
     // glActiveTexture(GL_TEXTURE0);
@@ -81,3 +85,24 @@ void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
 }
+
+void CQuadRenderer::setCurrentRenderMethod(RenderMethod method)
+{
+    if(m_methods.count(method) == 1) {
+        m_currentMethod = method;
+        m_currentMethodShader = m_methods[method];
+    }
+    else {
+        throw new CSmegException(
+            "Trying to access uninitialized render method in CQuadRenderer, method=", 
+            static_cast<int>(method));
+    }
+}
+
+void CQuadRenderer::initRenderMethod(RenderMethod method, ShaderProgramPtr shaderPtr)
+{
+    if(method != RenderMethod::NOT_SET) {
+        m_methods[method] = shaderPtr;
+    }
+}
+

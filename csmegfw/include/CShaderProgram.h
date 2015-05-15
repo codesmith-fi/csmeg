@@ -36,6 +36,8 @@ namespace csmeg
             std::vector<std::unique_ptr<CShader>> m_shaders;
             bool m_isLinked;
         };
+
+        typedef std::shared_ptr<CShaderProgram> ShaderProgramPtr;
     } // namespace renderer
 } // namespace csmeg
 

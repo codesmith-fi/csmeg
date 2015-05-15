@@ -3,7 +3,7 @@
 #include "CDebug.h"
 
 #include <boost/filesystem.hpp>
-#include <ostream>
+#include <sstream>
 
 using namespace csmeg::renderer;
 namespace fs = boost::filesystem;

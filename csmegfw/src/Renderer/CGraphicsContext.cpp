@@ -60,9 +60,11 @@ void CGraphicsContext::clearScreen()
     // temporary code
     glm::vec2 pos(200.0f, 100.f);
     TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
+    m_quadRenderer->setCurrentRenderMethod(CQuadRenderer::RenderMethod::TEXTURED);
     for(int i = 0; i < 5; i++) {
         m_quadRenderer->render(*m_texture, rect, 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
         rect.move(glm::vec2(30.0f, 30.0f));
+        rect.grow(TVector2(10, 10));
     }
 }
 
@@ -122,10 +124,10 @@ bool CGraphicsContext::onInitialize()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    m_shaderProgram.reset(new CShaderProgram());
-    m_shaderProgram->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
-    m_shaderProgram->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
-    m_shaderProgram->link();
+    ShaderProgramPtr shader(new CShaderProgram());
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
+    shader->link();
 
     glm::mat4 projection = glm::ortho(
         0.0f,
@@ -135,10 +137,11 @@ bool CGraphicsContext::onInitialize()
         -1.0f,
         1.0f);
 
-    m_shaderProgram->use();
-    m_shaderProgram->set("projection", projection);
+    shader->use();
+    shader->set("projection", projection);
 
-    m_quadRenderer = new CQuadRenderer(*m_shaderProgram);
+    m_quadRenderer = new CQuadRenderer();
+    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shader);
 
     // Black/white checkerboard
     /*

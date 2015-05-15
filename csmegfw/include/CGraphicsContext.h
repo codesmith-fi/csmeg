@@ -61,7 +61,6 @@ namespace csmeg
         int m_Width;
         int m_Height;
         bool m_VSyncEnabled;
-        std::unique_ptr<renderer::CShaderProgram> m_shaderProgram; // move out
         renderer::CQuadRenderer* m_quadRenderer;
         std::shared_ptr<renderer::Texture2D> m_texture;
     };
