@@ -31,12 +31,7 @@ namespace csmeg
                 m_reason = sserr.str();
             }
 
-            std::string msg() const
-            {
-                return m_reason;
-            }
-
-            std::string reason() const
+            std::string what() const
             {
                 return m_reason;
             }

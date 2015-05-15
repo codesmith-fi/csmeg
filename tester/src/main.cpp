@@ -15,7 +15,7 @@ int main()
     try {
         CTesterGame game;
         game.run();
-    } catch( CSmegException& e ) {
+    } catch(CSmegException& e) {
         LOG_ERROR() << "CSMEG Exception, reason: " << e.what();
     } catch(exception& e) {
         LOG_ERROR() << "Unhandled general Exception, reason: " << e.what();
