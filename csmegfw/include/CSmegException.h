@@ -1,19 +1,50 @@
 #ifndef CSMEGEXCEPTION_H
 #define CSMEGEXCEPTION_H
 
-#include <stdexcept>
 #include <string>
+#include <sstream>
 
 namespace csmeg
 {
+    class CSmegException
+    {
+        public:
+            CSmegException() : m_reason("no reason")
+            {
+            }
 
-class CSmegException : public std::runtime_error
-{
-    public:
-        CSmegException(const std::string& what_arg) : std::runtime_error(what_arg)
-        {
-        }
-};
+            CSmegException(const std::string& msg) : m_reason(msg)
+            {
+            }
+
+            CSmegException(const std::string& msg, int param1)
+            {
+                std::ostringstream sserr;
+                sserr << msg << param1;
+                m_reason = sserr.str();
+            }
+
+            CSmegException(const std::string& msg, const std::string& param1)
+            {
+                std::ostringstream sserr;
+                sserr << msg << param1;
+                m_reason = sserr.str();
+            }
+
+            std::string msg() const
+            {
+                return m_reason;
+            }
+
+            std::string reason() const
+            {
+                return m_reason;
+            }
+
+        private:
+            std::string m_reason;
+
+    };
 
 } // namespace csmeg
 

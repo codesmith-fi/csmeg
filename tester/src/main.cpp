@@ -1,7 +1,7 @@
 #include "CTesterGame.h"
 
 #include <iostream>
-#include <exception>
+#include <CSmegException.h>
 
 #include <CDebug.h>
 
@@ -15,8 +15,10 @@ int main()
     try {
         CTesterGame game;
         game.run();
-    } catch( exception& e ) {
-        LOG_ERROR() << "Exception, reason: " << e.what();
+    } catch( CSmegException& e ) {
+        LOG_ERROR() << "CSMEG Exception, reason: " << e.what();
+    } catch(exception& e) {
+        LOG_ERROR() << "Unhandled general Exception, reason: " << e.what();
     }
     LOG_INFO() << "All done.";
     return 0;
