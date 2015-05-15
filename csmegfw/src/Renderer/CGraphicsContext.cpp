@@ -62,7 +62,7 @@ void CGraphicsContext::clearScreen()
     TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
     m_quadRenderer->setCurrentRenderMethod(CQuadRenderer::RenderMethod::TEXTURED);
     for(int i = 0; i < 5; i++) {
-        m_quadRenderer->render(*m_texture, rect, 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+        m_quadRenderer->render(*m_texture, rect, 0.0f, Color(Color::Palette::White));
         rect.move(glm::vec2(30.0f, 30.0f));
         rect.grow(TVector2(10, 10));
     }
@@ -73,9 +73,11 @@ void CGraphicsContext::updateScreen()
     SDL_GL_SwapWindow(m_Window);
 }
 
+/*
 void CGraphicsContext::drawRectangle(const TRectangle& rect, const Color& color)
 {
 }
+*/
 
 bool CGraphicsContext::onInitialize()
 {
@@ -142,24 +144,11 @@ bool CGraphicsContext::onInitialize()
         -1.0f,
         1.0f);
 
-    shader->use();
-    shader->set("projection", projection);
-    shaderTextured->use();
-    shaderTextured->set("projection", projection);
-
     m_quadRenderer = new CQuadRenderer();
     m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::FLATCOLOR, shader);
     m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shaderTextured);
+    m_quadRenderer->setProjection(projection);
 
-    // Black/white checkerboard
-    /*
-    float pixels[] = {
-        1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f
-    };
-    
-    m_texture.generate(2, 2, pixels);
-    */
     ContentManager::instance().textureFolder("textures");
     ContentManager::instance().loadTexture("jupiter.png", true);
     m_texture = ContentManager::instance().getTexture("jupiter.png");

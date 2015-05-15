@@ -9,6 +9,7 @@
 namespace csmeg
 {
     class TRectangle;
+    class Color;
 
     namespace renderer
     {
@@ -37,10 +38,10 @@ namespace csmeg
             CQuadRenderer();
             virtual ~CQuadRenderer();
 
-            void render(Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color);
-            void render(RenderMethod method, Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color);
-            void setCurrentRenderMethod(RenderMethod method);
+            void setProjection(const glm::mat4& projection);
 
+            void render(Texture2D& texture, const TRectangle& rect, float rot, const Color& color);
+            void setCurrentRenderMethod(RenderMethod method);
             void initRenderMethod(RenderMethod method, ShaderProgramPtr shaderPtr);
 
         private:

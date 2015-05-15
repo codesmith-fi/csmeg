@@ -2,10 +2,10 @@
 #define CSURFACE_H
 
 #include <CObjectBase.h>
-#include <Color.h>
 #include <CShaderProgram.h>
 #include <CQuadRenderer.h>
 #include <Texture2D.h>
+#include <Color.h>
 
 #include <glm/vec4.hpp>
 #include <SDL2/SDL_video.h>
@@ -41,7 +41,7 @@ namespace csmeg
         void setBackgroundColor(const Color& color);
 
         // drawing
-        void drawRectangle(const TRectangle& rectangle, const Color& color);
+        //void drawRectangle(const TRectangle& rectangle, const Color& color);
 
     protected: // from CObjectBase
         bool onInitialize();
@@ -57,12 +57,12 @@ namespace csmeg
     private:
         SDL_Window* m_Window;
         SDL_GLContext m_GLContext;
+        renderer::CQuadRenderer* m_quadRenderer;
+        std::shared_ptr<renderer::Texture2D> m_texture;
         Color m_backgroundColor;
         int m_Width;
         int m_Height;
         bool m_VSyncEnabled;
-        renderer::CQuadRenderer* m_quadRenderer;
-        std::shared_ptr<renderer::Texture2D> m_texture;
     };
 }
 

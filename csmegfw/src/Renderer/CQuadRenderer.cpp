@@ -2,10 +2,12 @@
 #include "CShaderProgram.h"
 #include "Texture2D.h"
 #include "TRectangle.h"
+#include "Color.h"
 #include "CSmegException.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 using csmeg::TRectangle;
+using csmeg::Color;
 using namespace csmeg::renderer;
 
 CQuadRenderer::CQuadRenderer() : m_currentMethod(RenderMethod::NOT_SET)
@@ -59,7 +61,7 @@ void CQuadRenderer::init()
     glBindVertexArray(0);
 }
 
-void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot, const glm::vec3& color)
+void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot, const Color& color)
 {
     if(m_currentMethod == RenderMethod::NOT_SET) {
         throw CSmegException("QuandRenderer trying to render with current method == NOT_SET");
@@ -73,7 +75,7 @@ void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot
     model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
 
     m_currentMethodShader->use();
-    m_currentMethodShader->set("quadColor", glm::vec4(color, 1.0f));
+    m_currentMethodShader->set("quadColor", color.asVec4());
     m_currentMethodShader->set("model", model);
     if(m_currentMethod == RenderMethod::TEXTURED) {
         glActiveTexture(GL_TEXTURE0);
@@ -106,3 +108,10 @@ void CQuadRenderer::initRenderMethod(RenderMethod method, ShaderProgramPtr shade
     }
 }
 
+void CQuadRenderer::setProjection(const glm::mat4& projection)
+{
+    for(auto& method : m_methods) {
+        method.second->use();
+        method.second->set("projection", projection);
+    }
+}

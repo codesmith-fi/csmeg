@@ -2,26 +2,24 @@
 
 using namespace csmeg;
 
-Color::Color() 
-	: Color(0.0f, 0.0f, 0.0f, 1.0f)
-{
-
+namespace
+{   
+    const glm::vec4 gPalette[] = {
+        glm::vec4(0.0f, 0.0f, 0.0f, 1.0f), // black
+        glm::vec4(1.0f, 0.0f, 0.0f, 1.0f), // red
+        glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), // green
+        glm::vec4(0.0f, 0.0f, 1.0f, 1.0f), // blue
+        glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), // white
+    };
 }
 
-Color::Color(float r, float g, float b) 
-	: Color(r, g, b, 1.0f)
+Color::Color(Palette color)
 {
-
+    m_color = gPalette[static_cast<int>(color)];
 }
 
-Color::Color(float r, float g, float b, float a) 
-{
-    m_parts[ComponentRed] = r;
-    m_parts[ComponentGreen] = g;
-    m_parts[ComponentBlue] = b;
-    m_parts[ComponentAlpha] = a;
-}
-
-Color::~Color()
-{
+Color& Color::operator=(const Color& other)
+{ 
+    m_color = other.m_color;
+    return *this;
 }
