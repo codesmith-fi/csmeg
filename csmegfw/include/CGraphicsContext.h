@@ -4,6 +4,7 @@
 #include <CObjectBase.h>
 #include <CShaderProgram.h>
 #include <CQuadRenderer.h>
+#include <CRenderBatch.h>
 #include <Texture2D.h>
 #include <Color.h>
 
@@ -57,7 +58,8 @@ namespace csmeg
     private:
         SDL_Window* m_Window;
         SDL_GLContext m_GLContext;
-        renderer::CQuadRenderer* m_quadRenderer;
+        std::shared_ptr<renderer::CQuadRenderer> m_quadRenderer;
+        std::shared_ptr<renderer::CRenderBatch> m_batchRenderer;
         std::shared_ptr<renderer::Texture2D> m_texture;
         Color m_backgroundColor;
         int m_Width;

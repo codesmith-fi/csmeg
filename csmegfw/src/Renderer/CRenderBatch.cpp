@@ -33,9 +33,9 @@ void CRenderBatch::end()
     }
 
     if(m_batch.size() > 0) {
-        BatchRenderInfo& first = m_batch[0];
-        m_quadRenderer->setMethodAndTexture(first.method, first.texture);
+//        BatchRenderInfo& first = m_batch[0];
         for(auto& r : m_batch) {
+            m_quadRenderer->setMethodAndTexture(r.method, r.texture);
             m_quadRenderer->render(r.rectangle, r.rotation, r.color);
         }
     }

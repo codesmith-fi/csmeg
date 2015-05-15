@@ -41,6 +41,9 @@ namespace csmeg
             void end();
 
             void setRenderer(std::shared_ptr<CQuadRenderer> r);
+        private: 
+            CRenderBatch(const CRenderBatch&); // not implemented
+            CRenderBatch& operator=(const CRenderBatch&); // not implemented
 
         private:
             std::shared_ptr<CQuadRenderer> m_quadRenderer;
