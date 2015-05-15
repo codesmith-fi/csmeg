@@ -62,7 +62,7 @@ void CGraphicsContext::clearScreen()
     TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
     m_quadRenderer->setCurrentRenderMethod(CQuadRenderer::RenderMethod::TEXTURED);
     for(int i = 0; i < 5; i++) {
-        m_quadRenderer->render(*m_texture, rect, 0.0f, Color(Color::Palette::White));
+        m_quadRenderer->render(m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
         rect.move(glm::vec2(30.0f, 30.0f));
         rect.grow(TVector2(10, 10));
     }

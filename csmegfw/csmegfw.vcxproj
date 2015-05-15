@@ -67,6 +67,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CRenderBatch.h" />
     <ClInclude Include="include\CContextOpenGL.h" />
     <ClInclude Include="include\CDebug.h" />
     <ClInclude Include="include\CDrawableGameObject.h" />
@@ -101,7 +102,6 @@
     <ClCompile Include="src\Base\CGameTime.cpp" />
     <ClCompile Include="src\Base\CObjectBase.cpp" />
     <ClCompile Include="src\Base\ContentManager.cpp" />
-    <ClCompile Include="src\Base\CSmegException.cpp" />
     <ClCompile Include="src\Base\CTiming.cpp" />
     <ClCompile Include="src\Base\CUpdateTicker.cpp" />
     <ClCompile Include="src\Input\CJoystick.cpp" />
@@ -110,6 +110,7 @@
     <ClCompile Include="src\Primitives\Color.cpp" />
     <ClCompile Include="src\Primitives\TRectangle.cpp" />
     <ClCompile Include="src\Primitives\TVector2.cpp" />
+    <ClCompile Include="src\Renderer\CRenderBatch.cpp" />
     <ClCompile Include="src\Renderer\CGraphicsContext.cpp" />
     <ClCompile Include="src\Renderer\CShader.cpp" />
     <ClCompile Include="src\Renderer\CShaderProgram.cpp" />

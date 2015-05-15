@@ -25,11 +25,11 @@
     <Filter Include="Source Files\Primitives">
       <UniqueIdentifier>{c2b9beac-bcda-488a-9086-03716d54e3dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Renderer">
+      <UniqueIdentifier>{47927349-a326-44cb-a4e5-854cc7d07a9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\CContextOpenGL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +48,6 @@
     <ClInclude Include="include\CGameTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CGraphicsContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CJoystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,9 +58,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CObjectBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CSmegException.h">
@@ -84,23 +78,35 @@
     <ClInclude Include="include\Color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CShaderProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\TRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\TVector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CQuadRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Texture2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ContentManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CRenderBatch.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CContextOpenGL.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CShader.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CShaderProgram.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CQuadRenderer.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Texture2D.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CGraphicsContext.h">
+      <Filter>Header Files\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +126,6 @@
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\Base\CObjectBase.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\CSmegException.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\Base\CTiming.cpp">
@@ -165,6 +168,9 @@
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\Texture2D.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\CRenderBatch.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>

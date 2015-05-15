@@ -40,8 +40,10 @@ namespace csmeg
 
             void setProjection(const glm::mat4& projection);
 
-            void render(Texture2D& texture, const TRectangle& rect, float rot, const Color& color);
+            void render(Texture2D* texture, const TRectangle& rect, float rot, const Color& color);
+            void render(const TRectangle& rect, float rot, const Color& color);
             void setCurrentRenderMethod(RenderMethod method);
+            void setMethodAndTexture(RenderMethod method, Texture2D* texture);
             void initRenderMethod(RenderMethod method, ShaderProgramPtr shaderPtr);
 
         private:
@@ -57,6 +59,7 @@ namespace csmeg
             GLuint m_vao;
             ShaderProgramPtr m_currentMethodShader;
             RenderMethod m_currentMethod;
+            Texture2D* m_currentTexture;
         };
     }
 }
