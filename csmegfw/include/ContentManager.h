@@ -3,7 +3,6 @@
 #include <string>
 #include <map>
 #include <memory>
-#include <boost/filesystem/path.hpp>
 
 namespace csmeg
 {
@@ -37,10 +36,6 @@ namespace csmeg
         ContentManager& operator=(const ContentManager&); // not implemented
 
     private: // data
-        boost::filesystem::path m_basePath;
-        boost::filesystem::path m_texturePath;
-        boost::filesystem::path m_shaderPath;
-
         std::map<std::string, std::shared_ptr<renderer::Texture2D>> m_textures;
     };
 }

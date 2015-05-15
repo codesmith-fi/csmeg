@@ -9,12 +9,19 @@ using namespace csmeg;
 using namespace csmeg::renderer;
 namespace fs = boost::filesystem;
 
-ContentManager::ContentManager()
-    : m_textures(),
-      m_basePath(fs::initial_path<fs::path()>()),
-      m_texturePath(m_basePath),
-      m_shaderPath(m_basePath)
+namespace
 {
+    static boost::filesystem::path m_basePath;
+    static boost::filesystem::path m_texturePath;
+    static boost::filesystem::path m_shaderPath;
+}
+
+ContentManager::ContentManager()
+    : m_textures()
+{
+    m_basePath = fs::initial_path<fs::path()>();
+    m_texturePath = m_basePath;
+    m_shaderPath = m_basePath;
 }
 
 ContentManager::~ContentManager()

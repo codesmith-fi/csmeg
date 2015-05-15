@@ -56,24 +56,6 @@ void CGraphicsContext::setVsync(bool enabled)
 void CGraphicsContext::clearScreen()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-
-    // temporary code
-    glm::vec2 pos(200.0f, 100.f);
-    TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
-//    m_quadRenderer->setCurrentRenderMethod(CQuadRenderer::RenderMethod::TEXTURED);
-    m_batchRenderer->begin();
-    for(int i = 0; i < 5; i++) {
-//        m_quadRenderer->render(m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
-        if(i % 2) {
-            m_batchRenderer->render(CQuadRenderer::RenderMethod::TEXTURED, m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
-        }
-        else {
-            m_batchRenderer->render(CQuadRenderer::RenderMethod::FLATCOLOR, m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
-        }
-        rect.move(glm::vec2(30.0f, 30.0f));
-        rect.grow(TVector2(10, 10));
-    }
-    m_batchRenderer->end();
 }
 
 void CGraphicsContext::updateScreen()
@@ -81,11 +63,10 @@ void CGraphicsContext::updateScreen()
     SDL_GL_SwapWindow(m_Window);
 }
 
-/*
-void CGraphicsContext::drawRectangle(const TRectangle& rect, const Color& color)
+renderer::CRenderBatch& CGraphicsContext::DefaultRenderer()
 {
+    return *m_batchRenderer.get();
 }
-*/
 
 bool CGraphicsContext::onInitialize()
 {
@@ -160,9 +141,6 @@ bool CGraphicsContext::onInitialize()
     m_batchRenderer.reset(new CRenderBatch());
     m_batchRenderer->setRenderer(m_quadRenderer);
 
-    ContentManager::instance().textureFolder("textures");
-    ContentManager::instance().loadTexture("jupiter.png", true);
-    m_texture = ContentManager::instance().getTexture("jupiter.png");
     return false;
 }
 

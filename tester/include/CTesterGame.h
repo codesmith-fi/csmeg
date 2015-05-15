@@ -2,9 +2,12 @@
 #define CTESTERGAME_H
 
 #include <CGame.h>
+#include <Texture2D.h>
 #include <SDL2/SDL_events.h>
+#include <memory>
 
 using namespace csmeg;
+using renderer::Texture2D;
 
 class CTesterGame : public CGame
 {
@@ -24,6 +27,8 @@ class CTesterGame : public CGame
 
     private: // Data
         int m_Counter;
+        std::shared_ptr<renderer::Texture2D> m_texture;
+
 };
 
 #endif // CTESTERGAME_H

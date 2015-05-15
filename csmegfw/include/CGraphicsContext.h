@@ -41,6 +41,8 @@ namespace csmeg
         void updateScreen();
         void setBackgroundColor(const Color& color);
 
+        renderer::CRenderBatch& DefaultRenderer();
+
         // drawing
         //void drawRectangle(const TRectangle& rectangle, const Color& color);
 
@@ -60,7 +62,6 @@ namespace csmeg
         SDL_GLContext m_GLContext;
         std::shared_ptr<renderer::CQuadRenderer> m_quadRenderer;
         std::shared_ptr<renderer::CRenderBatch> m_batchRenderer;
-        std::shared_ptr<renderer::Texture2D> m_texture;
         Color m_backgroundColor;
         int m_Width;
         int m_Height;
