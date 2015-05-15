@@ -46,18 +46,21 @@ void CGame::run()
         CFpsCounter fpsCounter;
         while(m_IsRunning) {
             uint32_t bticks = CTiming::TicksMsec();
+            // Causes derived classes to get update() call
             update(*m_GameTime);
+            // process events and delegate to derived classes in onEvent()
             processEvents();
-			draw();
+            // causes delegated classes to get draw() call
+			processDraw();
 
-			uint32_t ticks = CTiming::TicksMsec() - bticks;
-
-			// Wait if fps limit is required
-			if (m_MinimumUpdateInterval > 0 && (ticks < m_MinimumUpdateInterval)) {
+            /*
+            uint32_t ticks = CTiming::TicksMsec() - bticks;
+            if(m_MinimumUpdateInterval > 0 && (ticks < m_MinimumUpdateInterval)) {
 				SDL_Delay(m_MinimumUpdateInterval - ticks);
 			}
-			m_GameTime->update();
+            */
 			fpsCounter.update(CTiming::TicksMsec() - bticks);
+            m_GameTime->update();
         }
     }
 
@@ -84,6 +87,12 @@ CGraphicsContext& CGame::getGraphicsContext() const
 void CGame::onEvent(SDL_Event& event)
 {
     // Default empty implementation
+}
+
+void CGame::processDraw() const
+{
+    draw();
+    getGraphicsContext().updateScreen();
 }
 
 void CGame::processEvents()

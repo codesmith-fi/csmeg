@@ -72,11 +72,6 @@ bool CGraphicsContext::onInitialize()
 {
     LOG_INFO() << "CGraphicsContext::onInitialize()";
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, m_VSyncEnabled ? 1 : 0);
-    SDL_GL_SetSwapInterval(m_VSyncEnabled ? 1 : 0);
-
     m_Window = SDL_CreateWindow("CSMEG Tester",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
@@ -102,6 +97,10 @@ bool CGraphicsContext::onInitialize()
     LOG_INFO() << "OpenGL Version: " << version;
 
     SDL_GL_MakeCurrent(m_Window, m_GLContext);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, m_VSyncEnabled ? 1 : 0);
+    SDL_GL_SetSwapInterval(m_VSyncEnabled ? 1 : 0);
 
     glewExperimental = GL_TRUE;
     GLenum glew_status = glewInit();

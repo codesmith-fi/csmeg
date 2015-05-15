@@ -38,6 +38,7 @@ namespace csmeg
             void setupGame();
             void freeGame();
             void processEvents();
+            void processDraw() const;
             void renderThreadMain() const;
 
         private:

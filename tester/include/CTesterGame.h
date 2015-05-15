@@ -28,6 +28,7 @@ class CTesterGame : public CGame
     private: // Data
         int m_Counter;
         std::shared_ptr<renderer::Texture2D> m_texture;
+        float m_rot;
 
 };
 

@@ -22,6 +22,8 @@ void CTesterGame::onLoadContent()
     ContentManager::instance().loadTexture("jupiter.png", true);
     m_texture = ContentManager::instance().getTexture("jupiter.png");
 
+    m_rot = 0.0f;
+
 }
 
 void CTesterGame::onUnloadContent()
@@ -40,20 +42,21 @@ void CTesterGame::onDraw() const
     r.begin();
     for(int i = 0; i < 5; i++) {
         if(i % 2) {
-            r.render(renderer::CQuadRenderer::RenderMethod::TEXTURED, m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
+            r.render(renderer::CQuadRenderer::RenderMethod::TEXTURED, m_texture.get(), rect, m_rot, Color(Color::Palette::White));
         }
         else {
-            r.render(renderer::CQuadRenderer::RenderMethod::FLATCOLOR, m_texture.get(), rect, 0.0f, Color(Color::Palette::White));
+            r.render(renderer::CQuadRenderer::RenderMethod::FLATCOLOR, m_texture.get(), rect, m_rot, Color(Color::Palette::White));
         }
         rect.move(glm::vec2(30.0f, 30.0f));
         rect.grow(TVector2(10, 10));
     }
     r.end();
-    getGraphicsContext().updateScreen();
 }
 
 void CTesterGame::onUpdate(const CGameTime& gameTime)
 {
+    // rotate 45 degrees per second
+    m_rot += 45 * (3.14159f / 180) * gameTime.getElapsedSeconds();
 }
 
 void CTesterGame::onEvent(SDL_Event& event)
@@ -73,7 +76,7 @@ bool CTesterGame::onInitialize()
 {
     LOG_INFO() << "Performing Initialize()";
 
-	setFpsLimit(100);
+	setFpsLimit(60);
     getGraphicsContext().setSize(1024, 768);
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);
