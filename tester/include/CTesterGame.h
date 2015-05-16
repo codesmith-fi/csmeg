@@ -3,6 +3,7 @@
 
 #include <CGame.h>
 #include <Texture2D.h>
+#include <TCamera2D.h>
 #include <SDL2/SDL_events.h>
 #include <memory>
 
@@ -28,6 +29,7 @@ class CTesterGame : public CGame
     private: // Data
         int m_Counter;
         std::shared_ptr<renderer::Texture2D> m_texture;
+        renderer::TCamera2D m_camera;
         float m_rot;
 
 };

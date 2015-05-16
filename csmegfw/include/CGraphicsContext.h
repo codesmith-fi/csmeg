@@ -39,6 +39,7 @@ namespace csmeg
         void setVsync(bool enabled);
         void clearScreen();
         void updateScreen();
+        void updateView(const glm::mat4& viewMatrix);
         void setBackgroundColor(const Color& color);
 
         renderer::CRenderBatch& DefaultRenderer();
@@ -63,6 +64,10 @@ namespace csmeg
         std::shared_ptr<renderer::CQuadRenderer> m_quadRenderer;
         std::shared_ptr<renderer::CRenderBatch> m_batchRenderer;
         Color m_backgroundColor;
+
+        glm::mat4 m_viewMatrix;
+        glm::mat4 m_projectionMatrix;
+
         int m_Width;
         int m_Height;
         bool m_VSyncEnabled;

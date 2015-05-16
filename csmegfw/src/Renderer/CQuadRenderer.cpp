@@ -118,6 +118,15 @@ void CQuadRenderer::setProjection(const glm::mat4& projection)
     }
 }
 
+// TODO: check this, not need to update all shaders every time?
+void CQuadRenderer::setView(const glm::mat4& view)
+{
+    for(auto& method : m_methods) {
+        method.second->use();
+        method.second->set("view", view);
+    }
+}
+
 void CQuadRenderer::setMethodAndTexture(RenderMethod method, Texture2D* texture)
 {
     if(method != m_currentMethod) {

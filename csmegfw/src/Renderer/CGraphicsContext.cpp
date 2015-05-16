@@ -6,6 +6,7 @@
 #include "CShaderProgram.h"
 #include "CShader.h"
 #include "ContentManager.h"
+#include "TCamera2D.h"
 
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
@@ -68,6 +69,12 @@ renderer::CRenderBatch& CGraphicsContext::DefaultRenderer()
     return *m_batchRenderer.get();
 }
 
+void CGraphicsContext::updateView(const glm::mat4& viewMatrix)
+{
+    m_viewMatrix = viewMatrix;
+    m_quadRenderer->setView(viewMatrix);
+}
+
 bool CGraphicsContext::onInitialize()
 {
     LOG_INFO() << "CGraphicsContext::onInitialize()";
@@ -114,17 +121,14 @@ bool CGraphicsContext::onInitialize()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    ShaderProgramPtr shader(new CShaderProgram());
-    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
-    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
-    shader->link();
+    m_viewMatrix = TCamera2D(
+        TVector2(0,0),
+        TVector2(m_Width*0.5f, m_Height*0.5f),
+        0,
+        1.0f
+        ).get();
 
-    ShaderProgramPtr shaderTextured(new CShaderProgram());
-    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("texturedwithcolor.v")));
-    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("texturedwithcolor.f")));
-    shaderTextured->link();
-
-    glm::mat4 projection = glm::ortho(
+    m_projectionMatrix = glm::ortho(
         0.0f,
         static_cast<GLfloat>(m_Width),
         static_cast<GLfloat>(m_Height),
@@ -132,13 +136,29 @@ bool CGraphicsContext::onInitialize()
         -1.0f,
         1.0f);
 
+    ShaderProgramPtr shader(new CShaderProgram());
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
+    shader->link();
+//    shader->use();
+//    shader->set("view", m_camera.get());
+
+    ShaderProgramPtr shaderTextured(new CShaderProgram());
+    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("texturedwithcolor.v")));
+    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("texturedwithcolor.f")));
+    shaderTextured->link();
+
+//    shaderTextured->use();
+//    shaderTextured->set("view", m_camera.get());
+
     m_quadRenderer.reset(new CQuadRenderer());
     m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::FLATCOLOR, shader);
     m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shaderTextured);
-    m_quadRenderer->setProjection(projection);
+    m_quadRenderer->setProjection(m_projectionMatrix);
 
     m_batchRenderer.reset(new CRenderBatch());
     m_batchRenderer->setRenderer(m_quadRenderer);
+    updateView(m_viewMatrix);
 
     return false;
 }

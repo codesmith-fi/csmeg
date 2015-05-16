@@ -25,7 +25,6 @@ void CTesterGame::onLoadContent()
     m_texture = ContentManager::instance().getTexture("jupiter.png");
 
     m_rot = 0.0f;
-
 }
 
 void CTesterGame::onUnloadContent()
@@ -39,8 +38,8 @@ void CTesterGame::onDraw() const
 
     renderer::CRenderBatch& r = getGraphicsContext().DefaultRenderer();
 
-    glm::vec2 pos(200.0f, 100.f);
-    TRectangle rect(200.0f, 100.0f, 50.0f, 50.0f);
+//    glm::vec2 pos(200.0f, 100.f);
+    TRectangle rect(0.0f, 0.0f, 50.0f, 50.0f);
     r.begin();
     for(int i = 0; i < 5; i++) {
         if(i % 2) {
@@ -58,7 +57,10 @@ void CTesterGame::onDraw() const
 void CTesterGame::onUpdate(const CGameTime& gameTime)
 {
     // rotate 45 degrees per second
-    m_rot += 45 * math::DEG_TO_RAD *gameTime.getElapsedSeconds();
+    m_rot += 45 * math::DEG_TO_RAD * gameTime.getElapsedSeconds();
+    float camRot = 15 * math::DEG_TO_RAD * gameTime.getElapsedSeconds();
+    m_camera.rotate(camRot);
+    getGraphicsContext().updateView(m_camera.get());
 }
 
 void CTesterGame::onEvent(SDL_Event& event)
@@ -80,6 +82,12 @@ bool CTesterGame::onInitialize()
 
 	setFpsLimit(60);
     getGraphicsContext().setSize(640, 480);
+    m_camera = renderer::TCamera2D(
+        TVector2(-320, -240),
+        TVector2(320, 240),
+        0.0f,
+        1.0f);
+
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);
 	getGraphicsContext().setBackgroundColor(Color(0.2f, 0.2f, 0.2f));

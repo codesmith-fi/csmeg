@@ -81,7 +81,7 @@ void TCamera2D::update()
 {
     glm::mat4 m;
     m = glm::translate(m, glm::vec3(-m_position, 0.0f));
-    m = glm::scale(m, glm::vec3(m_scale, m_scale, 1.0f));
     m = glm::rotate(m, m_rotation, glm::vec3(0.0f, 0.0f, 1.0f));
+    m = glm::scale(m, glm::vec3(m_scale, m_scale, 1.0f));
     m_camMatrix = glm::translate(m, glm::vec3(m_origin, 0.0f));
 }
