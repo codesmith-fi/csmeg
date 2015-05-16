@@ -1,6 +1,8 @@
 #include "CTesterGame.h"
 #include <iostream>
 #include <ContentManager.h>
+#include <MathUtil.h>
+
 #include <CDebug.h>
 
 using namespace std;
@@ -56,7 +58,7 @@ void CTesterGame::onDraw() const
 void CTesterGame::onUpdate(const CGameTime& gameTime)
 {
     // rotate 45 degrees per second
-    m_rot += 45 * (3.14159f / 180) * gameTime.getElapsedSeconds();
+    m_rot += 45 * math::DEG_TO_RAD *gameTime.getElapsedSeconds();
 }
 
 void CTesterGame::onEvent(SDL_Event& event)
@@ -77,7 +79,7 @@ bool CTesterGame::onInitialize()
     LOG_INFO() << "Performing Initialize()";
 
 	setFpsLimit(60);
-    getGraphicsContext().setSize(1024, 768);
+    getGraphicsContext().setSize(640, 480);
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);
 	getGraphicsContext().setBackgroundColor(Color(0.2f, 0.2f, 0.2f));
