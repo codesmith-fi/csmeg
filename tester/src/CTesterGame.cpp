@@ -60,6 +60,7 @@ void CTesterGame::onUpdate(const CGameTime& gameTime)
     m_rot += 45 * math::DEG_TO_RAD * gameTime.getElapsedSeconds();
     float camRot = 15 * math::DEG_TO_RAD * gameTime.getElapsedSeconds();
     m_camera.rotate(camRot);
+//    m_camera.scale(0.01f);
     getGraphicsContext().updateView(m_camera.get());
 }
 

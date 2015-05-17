@@ -3,7 +3,6 @@
 #include <CShaderProgram.h>
 #include <GL/glew.h>
 #include <glm/vec2.hpp>
-#include <map>
 #include <memory>
 
 namespace csmeg
@@ -38,11 +37,11 @@ namespace csmeg
             CQuadRenderer();
             virtual ~CQuadRenderer();
 
-            void render(Texture2D* texture, const TRectangle& rect, float rot, const Color& color);
+            void render(Texture2D& texture, const TRectangle& rect, float rot, const Color& color);
             void render(const TRectangle& rect, float rot, const Color& color);
-            void setCurrentRenderMethod(RenderMethod method);
-            void setMethodAndTexture(RenderMethod method, Texture2D* texture);
-            void initRenderMethod(RenderMethod method, ShaderProgramPtr shaderPtr);
+            void render(Texture2D* texture, const TRectangle& rect, float rot, const Color& color, RenderMethod method = RenderMethod::FLATCOLOR);
+
+            void setShaderProgram(ShaderProgramPtr shaderPtr);
 
             void setProjection(const glm::mat4& projection); // Projection matrix
             void setView(const glm::mat4& view); // view matrix
@@ -50,19 +49,18 @@ namespace csmeg
         private:
             // Initializes the quad renderer internal state
             void init();
+            void setTexture(Texture2D* texture);
 
             CQuadRenderer(const CQuadRenderer&); // not implemented
             CQuadRenderer& operator=(const CQuadRenderer&); // not implemented
 
         private:
-            std::map<RenderMethod, ShaderProgramPtr> m_methods;
             GLuint m_vbo[QR_VBO_COUNT];
             GLuint m_vao;
-            ShaderProgramPtr m_currentMethodShader;
-            RenderMethod m_currentMethod;
-            Texture2D* m_currentTexture;
+            ShaderProgramPtr m_shaderProgram;
             glm::mat4 m_viewMatrix;
             glm::mat4 m_projectionMatrix;
+            uint32_t m_boundTextureId;
         };
     }
 }

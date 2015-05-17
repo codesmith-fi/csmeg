@@ -44,9 +44,6 @@ namespace csmeg
 
         renderer::CRenderBatch& DefaultRenderer();
 
-        // drawing
-        //void drawRectangle(const TRectangle& rectangle, const Color& color);
-
     protected: // from CObjectBase
         bool onInitialize();
         void onRelease();

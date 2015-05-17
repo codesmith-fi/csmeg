@@ -137,18 +137,13 @@ bool CGraphicsContext::onInitialize()
         1.0f);
 
     ShaderProgramPtr shader(new CShaderProgram());
-    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
-    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("quadshader.v")));
+    shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("quadshader.f")));
     shader->link();
 
-    ShaderProgramPtr shaderTextured(new CShaderProgram());
-    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("texturedwithcolor.v")));
-    shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("texturedwithcolor.f")));
-    shaderTextured->link();
-
     m_quadRenderer.reset(new CQuadRenderer());
-    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::FLATCOLOR, shader);
-    m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::TEXTURED, shaderTextured);
+    m_quadRenderer->setShaderProgram(shader);
+
     m_quadRenderer->setProjection(m_projectionMatrix);
 
     m_batchRenderer.reset(new CRenderBatch());

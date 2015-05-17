@@ -10,7 +10,7 @@ using csmeg::TRectangle;
 using csmeg::Color;
 using namespace csmeg::renderer;
 
-CQuadRenderer::CQuadRenderer() : m_currentTexture(nullptr), m_currentMethod(RenderMethod::NOT_SET)
+CQuadRenderer::CQuadRenderer()
 {
     init();
 }
@@ -61,18 +61,18 @@ void CQuadRenderer::init()
     glBindVertexArray(0);
 }
 
-void CQuadRenderer::render(Texture2D* texture, const TRectangle& rect, float rot, const Color& color)
+void CQuadRenderer::render(Texture2D& texture, const TRectangle& rect, float rot, const Color& color)
 {
-    setMethodAndTexture(RenderMethod::TEXTURED, texture);
-    render(rect, rot, color);
+    render(&texture, rect, rot, color, RenderMethod::TEXTURED);
 }
 
 void CQuadRenderer::render(const TRectangle& rect, float rot, const Color& color)
 {
-    if(m_currentMethod == RenderMethod::NOT_SET) {
-        throw CSmegException("QuandRenderer trying to render with current method == NOT_SET");
-    }
+    render(nullptr, rect, rot, color, RenderMethod::FLATCOLOR);
+}
 
+void CQuadRenderer::render(Texture2D* texture, const TRectangle& rect, float rot, const Color& color, RenderMethod method)
+{
     glm::mat4 model;
     model = glm::translate(model, glm::vec3(rect.position(), 0.0f));
     model = glm::translate(model, glm::vec3(0.5f*rect.size().x, 0.5f*rect.size().y, 0.0f));
@@ -81,34 +81,22 @@ void CQuadRenderer::render(const TRectangle& rect, float rot, const Color& color
     model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
     glm::mat4 mvp = m_projectionMatrix * m_viewMatrix * model;
 
-    m_currentMethodShader->set("quadColor", color.asVec4());
-    m_currentMethodShader->set("mvp", mvp);
+    m_shaderProgram->use();
+
+    if(method == RenderMethod::TEXTURED) {
+        setTexture(texture);
+        m_shaderProgram->set("enableTexture", 1);
+    }
+    else {
+        m_shaderProgram->set("enableTexture", 0);
+    }
+
+    m_shaderProgram->set("quadColor", color.asVec4());
+    m_shaderProgram->set("mvp", mvp);
 
     glBindVertexArray(m_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glBindVertexArray(0);
-}
-
-
-void CQuadRenderer::initRenderMethod(RenderMethod method, ShaderProgramPtr shaderPtr)
-{
-    if(method != RenderMethod::NOT_SET) {
-        m_methods[method] = shaderPtr;
-    }
-}
-
-void CQuadRenderer::setCurrentRenderMethod(RenderMethod method)
-{
-    if(m_methods.count(method) == 1) {
-        m_currentMethod = method;
-        m_currentMethodShader = m_methods[method];
-        m_currentMethodShader->use();
-    }
-    else {
-        throw new CSmegException(
-            "Trying to access uninitialized render method in CQuadRenderer, method=", 
-            static_cast<int>(method));
-    }
 }
 
 void CQuadRenderer::setProjection(const glm::mat4& projection)
@@ -121,17 +109,17 @@ void CQuadRenderer::setView(const glm::mat4& view)
     m_viewMatrix = view;
 }
 
-void CQuadRenderer::setMethodAndTexture(RenderMethod method, Texture2D* texture)
+void CQuadRenderer::setShaderProgram(ShaderProgramPtr shader)
 {
-    if(method != m_currentMethod) {
-        setCurrentRenderMethod(method);
-    }
-
-    if(texture!=nullptr && texture != m_currentTexture && method == RenderMethod::TEXTURED) {
-        glActiveTexture(GL_TEXTURE0);
-        m_currentMethodShader->set("image", 0);
-        m_currentTexture = texture;
-        texture->bind();
-    }
-
+    m_shaderProgram = shader;
 }
+
+void CQuadRenderer::setTexture(Texture2D* texture)
+{
+    if((texture != nullptr), (texture->id() != m_boundTextureId)) {
+        glActiveTexture(GL_TEXTURE0);
+        m_shaderProgram->set("image", 0);
+        m_boundTextureId = texture->bind();
+    }
+}
+
