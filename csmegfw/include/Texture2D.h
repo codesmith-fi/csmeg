@@ -15,6 +15,8 @@ namespace csmeg
             Texture2D(int width, int height, GLuint filterMin, GLuint filterMax, GLuint wrapS, GLuint wrapT, GLuint internalFormat, GLuint externalFormat);
             virtual ~Texture2D();
 
+            uint32_t id() const { return m_glTextureId; }
+
             void mipmap(bool enabled) { m_mipmapEnabled = enabled; }
             bool mipmap() const { return m_mipmapEnabled; }
             uint16_t width() const { return m_width; }
@@ -22,7 +24,7 @@ namespace csmeg
 
             void generate(uint16_t w, uint16_t h, uint8_t* data);
             void generate(uint16_t w, uint16_t h, float* data);
-            void bind();        
+            uint32_t bind();        
 
         private:
             /**

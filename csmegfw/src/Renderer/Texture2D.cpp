@@ -54,7 +54,7 @@ Texture2D::~Texture2D()
     }
 }
 
-void Texture2D::bind()
+uint32_t Texture2D::bind()
 {
     // 0 is not a valid texture id (see doc for glIsTexture)
     if(m_glTextureId > 0 && glIsTexture(m_glTextureId)) {
@@ -63,6 +63,7 @@ void Texture2D::bind()
     else {
         throw CSmegException("Texture2D::bind() trying to bind to invalid texture");
     }
+    return m_glTextureId;
 }
 
 void Texture2D::generate(uint16_t w, uint16_t h, uint8_t* data)
