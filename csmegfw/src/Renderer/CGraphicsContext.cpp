@@ -140,16 +140,11 @@ bool CGraphicsContext::onInitialize()
     shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("colorflat.v")));
     shader->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("colorflat.f")));
     shader->link();
-//    shader->use();
-//    shader->set("view", m_camera.get());
 
     ShaderProgramPtr shaderTextured(new CShaderProgram());
     shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Vertex, std::string("texturedwithcolor.v")));
     shaderTextured->add(std::make_unique<CShader>(CShader::SHADER_TYPE::Fragment, std::string("texturedwithcolor.f")));
     shaderTextured->link();
-
-//    shaderTextured->use();
-//    shaderTextured->set("view", m_camera.get());
 
     m_quadRenderer.reset(new CQuadRenderer());
     m_quadRenderer->initRenderMethod(CQuadRenderer::RenderMethod::FLATCOLOR, shader);

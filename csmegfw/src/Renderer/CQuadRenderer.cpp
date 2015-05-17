@@ -79,9 +79,10 @@ void CQuadRenderer::render(const TRectangle& rect, float rot, const Color& color
     model = glm::rotate(model, rot, glm::vec3(0.0f, 0.0f, 1.0f));
     model = glm::translate(model, glm::vec3(-0.5f*rect.size().x, -0.5f*rect.size().y, 0.0f));
     model = glm::scale(model, glm::vec3(rect.size(), 1.0f));
+    glm::mat4 mvp = m_projectionMatrix * m_viewMatrix * model;
 
     m_currentMethodShader->set("quadColor", color.asVec4());
-    m_currentMethodShader->set("model", model);
+    m_currentMethodShader->set("mvp", mvp);
 
     glBindVertexArray(m_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -112,19 +113,12 @@ void CQuadRenderer::setCurrentRenderMethod(RenderMethod method)
 
 void CQuadRenderer::setProjection(const glm::mat4& projection)
 {
-    for(auto& method : m_methods) {
-        method.second->use();
-        method.second->set("projection", projection);
-    }
+    m_projectionMatrix = projection;
 }
 
-// TODO: check this, not need to update all shaders every time?
 void CQuadRenderer::setView(const glm::mat4& view)
 {
-    for(auto& method : m_methods) {
-        method.second->use();
-        method.second->set("view", view);
-    }
+    m_viewMatrix = view;
 }
 
 void CQuadRenderer::setMethodAndTexture(RenderMethod method, Texture2D* texture)
