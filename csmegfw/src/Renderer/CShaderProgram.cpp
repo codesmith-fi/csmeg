@@ -82,14 +82,34 @@ void CShaderProgram::use()
     }
 }
 
-void CShaderProgram::set(const std::string& variable, GLint val)
+void CShaderProgram::set(const std::string& variable, int32_t val)
 {
     glUniform1i(getUniformVariableLocation(m_programId, variable), val);
+}
+
+void CShaderProgram::set(const std::string& variable, uint32_t val)
+{
+    glUniform1ui(getUniformVariableLocation(m_programId, variable), val);
 }
 
 void CShaderProgram::set(const std::string& variable, float val)
 {
     glUniform1f(getUniformVariableLocation(m_programId, variable), val);
+}
+
+void CShaderProgram::set(const std::string& variable, int32_t& values, uint16_t count)
+{
+    glUniform1iv(getUniformVariableLocation(m_programId, variable), count, &values);
+}
+
+void CShaderProgram::set(const std::string& variable, uint32_t& values, uint16_t count)
+{
+    glUniform1uiv(getUniformVariableLocation(m_programId, variable), count, &values);
+}
+
+void CShaderProgram::set(const std::string& variable, float& values, uint16_t count)
+{
+    glUniform1fv(getUniformVariableLocation(m_programId, variable), count, &values);
 }
 
 void CShaderProgram::set(const std::string& variable, const glm::vec3& vec)
