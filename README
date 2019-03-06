@@ -1,0 +1,29 @@
+(C)2019 Erno Pakarinen (erpakari@gmail.com)
+
+csmeg - 2-D game engine/renderer for modern OpenGL rendering 
+with shaders
+
+Highly OO designed and extensible architecture and has been
+worked on  Linux and Windows. Whole design and implementation
+was done from scratch with no references to other rendering
+engines.
+
+Supports rendering of 2D sprites with rotation. See 
+CTesterGame.cpp for usage for now.
+
+Current state:
+This is a project which has been on hold for many years now. 
+When I ran the executable on Linux (Ubuntu 18) the rendering 
+does not display anything for some reason. 
+It was working when I put the project on hold. I haven't yet
+tried under Windows yet. In the coming future I try to fix
+this to make the rendering actually display something again! :-)
+
+Testing was done mainly with the 'tester' application.
+
+Compiles but the rendering has broken atleast on my current 
+Ubuntu 18 system. On Linux it can be built using 'scons'
+in the main directory of the project. Depends on boost and 
+SOIL libraries as well as SGL, GL and GLEW.
+
+*** This is a serious work in progress ***
