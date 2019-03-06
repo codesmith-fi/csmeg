@@ -16,7 +16,7 @@ if not (mymode in ['debug', 'release']):
 
 print '**** Compiling in ' + mymode + ' mode...'
 
-cpp_flags = ['-std=c++11', '-Wall', '-Wextra', '-Weffc++']
+cpp_flags = ['-std=c++14', '-Wall', '-Wextra', '-Weffc++']
 debug_flags = cpp_flags + ['-D_DEBUG']
 release_flags = cpp_flags + ['-O2']
 

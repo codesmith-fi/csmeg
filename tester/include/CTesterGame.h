@@ -12,25 +12,25 @@ using renderer::Texture2D;
 
 class CTesterGame : public CGame
 {
-    public:
-        CTesterGame();
-        ~CTesterGame();
-    protected:
+public:
+    CTesterGame();
+    ~CTesterGame();
+protected:
 
-    private: // From Base
-        void onDraw() const;
-        void onUpdate(const CGameTime& gameTime);
-        bool onInitialize();
-        void onRelease();
-        void onEvent(SDL_Event& event);
-        void onLoadContent();
-        void onUnloadContent();
+private: // From Base
+    void onDraw() const;
+    void onUpdate(const CGameTime& gameTime);
+    bool onInitialize();
+    void onRelease();
+    void onEvent(SDL_Event& event);
+    void onLoadContent();
+    void onUnloadContent();
 
-    private: // Data
-        int m_Counter;
-        std::shared_ptr<renderer::Texture2D> m_texture;
-        renderer::TCamera2D m_camera;
-        float m_rot;
+private: // Data
+    int m_Counter;
+    std::shared_ptr<renderer::Texture2D> m_texture;
+    renderer::TCamera2D m_camera;
+    float m_rot;
 
 };
 

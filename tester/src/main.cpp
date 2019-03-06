@@ -12,12 +12,17 @@ int main()
 {
     Debug::CLogger::setLogLevel(DebugLogLevel::INFO);
     LOG_INFO() << "CSMEG Tester application starting up";
-    try {
+    try
+    {
         CTesterGame game;
         game.run();
-    } catch(CSmegException& e) {
+    }
+    catch(CSmegException& e)
+    {
         LOG_ERROR() << "CSMEG Exception, reason: " << e.what();
-    } catch(exception& e) {
+    }
+    catch(exception& e)
+    {
         LOG_ERROR() << "Unhandled general Exception, reason: " << e.what();
     }
     LOG_INFO() << "All done.";

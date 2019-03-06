@@ -23,11 +23,11 @@
 					<Add option="-Wswitch-enum" />
 					<Add option="-Wswitch-default" />
 					<Add option="-Weffc++" />
-					<Add option="-Wmain" />
 					<Add option="-Wzero-as-null-pointer-constant" />
-					<Add option="-std=c++11" />
+					<Add option="-Wmain" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
+					<Add option="-std=c++14" />
 					<Add option="-g" />
 					<Add option="-fPIC" />
 					<Add directory="include" />
@@ -36,6 +36,9 @@
 					<Add library="SDL2" />
 					<Add library="GLEW" />
 					<Add library="GL" />
+					<Add library="SOIL" />
+					<Add library="boost_system" />
+					<Add library="boost_filesystem" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -61,9 +64,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/CContextOpenGL.h" />
 		<Unit filename="include/CDebug.h" />
 		<Unit filename="include/CDrawableGameObject.h" />
 		<Unit filename="include/CEvents.h" />
+		<Unit filename="include/CFpsCounter.h" />
 		<Unit filename="include/CGame.h" />
 		<Unit filename="include/CGameObject.h" />
 		<Unit filename="include/CGameTime.h" />
@@ -72,26 +77,44 @@
 		<Unit filename="include/CKeyboard.h" />
 		<Unit filename="include/CMouse.h" />
 		<Unit filename="include/CObjectBase.h" />
+		<Unit filename="include/CQuadRenderer.h" />
+		<Unit filename="include/CRenderBatch.h" />
 		<Unit filename="include/CShader.h" />
+		<Unit filename="include/CShaderProgram.h" />
 		<Unit filename="include/CSmegException.h" />
 		<Unit filename="include/CTiming.h" />
 		<Unit filename="include/CUpdateTicker.h" />
+		<Unit filename="include/Color.h" />
+		<Unit filename="include/ContentManager.h" />
 		<Unit filename="include/IUpdateable.h" />
 		<Unit filename="include/MInputEventListener.h" />
+		<Unit filename="include/MathUtil.h" />
+		<Unit filename="include/TCamera2D.h" />
+		<Unit filename="include/TRectangle.h" />
+		<Unit filename="include/TVector2.h" />
+		<Unit filename="include/Texture2D.h" />
 		<Unit filename="src/Base/CDrawableGameObject.cpp" />
-		<Unit filename="src/Base/CEvents.cpp" />
+		<Unit filename="src/Base/CFpsCounter.cpp" />
 		<Unit filename="src/Base/CGame.cpp" />
 		<Unit filename="src/Base/CGameObject.cpp" />
 		<Unit filename="src/Base/CGameTime.cpp" />
 		<Unit filename="src/Base/CObjectBase.cpp" />
-		<Unit filename="src/Base/CSmegException.cpp" />
 		<Unit filename="src/Base/CTiming.cpp" />
 		<Unit filename="src/Base/CUpdateTicker.cpp" />
+		<Unit filename="src/Base/ContentManager.cpp" />
 		<Unit filename="src/Input/CJoystick.cpp" />
 		<Unit filename="src/Input/CKeyboard.cpp" />
 		<Unit filename="src/Input/CMouse.cpp" />
+		<Unit filename="src/Primitives/Color.cpp" />
+		<Unit filename="src/Primitives/TRectangle.cpp" />
+		<Unit filename="src/Primitives/TVector2.cpp" />
 		<Unit filename="src/Renderer/CGraphicsContext.cpp" />
+		<Unit filename="src/Renderer/CQuadRenderer.cpp" />
+		<Unit filename="src/Renderer/CRenderBatch.cpp" />
 		<Unit filename="src/Renderer/CShader.cpp" />
+		<Unit filename="src/Renderer/CShaderProgram.cpp" />
+		<Unit filename="src/Renderer/TCamera2D.cpp" />
+		<Unit filename="src/Renderer/Texture2D.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

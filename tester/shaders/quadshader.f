@@ -9,9 +9,12 @@ uniform bool enableTexture;
 
 void main()
 {
-	if(enableTexture) {
-		color = quadColor * texture(image, UV);
-	} else {
-		color = quadColor;
-	}
+    if(enableTexture)
+    {
+        color = quadColor * texture(image, UV);
+    }
+    else
+    {
+        color = quadColor;
+    }
 }

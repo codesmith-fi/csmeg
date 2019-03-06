@@ -1,11 +1,15 @@
 # csmeg tester build file for Scons
 sourcedir = "src"
 includedir = "include"
+shaderdir = "shaders"
+texturedir = "textures"
 
+export_shaders = Glob(shaderdir + '/*.*')
+export_textures = Glob(texturedir + '/*.*')
 project_sources = Glob(sourcedir + '/*.cpp')
 
 Import('env', 'project', 'mymode', 'debug_flags', 'release_flags')
-localenv = env.Copy()
+localenv = env.Clone()
 
 buildroot = '../' + mymode
 builddir = buildroot + '/' + project
@@ -18,10 +22,11 @@ else:
 
 localenv.Append(CPPPATH=['include', buildroot + '/csmegfw/include'])
 tlib = File(buildroot + '/csmegfw/libcsmegfw.a');
-localenv.Append(LIBS=[tlib, 'SDL2', 'GL', 'GLEW'])
-
-
+localenv.Append(LIBS=[tlib, 'SDL2', 'GL', 'GLEW', 'boost_system', 'boost_filesystem', 'SOIL'])
 
 localenv.VariantDir(builddir, ".", duplicate=0)
 
 localenv.Program(target = targetpath, source = project_sources)
+
+localenv.Install(builddir, shaderdir)
+localenv.Install(builddir, texturedir)

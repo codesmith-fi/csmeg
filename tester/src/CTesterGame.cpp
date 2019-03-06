@@ -41,11 +41,14 @@ void CTesterGame::onDraw() const
 //    glm::vec2 pos(200.0f, 100.f);
     TRectangle rect(0.0f, 0.0f, 50.0f, 50.0f);
     r.begin();
-    for(int i = 0; i < 5; i++) {
-        if(i % 2) {
+    for(int i = 0; i < 5; i++)
+    {
+        if(i % 2)
+        {
             r.render(renderer::CQuadRenderer::RenderMethod::TEXTURED, m_texture.get(), rect, m_rot, Color(Color::Palette::White));
         }
-        else {
+        else
+        {
             r.render(renderer::CQuadRenderer::RenderMethod::FLATCOLOR, m_texture.get(), rect, m_rot, Color(Color::Palette::White));
         }
         rect.move(glm::vec2(30.0f, 30.0f));
@@ -66,11 +69,14 @@ void CTesterGame::onUpdate(const CGameTime& gameTime)
 
 void CTesterGame::onEvent(SDL_Event& event)
 {
-    if(event.type == SDL_KEYDOWN) {
+    if(event.type == SDL_KEYDOWN)
+    {
         const SDL_KeyboardEvent& keyEvent = event.key;
-        if(keyEvent.state == SDL_PRESSED) {
+        if(keyEvent.state == SDL_PRESSED)
+        {
             LOG_INFO() << "Keypressed: " << keyEvent.keysym.sym;
-            if(keyEvent.keysym.sym == SDLK_ESCAPE ) {
+            if(keyEvent.keysym.sym == SDLK_ESCAPE )
+            {
                 stop();
             }
         }
@@ -81,17 +87,17 @@ bool CTesterGame::onInitialize()
 {
     LOG_INFO() << "Performing Initialize()";
 
-	setFpsLimit(60);
+    setFpsLimit(60);
     getGraphicsContext().setSize(640, 480);
     m_camera = renderer::TCamera2D(
-        TVector2(-320, -240),
-        TVector2(320, 240),
-        0.0f,
-        1.0f);
+                   TVector2(-320, -240),
+                   TVector2(320, 240),
+                   0.0f,
+                   1.0f);
 
     getGraphicsContext().setFullScreen(true);
     getGraphicsContext().setVsync(true);
-	getGraphicsContext().setBackgroundColor(Color(0.2f, 0.2f, 0.2f));
+    getGraphicsContext().setBackgroundColor(Color(0.2f, 0.2f, 0.2f));
     return true;
 }
 

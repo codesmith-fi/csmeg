@@ -3,7 +3,12 @@ obj/
 build/
 Debug/
 Release/
+release/
 *.dblite
 *.sdf
 *.opensdf
 *.v12.suo
+*.o
+*.os
+*.a
+

@@ -3,7 +3,7 @@
 
 #include <Texture2D.h>
 #include <boost/filesystem.hpp>
-#include <SOIL.h>
+#include <SOIL/SOIL.h>
 
 using namespace csmeg;
 using namespace csmeg::renderer;

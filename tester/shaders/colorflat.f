@@ -7,5 +7,5 @@ uniform vec4 quadColor;
 
 void main()
 {
-	color = quadColor;
+    color = quadColor;
 }

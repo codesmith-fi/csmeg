@@ -1,19 +1,20 @@
 # csmeg framework build file for Scons
+lib_srcdir_primitives = "src/Primitives"
 lib_srcdir_base = "src/Base"
 lib_srcdir_input = "src/Input"
 lib_srcdir_renderer = "src/Renderer"
 lib_includedir = "include/csmeg"
 
+lib_sources_primitives = Glob(lib_srcdir_primitives + '/*.cpp')
 lib_sources_base = Glob(lib_srcdir_base + '/*.cpp')
 lib_sources_renderer = Glob(lib_srcdir_renderer + '/*.cpp')
 lib_sources_input = Glob(lib_srcdir_input + '/*.cpp')
 lib_headers_export = Glob(lib_includedir + '/*.h')
 
-lib_sources = lib_sources_base + lib_sources_renderer + lib_sources_input
+lib_sources = lib_sources_base + lib_sources_renderer + lib_sources_input + lib_sources_primitives
 
-#env=Environment()
 Import('env', 'project', 'mymode', 'debug_flags', 'release_flags')
-localenv = env.Copy()
+localenv = env.Clone()
 
 buildroot = '../' + mymode
 builddir = buildroot + '/' + project
